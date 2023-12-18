@@ -2,9 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 121px;
+  padding-bottom: 60px;
+  padding-top: 60px;
   flex-direction: column;
 }
 .container__logo {
   margin-bottom: 61px;
+}
+.container__buttons > *:first-child{
+  margin-bottom: 20px;
+  margin-top: 70px;
 }

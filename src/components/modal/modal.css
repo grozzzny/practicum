@@ -25,9 +25,5 @@
   line-height: normal;
 }
 .modal__body {
-  display: flex;
   padding: 60px 20px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
 }

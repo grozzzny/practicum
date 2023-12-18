@@ -1,13 +1,15 @@
 <div class="container">
-  <div class='container__logo'>
+  <div class='container__logo hover-disabled'>
     <img width='212' height='122' src='logo.png' alt='logo'>
   </div>
   {{#> Modal title="Login" }}
     {{#> FormAuth }}
-      {{> Input label="Login" }}
-      {{> Input label="Password" }}
-      {{> Button label="Sign in" type="primary" page="list"}}
-      {{> Button label="Sign up" type="link" }}
+      {{> Field type="text" label="Login" }}
+      {{> Field type="password" label="Password" }}
+      <div class='container__buttons'>
+        {{> Button label="Log in" type="primary" page="list"}}
+        {{> Button label="No account?" type="link" }}
+      </div>
     {{/FormAuth}}
   {{/Modal}}
 </div>

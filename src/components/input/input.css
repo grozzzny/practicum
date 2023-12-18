@@ -1,0 +1,22 @@
+.input {
+}
+.input__element {
+  height: 50px;
+  padding: 10px;
+  border-radius: 0 20px 20px 20px;
+  border: 1px solid var(--border-blue);
+  background: var(--background-blue);
+  color: var(--black);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  font-family: Monda, sans-serif;
+  line-height: normal;
+  width: 100%;
+  transition: .2s border ease-in, .2s border-radius ease;
+}
+.input__element:focus {
+  outline: none;
+  border: 1px solid var(--main-color);
+  border-radius: 0 20px 20px 0;
+}
