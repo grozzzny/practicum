@@ -1,5 +1,23 @@
+@import '/src/components/modal/modal.css';
+@import '/src/components/button/button.css';
+@import '/src/components/cat-card/cat-card.css';
+@import '/src/components/form-auth/form-auth.css';
+@import '/src/components/input/input.css';
+@import '/src/components/list-cats/list-cat.css';
+@import '/src/pages/login/login.css';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: Monda, sans-serif;
+}
+
 :root {
-  --main-color: #3369f3;
+  --main-color: #027de7;
+  --border: #d1d1d1;
   --second-color: #e4edfd;
   --error-color: #ff2f2f;
   --text-color: #1e1e1e;
