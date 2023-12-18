@@ -1,2 +1,3 @@
 export { LoginPage } from './login'
-// export {ListPage} from './list'
+export { RegisterPage } from './register'
+export { ChatsPage } from './chats'

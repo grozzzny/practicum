@@ -1,0 +1,19 @@
+<div class='dialog {{#if active}}dialog--active{{/if}}'>
+  <div class='dialog__avatar hover-disabled'>
+    <img width='72px' height='72px' src={{#if avatar}}{{avatar}}{{else}}ellipse.svg{{/if}} alt='avatar' />
+  </div>
+  <div class='dialog__body'>
+    <div class='dialog__time'>
+      {{time}}
+    </div>
+    <div class='dialog__name'>
+      {{name}}
+    </div>
+    <div class='dialog__message'>
+      {{message}}
+    </div>
+  </div>
+  <div class='dialog__count {{#if count}}dialog__count--visible{{/if}}'>
+    {{count}}
+  </div>
+</div>

@@ -1,4 +1,5 @@
 .input {
+  position: relative;
 }
 .input__element {
   height: 50px;
@@ -19,4 +20,19 @@
   outline: none;
   border: 1px solid var(--main-color);
   border-radius: 0 20px 20px 0;
+}
+.input__ico{
+  position: absolute;
+  left: 12px;
+  top: 15px;
+  display: none;
+}
+.input__search{
+
+}
+.input__search .input__element{
+  padding-left: 44px;
+}
+.input__search .input__ico{
+  display: block;
 }
