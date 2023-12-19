@@ -1,0 +1,40 @@
+<div class='chat'>
+  <div class='chat__header'>
+    <div class='profile hover-disabled'>
+      <div class='profile__avatar'>
+        <img width='64px' height='64px' src={{#if avatar}}{{avatar}}{{else}}ellipse.svg{{/if}} alt='avatar'>
+      </div>
+      <div class='profile__name'>
+        Dmitriy
+      </div>
+    </div>
+    <div class='menu-profile'>
+      <button class='menu-profile__btn'>
+        <img class='hover-disabled' width='27px' height='45px' src='btn-menu.svg' alt='btn'>
+      </button>
+    </div>
+  </div>
+  <div class='chat__body'>
+    {{> Messages }}
+  </div>
+  <div class='chat__footer'>
+    <div class='message-control'>
+      <div class='message-control__attachments'>
+        <button class='message-control__attachments-btn'>
+          <img class='hover-disabled' width='44px' height='44px' src='attachments.svg' alt='btn'>
+        </button>
+      </div>
+      <div class='message-control__input'>
+        {{> Input placeholder='Message..' }}
+      </div>
+      <div class='message-control__send'>
+        <button class='message-control__send-btn'>
+          <svg class='hover-disabled' width="80" height="50" viewBox="0 0 80 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.363159" width="80" height="50" rx="25" fill="#027DE7"/>
+            <path d="M57.8632 25L42.8632 16.3397L42.8632 33.6603L57.8632 25ZM22.8632 26.5L44.3632 26.5L44.3632 23.5L22.8632 23.5L22.8632 26.5Z" fill="white"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

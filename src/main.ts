@@ -5,7 +5,8 @@ import * as Pages from './pages'
 const pages = {
   login: [Pages.LoginPage],
   register: [Pages.RegisterPage],
-  chats: [Pages.ChatsPage]
+  chats: [Pages.ChatsPage],
+  dialog: [Pages.DialogPage]
 }
 
 Object.entries(Components).forEach(([name, component]) => {
@@ -19,7 +20,7 @@ function navigate(page: string) {
   container.innerHTML = Handlebars.compile(source)(context)
 }
 
-document.addEventListener('DOMContentLoaded', () => navigate('chats'))
+document.addEventListener('DOMContentLoaded', () => navigate('dialog'))
 
 document.addEventListener('click', (e) => {
   //@ts-ignore

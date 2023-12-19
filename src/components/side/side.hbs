@@ -1,0 +1,20 @@
+<div class='side'>
+  <div class='side__header'>
+    <button class='side__logo-btn hover-disabled'>
+      <img width='67px' height='21px' src='logo-small.png' alt='logo'>
+    </button>
+    <div class='side__profile' title='Profile' onclick='alert("profile")'>
+      <img class='hover-disabled' width='37px' height='37px' src='profile.svg' alt='profile'>
+    </div>
+  </div>
+  <div class='side__body'>
+    <div class='side__search'>
+      {{> Input type='search' placeholder='Search' }}
+    </div>
+    <div class='side__dialogs'>
+      {{#each (dialogs)}}
+        {{> Dialog}}
+      {{/each}}
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-<div class='dialog {{#if active}}dialog--active{{/if}}'>
+<div class='dialog {{#if active}}dialog--active{{/if}}' page='dialog'>
   <div class='dialog__avatar hover-disabled'>
     <img width='72px' height='72px' src={{#if avatar}}{{avatar}}{{else}}ellipse.svg{{/if}} alt='avatar' />
   </div>
@@ -6,10 +6,10 @@
     <div class='dialog__time'>
       {{time}}
     </div>
-    <div class='dialog__name'>
+    <div class='dialog__name' page='dialog'>
       {{name}}
     </div>
-    <div class='dialog__message'>
+    <div class='dialog__message' page='dialog'>
       {{message}}
     </div>
   </div>

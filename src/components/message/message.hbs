@@ -1,0 +1,32 @@
+<div class='message {{#if self}}message--self{{else}}message--not-self{{/if}} {{#if image}}message--image{{/if}}'>
+  <div class='message__left'>
+    <div class='message__content'>
+      {{#if text}}
+        <div class='message__text'>
+          {{text}}
+        </div>
+      {{else}}
+        <div class='message__image hover-disabled'>
+          <img src={{image}} alt=''>
+        </div>
+      {{/if}}
+      <div class='message__info'>
+        {{#if read}}
+          <div class='message__read'>
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 10 5" fill="none">
+              <line y1="-0.5" x2="3.765" y2="-0.5" transform="matrix(0.705933 0.708278 -0.705933 0.708278 -6.10352e-05 2.33313)" stroke="#999999"/>
+              <line y1="-0.5" x2="5.6475" y2="-0.5" transform="matrix(0.705933 -0.708278 0.705933 0.708278 2.65802 5)" stroke="#999999"/>
+              <line y1="-0.5" x2="5.6475" y2="-0.5" transform="matrix(0.705933 -0.708278 0.705933 0.708278 5.31561 5)" stroke="#999999"/>
+            </svg>
+          </div>
+        {{/if}}
+        <div class='message__time'>
+          {{time}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='message__right'>
+
+  </div>
+</div>

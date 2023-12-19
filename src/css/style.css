@@ -2,6 +2,7 @@
 @import '/src/css/base.css';
 @import '/src/css/common.css';
 @import '/src/css/container-modal.css';
+@import '/src/css/container-chats.css';
 
 /* Components */
 @import '/src/components/modal/modal.css';
@@ -10,6 +11,10 @@
 @import '/src/components/form-auth/form-auth.css';
 @import '/src/components/input/input.css';
 @import '/src/components/dialog/dialog.css';
+@import '/src/components/side/side.css';
+@import '/src/components/messages/messages.css';
+@import '/src/components/message/message.css';
+@import '/src/components/chat/chat.css';
 
 /* Pages */
-@import '/src/pages/chats/chats.css';
+
