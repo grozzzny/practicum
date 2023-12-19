@@ -1,0 +1,16 @@
+<div class="container-chats">
+  {{> Side }}
+  <div class='container-chats__content'>
+    {{> Chat }}
+  </div>
+</div>
+<div class='modal__background' page="dialog">
+  {{#> Modal type="default" title="Add User" }}
+    {{#> FormAuth }}
+      {{> Field type="text" label="Login" }}
+      <div class='container-modal__buttons'>
+        {{> Button label="Add" type="primary" page="dialog"}}
+      </div>
+    {{/FormAuth}}
+  {{/Modal}}
+</div>

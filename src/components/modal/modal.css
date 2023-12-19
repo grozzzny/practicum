@@ -7,6 +7,19 @@
   border: 1px solid var(--border);
   background: #fff;
 }
+.modal__background {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  background: rgba(77, 77, 77, 0.76);
+}
 .modal__header {
   padding: 13px 20px 11px;
   background: var(--main-color);
@@ -26,4 +39,12 @@
 }
 .modal__body {
   padding: 60px 20px;
+}
+.modal.modal--default .modal__header{
+  background: #ededed;
+  box-shadow: none;
+}
+.modal.modal--default .modal__title{
+  color: var(--black);
+  border-bottom: 2px solid var(--black);
 }

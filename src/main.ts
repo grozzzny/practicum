@@ -6,7 +6,9 @@ const pages = {
   login: [Pages.LoginPage],
   register: [Pages.RegisterPage],
   chats: [Pages.ChatsPage],
-  dialog: [Pages.DialogPage]
+  dialog: [Pages.DialogPage],
+  removeUser: [Pages.RemoveUserPage],
+  addUser: [Pages.AddUserPage]
 }
 
 Object.entries(Components).forEach(([name, component]) => {
@@ -20,7 +22,7 @@ function navigate(page: string) {
   container.innerHTML = Handlebars.compile(source)(context)
 }
 
-document.addEventListener('DOMContentLoaded', () => navigate('dialog'))
+document.addEventListener('DOMContentLoaded', () => navigate('removeUser'))
 
 document.addEventListener('click', (e) => {
   //@ts-ignore
