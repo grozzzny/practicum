@@ -12,6 +12,10 @@
       <button class='menu-profile__btn'>
         <img class='hover-disabled' width='27px' height='45px' src='btn-menu.svg' alt='btn'>
       </button>
+      {{#> Menu type="top" }}
+        {{> MenuElement icon="menu-icons/add.png" label="Add user" }}
+        {{> MenuElement icon="menu-icons/del.png" label="Remove user" }}
+      {{/Menu}}
     </div>
   </div>
   <div class='chat__body'>
@@ -23,6 +27,11 @@
         <button class='message-control__attachments-btn'>
           <img class='hover-disabled' width='44px' height='44px' src='attachments.svg' alt='btn'>
         </button>
+        {{#> Menu type="bottom" }}
+          {{> MenuElement icon="menu-icons/photo.png" label="Photo or Video" }}
+          {{> MenuElement icon="menu-icons/file.png" label="File" }}
+          {{> MenuElement icon="menu-icons/circle.png" label="Location" }}
+        {{/Menu}}
       </div>
       <div class='message-control__input'>
         {{> Input placeholder='Message..' }}

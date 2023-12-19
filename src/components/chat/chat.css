@@ -38,6 +38,10 @@
 }
 .menu-profile {
   margin-left: auto;
+  position: relative;
+}
+.menu-profile:hover .menu {
+  display: flex;
 }
 .menu-profile__btn {
   display: flex;
@@ -46,10 +50,10 @@
   margin: 0;
   background: none;
   border: none;
-  transition: .2s all ease;
+  transition: 0.2s all ease;
 }
 .menu-profile__btn:hover {
-  opacity: .8;
+  opacity: 0.8;
 }
 .message-control {
   width: 100%;
@@ -60,10 +64,10 @@
   display: flex;
 }
 .message-control__attachments {
-
+  position: relative;
 }
 .message-control__attachments-btn {
-  transition: .2s ease all;
+  transition: 0.2s ease all;
   cursor: pointer;
   padding: 0;
   margin: 0;
@@ -72,6 +76,9 @@
 }
 .message-control__attachments-btn:hover {
   opacity: 0.8;
+}
+.message-control__attachments:hover .menu {
+  display: flex;
 }
 .message-control__input {
   width: 100%;
@@ -88,15 +95,15 @@
   border: none;
   border-radius: 25px;
 }
-.message-control__send-btn rect{
-  transition: .2s ease all;
+.message-control__send-btn rect {
+  transition: 0.2s ease all;
 }
-.message-control__send-btn:active rect{
+.message-control__send-btn:active rect {
   fill: var(--main-color-dark);
 }
 .message-control__send-btn path {
- transition: .2s ease all;
+  transition: 0.2s ease all;
 }
-.message-control__send-btn:hover path{
+.message-control__send-btn:hover path {
   transform: translateX(3px);
 }
