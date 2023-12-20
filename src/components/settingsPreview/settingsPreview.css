@@ -12,12 +12,12 @@
   cursor: pointer;
   user-select: none;
   padding: 0;
+  border-radius: 50px;
+  overflow: hidden;
+  transition: .2s all ease;
 }
 .settingsPreview__image:hover{
-  outline: var(--main-color);
-  outline-width: 1px;
-  outline-style: solid;
-  border-radius: 50px;
+  opacity: 0.8;
 }
 .settingsPreview__name{
   font-size: 24px;

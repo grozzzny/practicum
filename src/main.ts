@@ -27,7 +27,7 @@ function navigate(page: string) {
   container.innerHTML = Handlebars.compile(source)(context)
 }
 
-document.addEventListener('DOMContentLoaded', () => navigate('error'))
+document.addEventListener('DOMContentLoaded', () => navigate('login'))
 
 document.addEventListener('click', (e) => {
   //@ts-ignore
