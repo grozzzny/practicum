@@ -41,7 +41,7 @@
   padding: 60px 20px;
 }
 .modal.modal--default .modal__header{
-  background: #ededed;
+  background: var(--background-gray);
   box-shadow: none;
 }
 .modal.modal--default .modal__title{

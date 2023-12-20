@@ -63,6 +63,10 @@
   align-items: center;
   height: 100%;
   width: 100%;
+  transition: .2s all ease;
+}
+.side__btn-back:hover{
+  background-color: white;
 }
 .side.side--close .side__btn-back{
   visibility: visible;

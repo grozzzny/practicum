@@ -17,6 +17,5 @@
 @import '/src/components/chat/chat.css';
 @import '/src/components/menuElement/menuElement.css';
 @import '/src/components/menu/menu.css';
-
-/* Pages */
+@import '/src/components/settings/settings.css';
 

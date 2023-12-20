@@ -1,6 +1,21 @@
 <div class="container-chats">
   {{> Side close=true }}
-  <div class='container-chats__content container-chats__content--center'>
-    <span>Select a chat room to send a message</span>
+  <div class='container-chats__content container-chats__content--top'>
+    {{#> Settings title="Profile" }}
+      {{#> FormAuth }}
+        {{> Field type="text" label="Email" }}
+        {{> Field type="text" label="Login" }}
+        {{> Field type="text" label="Name" }}
+        {{> Field type="text" label="Surname" }}
+        {{> Field type="text" label="Phone" }}
+        {{> Field type="password" label="Password" }}
+        {{> Field type="password" label="Password (again)" error="Passwords don't match" }}
+
+        <div class='container-modal__buttons'>
+          {{> Button label="Register" type="primary" page="chats" }}
+          {{> Button label="Sign in" type="link" page="login" }}
+        </div>
+      {{/FormAuth}}
+    {{/Settings}}
   </div>
 </div>
