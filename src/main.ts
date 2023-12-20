@@ -12,7 +12,8 @@ const pages = {
   profile: [Pages.ProfilePage],
   profileEdit: [Pages.ProfileEditPage],
   profilePassword: [Pages.ProfilePasswordPage],
-  changeAvatar: [Pages.ChangeAvatarPage]
+  changeAvatar: [Pages.ChangeAvatarPage],
+  error: [Pages.ErrorPage]
 }
 
 Object.entries(Components).forEach(([name, component]) => {
@@ -26,7 +27,7 @@ function navigate(page: string) {
   container.innerHTML = Handlebars.compile(source)(context)
 }
 
-document.addEventListener('DOMContentLoaded', () => navigate('changeAvatar'))
+document.addEventListener('DOMContentLoaded', () => navigate('error'))
 
 document.addEventListener('click', (e) => {
   //@ts-ignore

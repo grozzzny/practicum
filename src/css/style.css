@@ -3,6 +3,7 @@
 @import '/src/css/common.css';
 @import '/src/css/container-modal.css';
 @import '/src/css/container-chats.css';
+@import '/src/css/container-error.css';
 
 /* Components */
 @import '/src/components/modal/modal.css';
@@ -22,4 +23,5 @@
 @import '/src/components/settingsPreview/settingsPreview.css';
 @import '/src/components/settingsEditElement/settingsEditElement.css';
 @import '/src/components/uploadFile/uploadFile.css';
+@import '/src/components/error/error.css';
 
