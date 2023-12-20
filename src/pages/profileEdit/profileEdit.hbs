@@ -1,0 +1,19 @@
+<div class="container-chats">
+  {{> Side close=true }}
+  <div class='container-chats__content container-chats__content--top'>
+    {{#> Settings title="Change data" }}
+      {{#> FormAuth }}
+        {{> SettingsEditElement type="text" label="Email" value="grozzzzny@yandex" error="It's not Email" }}
+        {{> SettingsEditElement type="text" label="Login" value="grozzzzny" }}
+        {{> SettingsEditElement type="text" label="Name" value="Dmitriy" }}
+        {{> SettingsEditElement type="text" label="Surname" value="Groznyy" }}
+        {{> SettingsEditElement type="text" label="Name in chat" value="Dmitriy" }}
+        {{> SettingsEditElement type="text" label="Phone" value="+7 (911) 458 71 42" }}
+        <div class='settings__buttons'>
+          {{> Button label="Save" type="primary" page="profile" }}
+          {{> Button label="Cancel" type="link" page="profile" }}
+        </div>
+      {{/FormAuth}}
+    {{/Settings}}
+  </div>
+</div>

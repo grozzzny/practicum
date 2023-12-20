@@ -2,7 +2,7 @@
   {{> Side close=true }}
   <div class='container-chats__content container-chats__content--top'>
     {{#> Settings title="Profile" }}
-      {{> SettingsPreview name="Dmitriy" page="changeAvatar" }}
+      {{> SettingsPreview name="Dmitriy" }}
       {{> SettingsElement type="text" label="Email" value="grozzzny@yandex.ru" }}
       {{> SettingsElement type="text" label="Login" value="grozzzzny" }}
       {{> SettingsElement type="text" label="Name" value="Dmitriy" }}
@@ -16,4 +16,14 @@
       </div>
     {{/Settings}}
   </div>
+</div>
+<div class='modal__background modal__changeAvatar' page="profile">
+  {{#> Modal type="default" title="Change avatar" }}
+    {{#> FormAuth }}
+      {{> UploadFile message="Download the file" label="Select file" }}
+      <div class='container-modal__buttons'>
+        {{> Button label="Change" type="primary" page="profile"}}
+      </div>
+    {{/FormAuth}}
+  {{/Modal}}
 </div>

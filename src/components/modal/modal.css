@@ -48,3 +48,6 @@
   color: var(--black);
   border-bottom: 2px solid var(--black);
 }
+.modal__changeAvatar .modal__body{
+  padding-bottom: 40px;
+}

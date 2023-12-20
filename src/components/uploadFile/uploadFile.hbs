@@ -1,0 +1,8 @@
+<div class='uploadFile {{#if error}}uploadFile--error{{/if}}'>
+  <div class='uploadFile__label' onclick='document.getElementsByClassName("uploadFile__input")[0].click()'>{{label}}</div>
+  <div class='uploadFile__info'>
+    <span class='uploadFile__error'>{{error}}</span>
+    <span class='uploadFile__message'>{{message}}</span>
+  </div>
+  <input type='file' accept="image/*" class='uploadFile__input' />
+</div>

@@ -18,4 +18,8 @@
 @import '/src/components/menuElement/menuElement.css';
 @import '/src/components/menu/menu.css';
 @import '/src/components/settings/settings.css';
+@import '/src/components/settingsElement/settingsElement.css';
+@import '/src/components/settingsPreview/settingsPreview.css';
+@import '/src/components/settingsEditElement/settingsEditElement.css';
+@import '/src/components/uploadFile/uploadFile.css';
 

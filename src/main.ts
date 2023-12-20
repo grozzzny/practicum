@@ -9,7 +9,10 @@ const pages = {
   dialog: [Pages.DialogPage],
   removeUser: [Pages.RemoveUserPage],
   addUser: [Pages.AddUserPage],
-  profile: [Pages.ProfilePage]
+  profile: [Pages.ProfilePage],
+  profileEdit: [Pages.ProfileEditPage],
+  profilePassword: [Pages.ProfilePasswordPage],
+  changeAvatar: [Pages.ChangeAvatarPage]
 }
 
 Object.entries(Components).forEach(([name, component]) => {
@@ -23,7 +26,7 @@ function navigate(page: string) {
   container.innerHTML = Handlebars.compile(source)(context)
 }
 
-document.addEventListener('DOMContentLoaded', () => navigate('profile'))
+document.addEventListener('DOMContentLoaded', () => navigate('changeAvatar'))
 
 document.addEventListener('click', (e) => {
   //@ts-ignore
