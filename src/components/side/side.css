@@ -53,3 +53,24 @@
   width: 100%;
   overflow-y: auto;
 }
+.side.side--close{
+  width: 80px;
+}
+.side__btn-back{
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.side.side--close .side__btn-back{
+  visibility: visible;
+  opacity: 1;
+  display: flex;
+}
+.side.side--close .side__search, .side.side--close .side__dialogs, .side.side--close .side__profile{
+  visibility: hidden;
+  opacity: 0;
+  display: none;
+}

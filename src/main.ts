@@ -8,7 +8,8 @@ const pages = {
   chats: [Pages.ChatsPage],
   dialog: [Pages.DialogPage],
   removeUser: [Pages.RemoveUserPage],
-  addUser: [Pages.AddUserPage]
+  addUser: [Pages.AddUserPage],
+  profile: [Pages.ProfilePage]
 }
 
 Object.entries(Components).forEach(([name, component]) => {
@@ -22,7 +23,7 @@ function navigate(page: string) {
   container.innerHTML = Handlebars.compile(source)(context)
 }
 
-document.addEventListener('DOMContentLoaded', () => navigate('removeUser'))
+document.addEventListener('DOMContentLoaded', () => navigate('profile'))
 
 document.addEventListener('click', (e) => {
   //@ts-ignore
