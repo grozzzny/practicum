@@ -17,7 +17,7 @@ Fast Chat is developed as a sample messenger designed for educational purposes. 
 1. Clone the repository with the command: `git clone https://github.com/grozzzny/practicum.git fast-chat`
 2. Navigate to the project directory: `cd fast-chat`
 3. Install dependencies: `npm install` or `yarn install`
-4. Start the application: `npm run build && npm run preview` or `yarn build && yarn preview`
+4. Start the application: `npm run start` or `yarn start`
 
 **Usage:**
 1. View the project by opening it in your browser to familiarize yourself with the interface.
