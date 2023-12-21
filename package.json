@@ -3,6 +3,9 @@
   "private": false,
   "version": "0.0.1",
   "type": "module",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "dev": "vite --port 3000",
     "build": "tsc && vite build",
