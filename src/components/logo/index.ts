@@ -1,1 +1,1 @@
-export { default as Logo } from './logo.hbs?raw';
+export { default as Logo } from './logo.hbs?raw'

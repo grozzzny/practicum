@@ -1,1 +1,1 @@
-export { default as Side } from './side.hbs?raw';
+export { default as Side } from './side.hbs?raw'

@@ -1,1 +1,1 @@
-export { default as UploadFile } from './uploadFile.hbs?raw';
+export { default as UploadFile } from './uploadFile.hbs?raw'
