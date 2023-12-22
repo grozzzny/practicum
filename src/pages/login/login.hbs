@@ -1,0 +1,15 @@
+<div class="container-modal">
+  <div class='container-modal__logo'>
+    {{> Logo }}
+  </div>
+  {{#> Modal title="Login" }}
+    {{#> FormAuth }}
+      {{> Field type="text" name="login" label="Login" }}
+      {{> Field type="password" name="password" label="Password" }}
+      <div class='container-modal__buttons'>
+        {{> Button label="Sign in" type="primary" page="chats"}}
+        {{> Button label="Registration" type="link" page="register" }}
+      </div>
+    {{/FormAuth}}
+  {{/Modal}}
+</div>

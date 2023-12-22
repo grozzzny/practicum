@@ -1,0 +1,11 @@
+<div class="settingsEditElement {{#if error}}settingsEditElement--error{{/if}}">
+  <div class='settingsEditElement__label'>
+    {{label}}
+  </div>
+  <div class='settingsEditElement__input'>
+    {{> Input type=type name=name value=value }}
+    <div class='settingsEditElement__error'>
+      {{error}}
+    </div>
+  </div>
+</div>

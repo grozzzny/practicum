@@ -1,0 +1,33 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.error__logo {
+}
+.error__code {
+  color: var(--black);
+  font-size: 200px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 200px;
+}
+.error__message {
+  color: var(--black);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.error__link {
+  border: none;
+  background: none;
+  color: var(--main-color);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
+}
