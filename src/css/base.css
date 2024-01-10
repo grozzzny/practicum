@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: Monda, sans-serif;
+  color: var(--black);
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --main-color: #027de7;
+  --main-color-dark: #0567bd;
+  --border: #d1d1d1;
+  --border-blue: #5bb3ff;
+  --background-blue: #f0f8ff;
+  --background-gray: #ededed;
+  --gray: #eeeeee;
+  --black: #4d4d4d;
+  --black-light: rgba(77, 77, 77, 0.8);
+  --red: #e22828;
+  --red-light: rgba(226, 40, 40, 0.07);
+}

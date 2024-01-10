@@ -1,0 +1,21 @@
+<div class="container-modal">
+  <div class='container-modal__logo'>
+    {{> Logo }}
+  </div>
+  {{#> Modal title="Registration" }}
+    {{#> FormAuth }}
+      {{> Field type="text" name="email" label="Email" }}
+      {{> Field type="text" name="login" label="Login" }}
+      {{> Field type="text" name="first_name" label="Name" }}
+      {{> Field type="text" name="second_name" label="Surname" }}
+      {{> Field type="text" name="phone" label="Phone" }}
+      {{> Field type="password" label="Password" }}
+      {{> Field type="password" name="password" label="Password (again)" error="Passwords don't match" }}
+
+      <div class='container-modal__buttons'>
+        {{> Button label="Register" type="primary" page="chats" }}
+        {{> Button label="Sign in" type="link" page="login" }}
+      </div>
+    {{/FormAuth}}
+  {{/Modal}}
+</div>

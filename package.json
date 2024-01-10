@@ -1,0 +1,22 @@
+{
+  "name": "practicum",
+  "private": false,
+  "version": "0.0.1",
+  "type": "module",
+  "engines": {
+    "node": ">=18.x"
+  },
+  "scripts": {
+    "dev": "vite --port 3000",
+    "build": "tsc && vite build",
+    "preview": "vite preview --port 3000",
+    "start": "tsc && vite build && vite preview --port 3000"
+  },
+  "devDependencies": {
+    "handlebars": "^4.7.8",
+    "prettier": "^3.1.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10",
+    "vite-plugin-handlebars": "^1.6.0"
+  }
+}

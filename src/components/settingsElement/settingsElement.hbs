@@ -1,0 +1,14 @@
+<div class="settingsElement">
+  {{#if page}}
+    <button class='settingsElement__link' page='{{page}}'>
+      {{label}}
+    </button>
+  {{else}}
+    <div class='settingsElement__label'>
+      {{label}}
+    </div>
+    <div class='settingsElement__value'>
+      {{value}}
+    </div>
+  {{/if}}
+</div>
