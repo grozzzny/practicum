@@ -24,6 +24,26 @@ Fast Chat is developed as a sample messenger designed for educational purposes. 
 2. Conduct a superficial analysis of the messenger's functionality for demonstration purposes.
 3. Pay attention to the interface elements, interaction with educational materials, and group communication features.
 
+**Running Bats Tests Locally**
+
+To run the Bats tests locally, follow these steps:
+
+1. Clone the Bats tests repository:
+```bash
+git clone https://github.com/Yandex-Practicum/tests-middle-frontend.git tmp/tests-middle-frontend
+```
+2. Install the required dependencies. Make sure you have `jq` installed:
+```bash
+brew install jq
+```
+3. Run Bats tests for a specific sprint (replace `sprint_1` with the desired sprint number, ranging from 1 to 4):
+```bash
+yarn bats:sprint_1
+```
+Repeat this step for other sprints if needed.
+
+Now you can locally execute the Bats tests for your project. Ensure that you have the necessary setup and dependencies to match the GitHub Actions configuration.
+
 **Note:**
 The project runs on port 3000, and you can access it at [http://localhost:3000/](http://localhost:3000/).
 

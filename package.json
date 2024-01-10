@@ -10,9 +10,15 @@
     "dev": "vite --port 3000",
     "build": "tsc && vite build",
     "preview": "vite preview --port 3000",
-    "start": "tsc && vite build && vite preview --port 3000"
+    "start": "tsc && vite build && vite preview --port 3000",
+    "bats": "node_modules/bats/bin/bats",
+    "bats:sprint_1": "bats --formatter pretty tmp/tests-middle-frontend/tests/sprint_1.bats",
+    "bats:sprint_2": "bats --formatter pretty tmp/tests-middle-frontend/tests/sprint_2.bats",
+    "bats:sprint_3": "bats --formatter pretty tmp/tests-middle-frontend/tests/sprint_3.bats",
+    "bats:sprint_4": "bats --formatter pretty tmp/tests-middle-frontend/tests/sprint_4.bats"
   },
   "devDependencies": {
+    "bats": "^1.10.0",
     "handlebars": "^4.7.8",
     "prettier": "^3.1.1",
     "typescript": "^5.3.3",
