@@ -1,6 +1,6 @@
 .messages {
   display: flex;
-  padding: 25px 0px;
+  padding: 25px 0;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
