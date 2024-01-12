@@ -7,8 +7,8 @@
       {{> Field type="text" name="login" label="Login" }}
       {{> Field type="password" name="password" label="Password" }}
       <div class='container-modal__buttons'>
-        {{> Button label="Sign in" type="primary" page="chats"}}
-        {{> Button label="Registration" type="link" page="register" }}
+        {{{ Button onClick=onLogin label="Sign in" type="primary"}}}
+        {{{ Button label="Registration" type="link" page="register" }}}
       </div>
     {{/FormAuth}}
   {{/Modal}}
