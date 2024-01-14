@@ -1,6 +1,6 @@
 import Handlebars from 'handlebars'
-
-export { default as ChatsPage } from './chats.hbs?raw'
+import template from './chats.hbs?raw'
+import Block from '../../core/Block'
 
 Handlebars.registerHelper('dialogs', () => {
   return [
@@ -74,3 +74,9 @@ Handlebars.registerHelper('dialogs', () => {
     }
   ]
 })
+
+export class ChatsPage extends Block<{}> {
+  protected render(): string {
+    return template
+  }
+}

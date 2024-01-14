@@ -23,8 +23,8 @@ document.addEventListener('click', (e) => {
   const target = e.target as HTMLElement
   const page = target.getAttribute('page') as PagesName
   if (page) {
-    navigate(page)
     e.preventDefault()
     e.stopImmediatePropagation()
+    navigate(page)
   }
 })
