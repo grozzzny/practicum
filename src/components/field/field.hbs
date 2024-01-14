@@ -1,5 +1,5 @@
 <div class='field {{#if error}}field--error{{/if}}'>
   <label class='field__label'>{{label}}</label>
   {{{ Input onBlur=onBlur ref="input" name=name type=type }}}
-  <span class='field__error'>{{error}}</span>
+  {{{ ErrorLine ref="errorLine" className="field__error" error=error }}}
 </div>

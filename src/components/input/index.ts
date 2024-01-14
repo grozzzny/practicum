@@ -1,4 +1,4 @@
-import Block from '../../core/Block'
+import Block, { RefType } from '../../core/Block'
 import template from './input.hbs?raw'
 import './input.css'
 
@@ -12,11 +12,15 @@ export interface InputProps {
   placeholder: string
 }
 
-export class Input extends Block<InputProps, HTMLInputElement> {
+export class Input extends Block<InputProps, RefType, HTMLElement> {
   protected init(): void {
     this.eventsElement = {
       blur: this.props.onBlur
     }
+  }
+
+  public value(): string {
+    return this.element.getElementsByTagName('input')[0].value
   }
 
   protected render(): string {

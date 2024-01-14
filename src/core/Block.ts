@@ -4,7 +4,7 @@ import Handlebars from 'handlebars'
 
 export type RefType = {
   [key: string]:
-    | Block<PropsType, HTMLElement | null, RefType>
+    | Block<PropsType, RefType, HTMLElement | null>
     | undefined
 }
 
@@ -12,8 +12,8 @@ export type PropsType = Record<string | symbol, any>
 
 class Block<
   Props extends PropsType = {},
-  Element extends HTMLElement | null = null,
-  Refs extends RefType = RefType
+  Refs extends RefType = RefType,
+  Element extends HTMLElement | null = null
 > {
   static EVENTS = {
     INIT: 'init',

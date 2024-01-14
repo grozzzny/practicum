@@ -1,10 +1,10 @@
 import Handlebars from 'handlebars'
-import Block, { PropsType } from './Block'
+import Block, { PropsType, RefType } from './Block'
 import { HelperOptions } from 'handlebars'
 
 export function registerComponent(
   name: string,
-  Component: typeof Block<PropsType, HTMLElement | null>
+  Component: typeof Block<PropsType, RefType, HTMLElement | null>
 ) {
   if (name in Handlebars.helpers) {
     throw `The ${name} component is already registered!`
