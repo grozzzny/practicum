@@ -1,8 +1,11 @@
 import Handlebars from 'handlebars'
-import Block from './Block'
+import Block, { PropsType } from './Block'
 import { HelperOptions } from 'handlebars'
 
-export function registerComponent(name: string, Component: typeof Block) {
+export function registerComponent(
+  name: string,
+  Component: typeof Block<PropsType, HTMLElement | null>
+) {
   if (name in Handlebars.helpers) {
     throw `The ${name} component is already registered!`
   }
@@ -14,14 +17,16 @@ export function registerComponent(name: string, Component: typeof Block) {
       const dataAttribute = `data-id="${component.id}"`
 
       if ('ref' in hash) {
-        (data.root.__refs = data.root.__refs || {})[hash.ref] = component
+        ;(data.root.__refs = data.root.__refs || {})[hash.ref] = component
       }
 
-      (data.root.__children = data.root.__children || []).push({
+      ;(data.root.__children = data.root.__children || []).push({
         component,
         embed(fragment: DocumentFragment) {
           const stub = fragment.querySelector(`[${dataAttribute}]`)
-          if (!stub) return
+          if (!stub) {
+            return
+          }
           component.getContent()?.append(...Array.from(stub.childNodes))
           stub.replaceWith(component.getContent()!)
         }

@@ -3,10 +3,18 @@ import { nanoid } from 'nanoid'
 import Handlebars from 'handlebars'
 
 export type RefType = {
-  [key: string]: Element | Block | undefined
+  [key: string]:
+    | Block<PropsType, HTMLElement | null, RefType>
+    | undefined
 }
 
-class Block<Props extends Record<string|symbol, any> = {}> {
+export type PropsType = Record<string | symbol, any>
+
+class Block<
+  Props extends PropsType = {},
+  Element extends HTMLElement | null = null,
+  Refs extends RefType = RefType
+> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -17,13 +25,13 @@ class Block<Props extends Record<string|symbol, any> = {}> {
 
   public id = nanoid(6)
   protected props: Props
-  protected refs: RefType = {}
+  protected refs: Refs = {} as Refs
   protected eventsElement: Record<string, (event: Event) => void> = {}
   private children: Block[] = []
   private eventBus: EventBus
-  private _element: HTMLElement | null = null
+  private _element: Element = null as Element
 
-  constructor(props = {} as Props) {
+  constructor(props: Props = {} as Props) {
     this.props = this._makePropsProxy(props)
     this.eventBus = new EventBus()
     this._registerEvents()
@@ -32,13 +40,20 @@ class Block<Props extends Record<string|symbol, any> = {}> {
 
   _removeEventsElement() {
     Object.keys(this.eventsElement).forEach((eventName) => {
-      this._element!.removeEventListener(eventName, this.eventsElement[eventName])
+      this._element!.removeEventListener(
+        eventName,
+        this.eventsElement[eventName]
+      )
     })
   }
 
   _addEventsElement() {
     Object.keys(this.eventsElement).forEach((eventName) => {
-      this._element!.addEventListener(eventName, this.eventsElement[eventName])
+      this._element!.addEventListener(
+        eventName,
+        this.eventsElement[eventName],
+        true
+      )
     })
   }
 
@@ -46,7 +61,10 @@ class Block<Props extends Record<string|symbol, any> = {}> {
     this.eventBus.on(Block.EVENTS.INIT, this._init.bind(this))
     this.eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this))
     this.eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this))
-    this.eventBus.on(Block.EVENTS.FLOW_CWU, this._componentWillUnmount.bind(this))
+    this.eventBus.on(
+      Block.EVENTS.FLOW_CWU,
+      this._componentWillUnmount.bind(this)
+    )
     this.eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this))
   }
 
@@ -71,13 +89,13 @@ class Block<Props extends Record<string|symbol, any> = {}> {
     )
   }
 
-  private _componentDidUpdate(oldProps: any, newProps: any) {
+  private _componentDidUpdate(oldProps: Props, newProps: Props) {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus.emit(Block.EVENTS.FLOW_RENDER)
     }
   }
 
-  protected componentDidUpdate(_oldProps: any, _newProps: any) {
+  protected componentDidUpdate(_oldProps: Props, _newProps: Props) {
     return true
   }
 
@@ -114,7 +132,7 @@ class Block<Props extends Record<string|symbol, any> = {}> {
       this._removeEventsElement()
       this._element.replaceWith(newElement)
     }
-    this._element = newElement
+    this._element = newElement as Element
     this._addEventsElement()
   }
 
@@ -129,9 +147,11 @@ class Block<Props extends Record<string|symbol, any> = {}> {
     const temp = document.createElement('template')
 
     temp.innerHTML = html
-    contextAndStubs.__children?.forEach(({ embed }: any) => {
-      embed(temp.content)
-    })
+    contextAndStubs.__children?.forEach(
+      ({ embed }: { embed: (content: {}) => {} }) => {
+        embed(temp.content)
+      }
+    )
 
     Object.values(this.children).forEach((child) => {
       const stub = temp.content.querySelector(`[data-id="${child.id}"]`)
@@ -158,14 +178,14 @@ class Block<Props extends Record<string|symbol, any> = {}> {
     return this._element
   }
 
-  _makePropsProxy(props: any) {
+  _makePropsProxy(props: Props) {
     const self = this
     return new Proxy(props, {
-      get(target, prop) {
+      get(target, prop: keyof Props) {
         const value = target[prop]
         return typeof value === 'function' ? value.bind(target) : value
       },
-      set(target, prop, value) {
+      set(target, prop: keyof Props, value) {
         const oldTarget = { ...target }
         target[prop] = value
         self.eventBus.emit(Block.EVENTS.FLOW_CDU, oldTarget, target)
