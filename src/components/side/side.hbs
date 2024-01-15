@@ -8,15 +8,23 @@
     </div>
   </div>
   <div class='side__body'>
-    <div class='side__btn-back' page='dialog'>
-      <img width='34.5px' height='34.5px' src='leftArrow.svg' alt='back' page='dialog'>
+    <div class='side__btn-back' page='chats'>
+      <img width='34.5px' height='34.5px' src='leftArrow.svg' alt='back' page='chats'>
     </div>
     <div class='side__search'>
-      {{{ Input type='search' name='search' placeholder='Search' }}}
+      {{{ Input ref="search" type='search' name='search' placeholder='Search' }}}
     </div>
     <div class='side__dialogs'>
-      {{#each (dialogs)}}
-        {{> Dialog}}
+      {{#each chats}}
+        {{{ Dialog id=this.id
+                   active=this.active
+                   avatar=this.avatar
+                   time=this.time
+                   name=this.name
+                   message=this.message
+                   count=this.count
+                   onHandler=../onHandler
+        }}}
       {{/each}}
     </div>
   </div>

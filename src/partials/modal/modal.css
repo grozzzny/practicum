@@ -19,6 +19,7 @@
   align-items: center;
   flex-shrink: 0;
   background: rgba(77, 77, 77, 0.76);
+  z-index: 8000;
 }
 .modal__header {
   padding: 13px 20px 11px;

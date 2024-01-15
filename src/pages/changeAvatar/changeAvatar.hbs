@@ -1,5 +1,5 @@
 <div class="container-chats">
-  {{> Side close=true }}
+  {{{ Side close=true }}}
   <div class='container-chats__content container-chats__content--top'>
     {{#> Settings title="Profile" }}
       {{> SettingsPreview name="Dmitriy" }}
@@ -12,7 +12,7 @@
       <div class='settings__links'>
         {{> SettingsElement type="link" label="Change data" page="profileEdit" }}
         {{> SettingsElement type="link" label="Change password" page="profilePassword" }}
-        {{> SettingsElement type="link" label="Exit" page="dialog" }}
+        {{> SettingsElement type="link" label="Exit" page="chats" }}
       </div>
     {{/Settings}}
   </div>

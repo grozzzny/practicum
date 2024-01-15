@@ -2,7 +2,7 @@ import Block, { RefType } from '../../core/Block'
 import template from './input.hbs?raw'
 import './input.css'
 
-export type InputType = 'search' | 'default'
+export type InputType = 'search' | 'default' | 'error'
 
 export interface InputProps {
   onBlur: () => void

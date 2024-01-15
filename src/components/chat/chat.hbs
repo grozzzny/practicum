@@ -1,0 +1,55 @@
+{{#if selectedChat}}
+  <div class='container-chats__content'>
+    <div class='chat'>
+      <div class='chat__header'>
+        <div class='profile hover-disabled'>
+          <div class='profile__avatar'>
+            <img width='64px' height='64px' src={{#if avatar}}{{avatar}}{{else}}ellipse.svg{{/if}} alt='avatar'>
+          </div>
+          <div class='profile__name'>
+            {{selectedChat.name}}
+          </div>
+        </div>
+        <div class='menu-profile'>
+          <button class='menu-profile__btn'>
+            <img class='hover-disabled' width='27px' height='45px' src='btnMenu.svg' alt='btn'>
+          </button>
+          {{#> Menu type="top" }}
+            {{{ MenuElement modal="addUser" icon="menuIcons/add.png" onClick=onModal label="Add user" }}}
+            {{{ MenuElement modal="removeUser" icon="menuIcons/del.png" onClick=onModal label="Remove user" }}}
+          {{/Menu}}
+        </div>
+      </div>
+      <div class='chat__body'>
+        {{> Messages }}
+      </div>
+      <div class='chat__footer'>
+        <div class='message-control'>
+          <div class='message-control__attachments'>
+            <button class='message-control__attachments-btn'>
+              <img class='hover-disabled' width='44px' height='44px' src='attachments.svg' alt='btn'>
+            </button>
+            {{#> Menu type="bottom" }}
+              {{{ MenuElement icon="menuIcons/photo.png" label="Photo or Video" }}}
+              {{{ MenuElement icon="menuIcons/file.png" label="File" }}}
+              {{{ MenuElement icon="menuIcons/circle.png" label="Location" }}}
+            {{/Menu}}
+          </div>
+          <div class='message-control__input'>
+            <form id='formMessage' name='formMessage' method='POST' onsubmit='document.getElementById("buttonSend").click(); return false;'>
+              {{{ Input ref="message" name='message' placeholder='Message..' }}}
+            </form>
+          </div>
+          <div class='message-control__send'>
+            {{{ ButtonSend formName='formMessage' onClick=onSend }}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{else}}
+  <div class='container-chats__content container-chats__content--center'>
+    <span>Select a chat room to send a message</span>
+  </div>
+{{/if}}
+

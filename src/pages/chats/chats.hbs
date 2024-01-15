@@ -1,6 +1,6 @@
 <div class="container-chats">
-  {{> Side }}
-  <div class='container-chats__content container-chats__content--center'>
-    <span>Select a chat room to send a message</span>
-  </div>
+  {{{ Side chats=chats onHandler=onHandler ref="side" }}}
+  {{{ Chat ref="chat" onModal=onModal }}}
+  {{{ ModalAddUser ref="modalAddUser" }}}
+  {{{ ModalRemoveUser ref="modalRemoveUser" }}}
 </div>

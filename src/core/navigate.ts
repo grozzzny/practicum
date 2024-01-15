@@ -5,9 +5,6 @@ export type PagesName =
   | 'login'
   | 'register'
   | 'chats'
-  | 'dialog'
-  | 'removeUser'
-  | 'addUser'
   | 'profile'
   | 'profileEdit'
   | 'profilePassword'
@@ -18,9 +15,6 @@ const pages: Record<PagesName, typeof Block<{}>> = {
   login: Pages.LoginPage,
   register: Pages.RegisterPage,
   chats: Pages.ChatsPage,
-  dialog: Pages.DialogPage,
-  removeUser: Pages.RemoveUserPage,
-  addUser: Pages.AddUserPage,
   profile: Pages.ProfilePage,
   profileEdit: Pages.ProfileEditPage,
   profilePassword: Pages.ProfilePasswordPage,

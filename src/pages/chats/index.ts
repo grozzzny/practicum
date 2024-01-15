@@ -1,81 +1,44 @@
-import Handlebars from 'handlebars'
 import template from './chats.hbs?raw'
 import Block from '../../core/Block'
+import { Chat, ModalAddUser, ModalRemoveUser, Side } from '../../components'
+import chats, { ChatType } from '../../data/chats'
 
-Handlebars.registerHelper('dialogs', () => {
-  return [
-    {
-      time: '10:49',
-      name: 'Dmitriy',
-      message: 'Hello, my friend!'
-    },
-    {
-      time: '10:49',
-      name: 'Dmitriy',
-      message: 'Hello, my friend!',
-      count: 3
-    },
-    {
-      time: '10:49',
-      name: 'Dmitriy',
-      message: 'Hello, my friend!'
-    },
-    {
-      active: true,
-      time: '10:49',
-      name: 'Dmitriy',
-      message: 'Hello, my friend!'
-    },
-    {
-      time: '10:49',
-      name: 'Dmitriy',
-      message: 'Hello, my friend!',
-      count: 3
-    },
-    {
-      time: '10:49',
-      name: 'Dmitriy',
-      message: 'Hello, my friend!'
-    },
-    {
-      time: '10:49',
-      name: 'Dmitriy',
-      message: 'Hello, my friend!'
-    },
-    {
-      time: '10:49',
-      name: 'Dmitriy',
-      message: 'Hello, my friend!'
-    },
-    {
-      time: '10:49',
-      name: 'Dmitriy',
-      message: 'Hello, my friend!'
-    },
-    {
-      time: '10:49',
-      name: 'Dmitriy',
-      message: 'Hello, my friend!'
-    },
-    {
-      time: '10:49',
-      name: 'Dmitriy',
-      message: 'Hello, my friend!'
-    },
-    {
-      time: '10:49',
-      name: 'Dmitriy',
-      message: 'Hello, my friend!'
-    },
-    {
-      time: '10:49',
-      name: 'Dmitriy',
-      message: 'Hello, my friend!'
-    }
-  ]
-})
+interface ChatPageProps {
+  onHandler: (event: Event, chat: ChatType) => void
+  chats: ChatType[]
+  onModal: (event: Event, modalName: string | undefined) => void
+}
 
-export class ChatsPage extends Block<{}> {
+export class ChatsPage extends Block<
+  ChatPageProps,
+  {
+    side: Side
+    chat: Chat
+    modalAddUser: ModalAddUser
+    modalRemoveUser: ModalRemoveUser
+  }
+> {
+  constructor() {
+    super({
+      onHandler: (event, chat) => {
+        event.preventDefault()
+        this.refs.chat.setProps({
+          selectedChat: chat
+        })
+      },
+      chats: chats,
+      onModal: (event, modalName) => {
+        event.preventDefault()
+        Object.entries(this.refs).forEach(([_name, block]) => {
+          if ('modalName' in block) {
+            block.setProps({
+              modalVisible: block.modalName === modalName
+            })
+          }
+        })
+      }
+    })
+  }
   protected render(): string {
     return template
   }

@@ -30,6 +30,10 @@
 .input__search{
 
 }
+.input__error .input__element{
+  border-color: var(--red);
+  background-color: var(--red-light);
+}
 .input__search .input__element{
   padding-left: 44px;
 }
