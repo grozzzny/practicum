@@ -38,20 +38,15 @@ export class ProfilePasswordPage extends Block<
         const new_password = this.refs.new_password.value()
         const new_password_repeat = this.refs.new_password_repeat.value()
 
-        if (
-          !old_password ||
-          !new_password ||
-          !new_password_repeat
-        ) {
+        if (!old_password || !new_password || !new_password_repeat) {
           return
         }
 
-        if(new_password !== new_password_repeat) {
+        if (new_password !== new_password_repeat) {
           this.refs.new_password_repeat.setError('Passwords do not match')
           return
-        } else {
-          this.refs.new_password_repeat.removeError()
         }
+        this.refs.new_password_repeat.removeError()
 
         const data: DataProfilePasswordForm = {
           password: new_password

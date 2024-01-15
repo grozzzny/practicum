@@ -3,7 +3,7 @@ import template from './form.hbs?raw'
 import './form.css'
 
 interface FormProps {
-  formName: string,
+  formName: string
   method?: 'PATH' | 'GET' | 'POST' | 'PUT'
 }
 

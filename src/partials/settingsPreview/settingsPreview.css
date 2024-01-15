@@ -5,7 +5,7 @@
   gap: 20px;
   align-self: stretch;
 }
-.settingsPreview__image{
+.settingsPreview__image {
   display: flex;
   border: none;
   background: none;
@@ -14,12 +14,12 @@
   padding: 0;
   border-radius: 50px;
   overflow: hidden;
-  transition: .2s all ease;
+  transition: 0.2s all ease;
 }
-.settingsPreview__image:hover{
+.settingsPreview__image:hover {
   opacity: 0.8;
 }
-.settingsPreview__name{
+.settingsPreview__name {
   font-size: 24px;
   font-style: normal;
   font-weight: 700;

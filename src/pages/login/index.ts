@@ -4,8 +4,9 @@ import { Field } from '../../components'
 import { navigate } from '../../core/navigate'
 import {
   loginValidator,
-  NameValidator, passwordValidator,
-  Validator,
+  NameValidator,
+  passwordValidator,
+  Validator
 } from '../../utils/validators'
 
 interface LoginPageProps {

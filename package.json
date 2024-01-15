@@ -15,12 +15,24 @@
     "bats:sprint_1": "bats --formatter pretty tmp/tests-middle-frontend/tests/sprint_1.bats",
     "bats:sprint_2": "bats --formatter pretty tmp/tests-middle-frontend/tests/sprint_2.bats",
     "bats:sprint_3": "bats --formatter pretty tmp/tests-middle-frontend/tests/sprint_3.bats",
-    "bats:sprint_4": "bats --formatter pretty tmp/tests-middle-frontend/tests/sprint_4.bats"
+    "bats:sprint_4": "bats --formatter pretty tmp/tests-middle-frontend/tests/sprint_4.bats",
+    "lint": "eslint ./src/ --fix",
+    "format": "prettier --write ."
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
     "bats": "^1.10.0",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "handlebars": "^4.7.8",
     "prettier": "^3.1.1",
+    "stylelint": "^16.1.0",
     "typescript": "^5.3.3",
     "vite": "^5.0.10",
     "vite-plugin-handlebars": "^1.6.0"

@@ -4,11 +4,12 @@ import {
   emailValidator,
   firstNameValidator,
   loginValidator,
-  NameValidator, emptyValidator,
+  NameValidator,
+  emptyValidator,
   passwordValidator,
   phoneValidator,
   secondNameValidator,
-  Validator,
+  Validator
 } from '../../utils/validators'
 import { navigate } from '../../core/navigate'
 import { Field } from '../../components'
@@ -72,12 +73,11 @@ export class RegisterPage extends Block<
           return
         }
 
-        if(password !== password_repeat) {
+        if (password !== password_repeat) {
           this.refs.password_repeat.setError('Passwords do not match')
           return
-        } else {
-          this.refs.password_repeat.removeError()
         }
+        this.refs.password_repeat.removeError()
 
         const data: DataRegisterForm = {
           email,

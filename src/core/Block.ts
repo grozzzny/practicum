@@ -1,11 +1,9 @@
-import EventBus from './EventBus'
 import { nanoid } from 'nanoid'
 import Handlebars from 'handlebars'
+import EventBus from './EventBus'
 
 export type RefType = {
-  [key: string]:
-    | Block<PropsType, RefType, HTMLElement | null>
-    | undefined
+  [key: string]: Block<PropsType, RefType, HTMLElement | null> | undefined
 }
 
 export type PropsType = Record<string | symbol, any>
@@ -24,11 +22,17 @@ class Block<
   }
 
   public id = nanoid(6)
+
   protected props: Props
+
   protected refs: Refs = {} as Refs
+
   protected eventsElement: Record<string, (event: Event) => void> = {}
+
   private children: Block[] = []
+
   private eventBus: EventBus
+
   private _element: Element = null as Element
 
   constructor(props: Props = {} as Props) {

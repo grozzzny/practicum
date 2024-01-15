@@ -26,10 +26,10 @@ export default class EventBus<
 
   emit(event: Event, ...args: Method[Event]) {
     if (!this.listeners[event]) {
-      throw new Error(`No event: ${event}`);
+      throw new Error(`No event: ${event}`)
     }
 
-    this.listeners[event]!.forEach(function (listener) {
+    this.listeners[event]!.forEach((listener) => {
       listener(...args)
     })
   }

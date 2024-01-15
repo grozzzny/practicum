@@ -19,7 +19,7 @@ const pages: Record<PagesName, typeof Block<{}>> = {
   profileEdit: Pages.ProfileEditPage,
   profilePassword: Pages.ProfilePasswordPage,
   changeAvatar: Pages.ChangeAvatarPage,
-  error: Pages.ErrorPage,
+  error: Pages.ErrorPage
 }
 
 export function navigate(page: PagesName) {

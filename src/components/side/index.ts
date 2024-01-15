@@ -10,9 +10,13 @@ interface SideProps {
   onHandler: (event: Event, chat: ChatType) => void
 }
 
-export class Side extends Block<SideProps, {
-  search: Input
-}, HTMLElement> {
+export class Side extends Block<
+  SideProps,
+  {
+    search: Input
+  },
+  HTMLElement
+> {
   constructor(props: SideProps) {
     super({
       close: false,

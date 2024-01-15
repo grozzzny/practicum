@@ -40,8 +40,8 @@
 .message__read {
   display: flex;
 }
-.message--not-self:not(.message--image) .message__read line{
-  stroke: var(--main-color)
+.message--not-self:not(.message--image) .message__read line {
+  stroke: var(--main-color);
 }
 .message__time {
   color: var(--border-blue);
@@ -75,19 +75,18 @@
 .message.message--image {
   gap: 400px;
 }
-.message__image{
+.message__image {
   display: flex;
   border-radius: 20px;
-  background: #FFF;
+  background: #fff;
 }
-.message__image{
+.message__image {
   display: flex;
   border-radius: 20px;
   background: white;
   overflow: hidden;
 }
-.message__image img{
-
+.message__image img {
 }
 .message.message--image .message__info {
   display: flex;
@@ -99,7 +98,7 @@
   right: 9px;
   bottom: 9px;
   border-radius: 5px 0 5px 5px;
-  background: rgba(255, 255, 255, 0.70);
+  background: rgba(255, 255, 255, 0.7);
 }
 .message.message--image .message__time {
   color: var(--black);
@@ -108,6 +107,8 @@
   font-weight: 400;
   line-height: normal;
 }
-.message__image, .message__image img, .message.message--image .message__content {
+.message__image,
+.message__image img,
+.message.message--image .message__content {
   width: 100%;
 }

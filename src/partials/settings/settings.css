@@ -49,16 +49,16 @@
   display: flex;
   flex-direction: column;
 }
-.settings__links{
+.settings__links {
   margin-top: 40px;
   gap: 10px;
   display: flex;
   flex-direction: column;
 }
-.settings__links > *:last-child > *{
+.settings__links > *:last-child > * {
   color: var(--red);
 }
-.settings__buttons{
+.settings__buttons {
   margin-top: 50px;
   gap: 10px;
   display: flex;

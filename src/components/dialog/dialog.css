@@ -77,6 +77,6 @@
   border-color: white;
   background: white;
 }
-.dialog:hover:not(.dialog--active){
+.dialog:hover:not(.dialog--active) {
   opacity: 0.8;
 }

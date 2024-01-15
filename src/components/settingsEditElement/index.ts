@@ -15,11 +15,14 @@ interface SettingsEditElementProps {
   validate?: Validator
 }
 
-export class SettingsEditElement extends Block<SettingsEditElementProps, {
-  input: Input
-  errorLine: ErrorLine
-},
-  HTMLElement> {
+export class SettingsEditElement extends Block<
+  SettingsEditElementProps,
+  {
+    input: Input
+    errorLine: ErrorLine
+  },
+  HTMLElement
+> {
   constructor(props: SettingsEditElementProps) {
     super({
       ...props,

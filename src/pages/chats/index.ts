@@ -26,7 +26,7 @@ export class ChatsPage extends Block<
           selectedChat: chat
         })
       },
-      chats: chats,
+      chats,
       onModal: (event, modalName) => {
         event.preventDefault()
         Object.entries(this.refs).forEach(([_name, block]) => {
@@ -39,6 +39,7 @@ export class ChatsPage extends Block<
       }
     })
   }
+
   protected render(): string {
     return template
   }

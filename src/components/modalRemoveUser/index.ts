@@ -1,7 +1,11 @@
 import template from './modalRemoveUser.hbs?raw'
 import { ModalBlock, ModalProps } from '../modalBlock'
 import { Field } from '../field'
-import { loginValidator, NameValidator, Validator } from '../../utils/validators'
+import {
+  loginValidator,
+  NameValidator,
+  Validator
+} from '../../utils/validators'
 
 interface ModalRemoveUserProps extends ModalProps {
   onSend: (event: PointerEvent) => void
@@ -15,6 +19,7 @@ export class ModalRemoveUser extends ModalBlock<
   }
 > {
   public modalName = 'removeUser'
+
   constructor(props: ModalRemoveUserProps) {
     super({
       ...props,

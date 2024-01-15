@@ -4,9 +4,11 @@ import {
   emailValidator,
   firstNameValidator,
   loginValidator,
-  NameValidator, emptyValidator, phoneValidator,
+  NameValidator,
+  emptyValidator,
+  phoneValidator,
   secondNameValidator,
-  Validator,
+  Validator
 } from '../../utils/validators'
 import { SettingsEditElement } from '../../components'
 import { navigate } from '../../core/navigate'
@@ -25,7 +27,8 @@ type DataProfileEditForm = {
   phone: string
 }
 
-export class ProfileEditPage extends Block<ProfileEditPageProps,
+export class ProfileEditPage extends Block<
+  ProfileEditPageProps,
   {
     email: SettingsEditElement
     login: SettingsEditElement
@@ -43,7 +46,7 @@ export class ProfileEditPage extends Block<ProfileEditPageProps,
         first_name: firstNameValidator,
         second_name: secondNameValidator,
         phone: phoneValidator,
-        display_name: emptyValidator,
+        display_name: emptyValidator
       },
       onSave: (event: PointerEvent) => {
         event.preventDefault()

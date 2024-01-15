@@ -28,7 +28,7 @@
   line-height: normal;
   min-height: 49px;
 }
-.settingsElement__link{
+.settingsElement__link {
   display: flex;
   padding: 10px;
   flex-direction: column;
@@ -43,6 +43,6 @@
   background: none;
   cursor: pointer;
 }
-.settingsElement__link:hover{
+.settingsElement__link:hover {
   text-decoration: underline;
 }

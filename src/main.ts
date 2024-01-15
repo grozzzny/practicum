@@ -17,7 +17,7 @@ Object.entries(Components as Record<string, typeof Block>).forEach(
   }
 )
 
-document.addEventListener('DOMContentLoaded', () => navigate('chats'))
+document.addEventListener('DOMContentLoaded', () => navigate('login'))
 
 document.addEventListener('click', (e) => {
   const target = e.target as HTMLElement

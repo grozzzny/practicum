@@ -1,7 +1,11 @@
 import template from './modalAddUser.hbs?raw'
 import { ModalBlock, ModalProps } from '../modalBlock'
 import { Field } from '../field'
-import { loginValidator, NameValidator, Validator } from '../../utils/validators'
+import {
+  loginValidator,
+  NameValidator,
+  Validator
+} from '../../utils/validators'
 
 interface ModalAddUserProps extends ModalProps {
   onSend: (event: PointerEvent) => void
@@ -15,6 +19,7 @@ export class ModalAddUser extends ModalBlock<
   }
 > {
   public modalName = 'addUser'
+
   constructor(props: ModalAddUserProps) {
     super({
       ...props,

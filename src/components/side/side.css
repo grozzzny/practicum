@@ -6,7 +6,7 @@
   display: grid;
   grid-template-rows: auto 1fr;
 }
-.side__header{
+.side__header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,7 +16,7 @@
   height: 73px;
   position: relative;
 }
-.side__logo-btn{
+.side__logo-btn {
   display: flex;
   cursor: pointer;
   padding: 0;
@@ -24,56 +24,58 @@
   background: none;
   border: none;
 }
-.side__logo-btn img{
+.side__logo-btn img {
   transform: translateY(3px);
 }
-.side__body{
+.side__body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   align-self: stretch;
   overflow-y: auto;
 }
-.side__profile{
+.side__profile {
   position: absolute;
   left: 10px;
   top: 12px;
-  transition: .2s all ease;
+  transition: 0.2s all ease;
   cursor: pointer;
 }
-.side__profile:hover{
+.side__profile:hover {
   opacity: 0.7;
 }
-.side__search{
+.side__search {
   width: 100%;
   padding: 10px;
 }
-.side__dialogs{
+.side__dialogs {
   padding-right: 5px;
   width: 100%;
   overflow-y: auto;
 }
-.side.side--close{
+.side.side--close {
   width: 80px;
 }
-.side__btn-back{
+.side__btn-back {
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
-  transition: .2s all ease;
+  transition: 0.2s all ease;
 }
-.side__btn-back:hover{
+.side__btn-back:hover {
   background-color: white;
 }
-.side.side--close .side__btn-back{
+.side.side--close .side__btn-back {
   visibility: visible;
   opacity: 1;
   display: flex;
 }
-.side.side--close .side__search, .side.side--close .side__dialogs, .side.side--close .side__profile{
+.side.side--close .side__search,
+.side.side--close .side__dialogs,
+.side.side--close .side__profile {
   visibility: hidden;
   opacity: 0;
   display: none;

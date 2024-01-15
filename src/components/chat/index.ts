@@ -47,7 +47,7 @@ export class Chat extends Block<
     this.eventsElement = {
       load: () => {
         const scrollableDiv = document.getElementsByClassName('chat__body')
-        if(scrollableDiv.length > 0) {
+        if (scrollableDiv.length > 0) {
           scrollableDiv[0].scrollTop = scrollableDiv[0].scrollHeight
         }
       }

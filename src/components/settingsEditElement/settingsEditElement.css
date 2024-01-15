@@ -38,10 +38,10 @@
   right: 0;
   bottom: 0;
 }
-.settingsEditElement--error .settingsEditElement__label{
+.settingsEditElement--error .settingsEditElement__label {
   color: var(--red);
 }
-.settingsEditElement--error input{
+.settingsEditElement--error input {
   border-color: var(--red);
   background-color: var(--red-light);
 }

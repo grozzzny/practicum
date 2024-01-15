@@ -10,10 +10,11 @@ export class ModalBlock<
   Element extends HTMLElement | null = null
 > extends Block<Props, Refs, Element> {
   public modalName = ''
+
   constructor(props: Props) {
     super({
       modalVisible: false,
-      ...props,
+      ...props
     })
   }
 

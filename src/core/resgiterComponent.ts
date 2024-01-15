@@ -1,6 +1,5 @@
-import Handlebars from 'handlebars'
+import Handlebars, { HelperOptions } from 'handlebars'
 import Block, { PropsType, RefType } from './Block'
-import { HelperOptions } from 'handlebars'
 
 export function registerComponent(
   name: string,
