@@ -8,6 +8,7 @@
   flex-shrink: 0;
   align-self: stretch;
 }
+
 .message-datetime {
   display: flex;
   padding: 10px;

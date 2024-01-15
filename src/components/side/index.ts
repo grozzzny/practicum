@@ -5,26 +5,26 @@ import { Input } from '../input'
 import { ChatType } from '../../data/chats'
 
 interface SideProps {
-  close?: boolean
-  chats: ChatType[]
-  onHandler: (event: Event, chat: ChatType) => void
+	close?: boolean
+	chats: ChatType[]
+	onHandler: (event: Event, chat: ChatType) => void
 }
 
 export class Side extends Block<
-  SideProps,
-  {
-    search: Input
-  },
-  HTMLElement
+	SideProps,
+	{
+		search: Input
+	},
+	HTMLElement
 > {
-  constructor(props: SideProps) {
-    super({
-      close: false,
-      ...props
-    })
-  }
+	constructor(props: SideProps) {
+		super({
+			close: false,
+			...props
+		})
+	}
 
-  protected render(): string {
-    return template
-  }
+	protected render(): string {
+		return template
+	}
 }

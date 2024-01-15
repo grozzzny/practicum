@@ -5,8 +5,7 @@
   align-items: center;
   gap: 10px;
 }
-.error__logo {
-}
+
 .error__code {
   color: var(--black);
   font-size: 200px;
@@ -14,6 +13,7 @@
   font-weight: 700;
   line-height: 200px;
 }
+
 .error__message {
   color: var(--black);
   font-size: 18px;
@@ -21,6 +21,7 @@
   font-weight: 700;
   line-height: normal;
 }
+
 .error__link {
   border: none;
   background: none;

@@ -1,0 +1,18 @@
+{
+  "extends": "stylelint-config-standard",
+  "plugins": [
+    "stylelint-selector-bem-pattern"
+  ],
+  "rules": {
+    "selector-class-pattern": null,
+    "plugin/selector-bem-pattern": {
+      "preset": "bem",
+      "componentName": "[A-Z]+",
+      "componentSelectors": {
+        "initial": "^[a-z]+([A-Z][a-z]+)?$",
+        "combined": "^\\.combined-[a-z]+([A-Z][a-z]+)?$"
+      },
+      "utilitySelectors": "^\\.util-[a-z]+$"
+    }
+  }
+}

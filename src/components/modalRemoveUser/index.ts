@@ -2,52 +2,52 @@ import template from './modalRemoveUser.hbs?raw'
 import { ModalBlock, ModalProps } from '../modalBlock'
 import { Field } from '../field'
 import {
-  NameValidator,
-  Validator,
-  loginValidator
+	NameValidator,
+	Validator,
+	loginValidator
 } from '../../utils/validators'
 
 interface ModalRemoveUserProps extends ModalProps {
-  onSend: (event: PointerEvent) => void
-  validators: Record<NameValidator, Validator>
+	onSend: (event: PointerEvent) => void
+	validators: Record<NameValidator, Validator>
 }
 
 export class ModalRemoveUser extends ModalBlock<
-  ModalRemoveUserProps,
-  {
-    login: Field
-  }
+	ModalRemoveUserProps,
+	{
+		login: Field
+	}
 > {
-  public modalName = 'removeUser'
+	public modalName = 'removeUser'
 
-  constructor(props: ModalRemoveUserProps) {
-    super({
-      ...props,
-      validators: {
-        login: loginValidator
-      },
-      onSend: (event: PointerEvent) => {
-        event.preventDefault()
-        const login = this.refs.login.value()
+	constructor(props: ModalRemoveUserProps) {
+		super({
+			...props,
+			validators: {
+				login: loginValidator
+			},
+			onSend: (event: PointerEvent) => {
+				event.preventDefault()
+				const login = this.refs.login.value()
 
-        if (!login) {
-          return
-        }
+				if (!login) {
+					return
+				}
 
-        const data: { login: string } = {
-          login
-        }
+				const data: { login: string } = {
+					login
+				}
 
-        console.log(data)
+				console.log(data)
 
-        this.setProps({
-          modalVisible: false
-        })
-      }
-    })
-  }
+				this.setProps({
+					modalVisible: false
+				})
+			}
+		})
+	}
 
-  protected render(): string {
-    return template
-  }
+	protected render(): string {
+		return template
+	}
 }

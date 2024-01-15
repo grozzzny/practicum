@@ -4,23 +4,23 @@
   gap: 200px;
   align-self: stretch;
 }
+
 .message__left,
 .message__right {
   display: flex;
   align-items: center;
   flex: 1 0 0;
 }
-.message__content {
-}
+
 .message__text {
   display: flex;
-  padding: 10px 15px 20px 15px;
+  padding: 10px 15px 20px;
   align-items: flex-start;
   align-content: flex-start;
   gap: 10px;
   flex: 1 0 0;
   flex-wrap: wrap;
-  border-radius: 0 20px 20px 20px;
+  border-radius: 0 20px 20px;
   border: 1px solid var(--border-blue);
   background: var(--background-blue);
   font-size: 14px;
@@ -28,6 +28,7 @@
   font-weight: 400;
   line-height: normal;
 }
+
 .message__info {
   position: absolute;
   right: 15px;
@@ -37,12 +38,15 @@
   align-items: baseline;
   gap: 4px;
 }
+
 .message__read {
   display: flex;
 }
+
 .message--not-self:not(.message--image) .message__read line {
   stroke: var(--main-color);
 }
+
 .message__time {
   color: var(--border-blue);
   font-size: 10px;
@@ -50,16 +54,20 @@
   font-weight: 400;
   line-height: normal;
 }
+
 .message__content {
   position: relative;
   min-width: 100px;
 }
+
 .message.message--self {
   flex-direction: row-reverse;
 }
+
 .message.message--self .message__content {
   margin-left: auto;
 }
+
 .message.message--self .message__time {
   color: #999;
   font-size: 10px;
@@ -67,27 +75,24 @@
   font-weight: 400;
   line-height: normal;
 }
+
 .message.message--self .message__text {
-  border-radius: 20px 20px 0 20px;
+  border-radius: 20px 20px 0;
   border: 1px solid #d9d9d9;
   background: #f5f5f5;
 }
+
 .message.message--image {
   gap: 400px;
 }
-.message__image {
-  display: flex;
-  border-radius: 20px;
-  background: #fff;
-}
+
 .message__image {
   display: flex;
   border-radius: 20px;
   background: white;
   overflow: hidden;
 }
-.message__image img {
-}
+
 .message.message--image .message__info {
   display: flex;
   padding: 0 5px;
@@ -98,8 +103,9 @@
   right: 9px;
   bottom: 9px;
   border-radius: 5px 0 5px 5px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgb(255 255 255 / 70%);
 }
+
 .message.message--image .message__time {
   color: var(--black);
   font-size: 10px;
@@ -107,6 +113,7 @@
   font-weight: 400;
   line-height: normal;
 }
+
 .message__image,
 .message__image img,
 .message.message--image .message__content {

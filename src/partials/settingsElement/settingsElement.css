@@ -4,6 +4,7 @@
   align-self: stretch;
   border-bottom: 1px solid #cdcdcd;
 }
+
 .settingsElement__label {
   display: flex;
   padding: 10px;
@@ -15,6 +16,7 @@
   font-weight: 700;
   line-height: 20px;
 }
+
 .settingsElement__value {
   display: flex;
   padding: 10px;
@@ -28,6 +30,7 @@
   line-height: normal;
   min-height: 49px;
 }
+
 .settingsElement__link {
   display: flex;
   padding: 10px;
@@ -43,6 +46,7 @@
   background: none;
   cursor: pointer;
 }
+
 .settingsElement__link:hover {
   text-decoration: underline;
 }

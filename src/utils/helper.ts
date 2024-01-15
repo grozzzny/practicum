@@ -1,3 +1,3 @@
 export const checkForNull = (
-  ...values: (string | null | undefined)[]
+	...values: (string | null | undefined)[]
 ): boolean => values.some((value) => value == null)

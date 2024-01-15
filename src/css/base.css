@@ -17,9 +17,9 @@ body {
   --border-blue: #5bb3ff;
   --background-blue: #f0f8ff;
   --background-gray: #ededed;
-  --gray: #eeeeee;
+  --gray: #eee;
   --black: #4d4d4d;
-  --black-light: rgba(77, 77, 77, 0.8);
+  --black-light: rgb(77 77 77 / 80%);
   --red: #e22828;
-  --red-light: rgba(226, 40, 40, 0.07);
+  --red-light: rgb(226 40 40 / 7%);
 }

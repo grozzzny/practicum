@@ -4,6 +4,7 @@
   align-self: stretch;
   border-bottom: 1px solid #cdcdcd;
 }
+
 .settingsEditElement__label {
   display: flex;
   padding: 10px;
@@ -15,6 +16,7 @@
   font-weight: 700;
   line-height: 20px;
 }
+
 .settingsEditElement__input {
   display: flex;
   width: 323px;
@@ -24,9 +26,11 @@
   align-items: flex-end;
   position: relative;
 }
+
 .settingsEditElement__input > * {
   width: 100%;
 }
+
 .settingsEditElement__error {
   color: var(--red);
   font-size: 14px;
@@ -38,9 +42,11 @@
   right: 0;
   bottom: 0;
 }
+
 .settingsEditElement--error .settingsEditElement__label {
   color: var(--red);
 }
+
 .settingsEditElement--error input {
   border-color: var(--red);
   background-color: var(--red-light);

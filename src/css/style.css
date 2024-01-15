@@ -1,6 +1,6 @@
 /* Common */
-@import '/src/css/base.css';
-@import '/src/css/common.css';
-@import '/src/css/containerModal.css';
-@import '/src/css/containerChats.css';
-@import '/src/css/containerError.css';
+@import url('/src/css/base.css');
+@import url('/src/css/common.css');
+@import url('/src/css/containerModal.css');
+@import url('/src/css/containerChats.css');
+@import url('/src/css/containerError.css');

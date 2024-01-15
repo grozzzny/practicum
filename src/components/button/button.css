@@ -14,22 +14,27 @@
   width: 100%;
   transition: 0.2s all ease;
 }
+
 .button__primary {
   background: var(--black);
   color: white;
   border: 1px solid var(--black);
 }
+
 .button__primary:hover {
   background-color: var(--black-light);
 }
+
 .button__link {
   background: white;
   color: var(--black);
   border: 1px solid var(--black);
 }
+
 .button__link:hover {
   color: var(--black-light);
 }
+
 .button:active {
-  border-radius: 0 20px 0 20px;
+  border-radius: 0 20px;
 }

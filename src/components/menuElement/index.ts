@@ -4,31 +4,31 @@ import './menuElement.css'
 import { PagesName } from '../../core/navigate'
 
 interface MenuElementProps {
-  icon: string
-  label: string
-  modal: string | undefined
-  page: PagesName
-  onClick: (event: Event, modal: string | undefined) => void
+	icon: string
+	label: string
+	modal: string | undefined
+	page: PagesName
+	onClick: (event: Event, modal: string | undefined) => void
 }
 
 export class MenuElement extends Block<
-  MenuElementProps,
-  Record<string, never>,
-  HTMLElement
+	MenuElementProps,
+	Record<string, never>,
+	HTMLElement
 > {
-  constructor(props: MenuElementProps) {
-    super({
-      ...props
-    })
-  }
+	constructor(props: MenuElementProps) {
+		super({
+			...props
+		})
+	}
 
-  protected init(): void {
-    this.eventsElement = {
-      click: (event) => this.props.onClick(event, this.props.modal)
-    }
-  }
+	protected init(): void {
+		this.eventsElement = {
+			click: (event) => this.props.onClick(event, this.props.modal)
+		}
+	}
 
-  protected render(): string {
-    return template
-  }
+	protected render(): string {
+		return template
+	}
 }

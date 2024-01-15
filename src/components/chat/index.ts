@@ -8,57 +8,57 @@ import { messageValidator } from '../../utils/validators'
 const CLASS_NAME_INPUT_ERROR = 'input__error'
 
 interface ChatProps {
-  selectedChat: ChatType | null
-  onSend: (event: PointerEvent | SubmitEvent) => void
-  onModal: (event: Event, modal: string | undefined) => void
+	selectedChat: ChatType | null
+	onSend: (event: PointerEvent | SubmitEvent) => void
+	onModal: (event: Event, modal: string | undefined) => void
 }
 
 export class Chat extends Block<
-  ChatProps,
-  {
-    message: Input
-  },
-  HTMLElement
+	ChatProps,
+	{
+		message: Input
+	},
+	HTMLElement
 > {
-  constructor(props: ChatProps) {
-    super({
-      ...props,
-      onSend: (event: PointerEvent | SubmitEvent) => {
-        event.preventDefault()
-        const message = this.refs.message.value()
-        const error = messageValidator(message)
+	constructor(props: ChatProps) {
+		super({
+			...props,
+			onSend: (event: PointerEvent | SubmitEvent) => {
+				event.preventDefault()
+				const message = this.refs.message.value()
+				const error = messageValidator(message)
 
-        if (error) {
-          console.error(error)
-          this.refs.message.element.classList.add(CLASS_NAME_INPUT_ERROR)
+				if (error) {
+					console.error(error)
+					this.refs.message.element.classList.add(CLASS_NAME_INPUT_ERROR)
 
-          return
-        }
+					return
+				}
 
-        this.refs.message.element.classList.remove(CLASS_NAME_INPUT_ERROR)
+				this.refs.message.element.classList.remove(CLASS_NAME_INPUT_ERROR)
 
-        const data: { message: string } = {
-          message
-        }
+				const data: { message: string } = {
+					message
+				}
 
-        console.log(data)
-      }
-    })
-  }
+				console.log(data)
+			}
+		})
+	}
 
-  protected init() {
-    this.eventsElement = {
-      load: () => {
-        const scrollableDiv = document.getElementsByClassName('chat__body')
+	protected init() {
+		this.eventsElement = {
+			load: () => {
+				const scrollableDiv = document.getElementsByClassName('chat__body')
 
-        if (scrollableDiv.length > 0) {
-          scrollableDiv[0].scrollTop = scrollableDiv[0].scrollHeight
-        }
-      }
-    }
-  }
+				if (scrollableDiv.length > 0) {
+					scrollableDiv[0].scrollTop = scrollableDiv[0].scrollHeight
+				}
+			}
+		}
+	}
 
-  protected render(): string {
-    return template
-  }
+	protected render(): string {
+		return template
+	}
 }
