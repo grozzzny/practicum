@@ -16,6 +16,7 @@
     "bats:sprint_2": "bats --formatter pretty tmp/tests-middle-frontend/tests/sprint_2.bats",
     "bats:sprint_3": "bats --formatter pretty tmp/tests-middle-frontend/tests/sprint_3.bats",
     "bats:sprint_4": "bats --formatter pretty tmp/tests-middle-frontend/tests/sprint_4.bats",
+    "bats:server": "bats --formatter pretty tmp/tests-middle-frontend/tests/node_build.bats",
     "lint": "eslint --fix src/",
     "lint:styles": "stylelint --fix \"src/**/*.css\"",
     "format": "prettier --write ."
