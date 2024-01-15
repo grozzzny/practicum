@@ -3,10 +3,10 @@ import template from './login.hbs?raw'
 import { Field } from '../../components'
 import { navigate } from '../../core/navigate'
 import {
-  loginValidator,
   NameValidator,
-  passwordValidator,
-  Validator
+  Validator,
+  loginValidator,
+  passwordValidator
 } from '../../utils/validators'
 
 interface LoginPageProps {

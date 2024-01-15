@@ -22,6 +22,7 @@ export class ModalBlock<
     this.eventsElement = {
       click: (event: Event) => {
         const target = event.target as HTMLElement
+
         if (target.classList.contains('modal__background')) {
           this.setProps({
             modalVisible: false
@@ -36,6 +37,7 @@ export class ModalBlock<
     if (!nextProps) {
       return
     }
+
     Object.assign(this.props, nextProps)
   }
 }

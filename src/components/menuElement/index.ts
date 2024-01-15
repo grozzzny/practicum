@@ -11,7 +11,11 @@ interface MenuElementProps {
   onClick: (event: Event, modal: string | undefined) => void
 }
 
-export class MenuElement extends Block<MenuElementProps, {}, HTMLElement> {
+export class MenuElement extends Block<
+  MenuElementProps,
+  Record<string, never>,
+  HTMLElement
+> {
   constructor(props: MenuElementProps) {
     super({
       ...props

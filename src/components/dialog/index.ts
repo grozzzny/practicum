@@ -14,7 +14,11 @@ interface DialogProps {
   onHandler: (event: Event, chat: ChatType) => void
 }
 
-export class Dialog extends Block<DialogProps, {}, HTMLElement> {
+export class Dialog extends Block<
+  DialogProps,
+  Record<string, never>,
+  HTMLElement
+> {
   constructor(props: DialogProps) {
     super({
       ...props

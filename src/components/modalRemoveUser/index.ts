@@ -2,9 +2,9 @@ import template from './modalRemoveUser.hbs?raw'
 import { ModalBlock, ModalProps } from '../modalBlock'
 import { Field } from '../field'
 import {
-  loginValidator,
   NameValidator,
-  Validator
+  Validator,
+  loginValidator
 } from '../../utils/validators'
 
 interface ModalRemoveUserProps extends ModalProps {

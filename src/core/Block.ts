@@ -9,7 +9,7 @@ export type RefType = {
 export type PropsType = Record<string | symbol, any>
 
 class Block<
-  Props extends PropsType = {},
+  Props extends PropsType = object,
   Refs extends RefType = RefType,
   Element extends HTMLElement | null = null
 > {
@@ -105,10 +105,13 @@ class Block<
 
   _checkInDom() {
     const elementInDOM = document.body.contains(this._element)
+
     if (elementInDOM) {
       setTimeout(() => this._checkInDom(), 1000)
+
       return
     }
+
     this.eventBus.emit(Block.EVENTS.FLOW_CWU, this.props)
   }
 
@@ -122,6 +125,7 @@ class Block<
     if (!nextProps) {
       return
     }
+
     Object.assign(this.props, nextProps)
   }
 
@@ -132,10 +136,12 @@ class Block<
   private _render() {
     const fragment = this.compile(this.render(), this.props)
     const newElement = fragment.firstElementChild as HTMLElement
+
     if (this._element) {
       this._removeEventsElement()
       this._element.replaceWith(newElement)
     }
+
     this._element = newElement as Element
     this._addEventsElement()
   }
@@ -152,13 +158,14 @@ class Block<
 
     temp.innerHTML = html
     contextAndStubs.__children?.forEach(
-      ({ embed }: { embed: (content: {}) => {} }) => {
+      ({ embed }: { embed: (content: object) => object }) => {
         embed(temp.content)
       }
     )
 
     Object.values(this.children).forEach((child) => {
       const stub = temp.content.querySelector(`[data-id="${child.id}"]`)
+
       stub?.replaceWith(child.getContent()!)
     })
 
@@ -179,20 +186,25 @@ class Block<
         }
       }, 100)
     }
+
     return this._element
   }
 
   _makePropsProxy(props: Props) {
     const self = this
+
     return new Proxy(props, {
       get(target, prop: keyof Props) {
         const value = target[prop]
+
         return typeof value === 'function' ? value.bind(target) : value
       },
       set(target, prop: keyof Props, value) {
         const oldTarget = { ...target }
+
         target[prop] = value
         self.eventBus.emit(Block.EVENTS.FLOW_CDU, oldTarget, target)
+
         return true
       },
       deleteProperty() {

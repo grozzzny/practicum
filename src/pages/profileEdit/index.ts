@@ -1,14 +1,14 @@
 import template from './profileEdit.hbs?raw'
 import Block from '../../core/Block'
 import {
+  NameValidator,
+  Validator,
   emailValidator,
+  emptyValidator,
   firstNameValidator,
   loginValidator,
-  NameValidator,
-  emptyValidator,
   phoneValidator,
-  secondNameValidator,
-  Validator
+  secondNameValidator
 } from '../../utils/validators'
 import { SettingsEditElement } from '../../components'
 import { navigate } from '../../core/navigate'

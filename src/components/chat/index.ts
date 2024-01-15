@@ -27,11 +27,14 @@ export class Chat extends Block<
         event.preventDefault()
         const message = this.refs.message.value()
         const error = messageValidator(message)
+
         if (error) {
           console.error(error)
           this.refs.message.element.classList.add(CLASS_NAME_INPUT_ERROR)
+
           return
         }
+
         this.refs.message.element.classList.remove(CLASS_NAME_INPUT_ERROR)
 
         const data: { message: string } = {
@@ -47,6 +50,7 @@ export class Chat extends Block<
     this.eventsElement = {
       load: () => {
         const scrollableDiv = document.getElementsByClassName('chat__body')
+
         if (scrollableDiv.length > 0) {
           scrollableDiv[0].scrollTop = scrollableDiv[0].scrollHeight
         }

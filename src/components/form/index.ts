@@ -7,7 +7,7 @@ interface FormProps {
   method?: 'PATH' | 'GET' | 'POST' | 'PUT'
 }
 
-export class Form extends Block<FormProps, {}, HTMLElement> {
+export class Form extends Block<FormProps, Record<string, never>, HTMLElement> {
   constructor(props: FormProps) {
     super({
       method: 'POST',

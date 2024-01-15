@@ -11,7 +11,7 @@ export type PagesName =
   | 'changeAvatar'
   | 'error'
 
-const pages: Record<PagesName, typeof Block<{}>> = {
+const pages: Record<PagesName, typeof Block<object>> = {
   login: Pages.LoginPage,
   register: Pages.RegisterPage,
   chats: Pages.ChatsPage,
@@ -26,6 +26,7 @@ export function navigate(page: PagesName) {
   const app = document.getElementById('app')!
   const Component = pages[page]
   const component = new Component()
+
   app.innerHTML = ''
   app.append(component.getContent()!)
 }

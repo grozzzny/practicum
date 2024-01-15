@@ -6,7 +6,7 @@ export function registerComponent(
   Component: typeof Block<PropsType, RefType, HTMLElement | null>
 ) {
   if (name in Handlebars.helpers) {
-    throw `The ${name} component is already registered!`
+    throw new Error(`The ${name} component is already registered!`)
   }
 
   Handlebars.registerHelper(
@@ -23,15 +23,18 @@ export function registerComponent(
         component,
         embed(fragment: DocumentFragment) {
           const stub = fragment.querySelector(`[${dataAttribute}]`)
+
           if (!stub) {
             return
           }
+
           component.getContent()?.append(...Array.from(stub.childNodes))
           stub.replaceWith(component.getContent()!)
         }
       })
 
       const contents = fn ? fn(this) : ''
+
       return `<div ${dataAttribute}>${contents}</div>`
     }
   )

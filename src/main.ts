@@ -2,7 +2,7 @@ import Handlebars from 'handlebars'
 import * as Components from './components'
 import * as Partials from './partials'
 import { registerComponent } from './core/resgiterComponent'
-import { navigate, PagesName } from './core/navigate'
+import { PagesName, navigate } from './core/navigate'
 import Block from './core/Block'
 
 Object.entries(Partials as Record<string, string>).forEach(
@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => navigate('login'))
 document.addEventListener('click', (e) => {
   const target = e.target as HTMLElement
   const page = target.getAttribute('page') as PagesName
+
   if (page) {
     e.preventDefault()
     e.stopImmediatePropagation()

@@ -1,10 +1,10 @@
 import template from './profilePassword.hbs?raw'
 import Block from '../../core/Block'
 import {
-  emptyValidator,
   NameValidator,
-  passwordValidator,
-  Validator
+  Validator,
+  emptyValidator,
+  passwordValidator
 } from '../../utils/validators'
 import { navigate } from '../../core/navigate'
 import { SettingsEditElement } from '../../components'
@@ -44,8 +44,10 @@ export class ProfilePasswordPage extends Block<
 
         if (new_password !== new_password_repeat) {
           this.refs.new_password_repeat.setError('Passwords do not match')
+
           return
         }
+
         this.refs.new_password_repeat.removeError()
 
         const data: DataProfilePasswordForm = {

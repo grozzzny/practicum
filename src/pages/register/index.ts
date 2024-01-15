@@ -1,15 +1,15 @@
 import template from './register.hbs?raw'
 import Block from '../../core/Block'
 import {
+  NameValidator,
+  Validator,
   emailValidator,
+  emptyValidator,
   firstNameValidator,
   loginValidator,
-  NameValidator,
-  emptyValidator,
   passwordValidator,
   phoneValidator,
-  secondNameValidator,
-  Validator
+  secondNameValidator
 } from '../../utils/validators'
 import { navigate } from '../../core/navigate'
 import { Field } from '../../components'
@@ -75,8 +75,10 @@ export class RegisterPage extends Block<
 
         if (password !== password_repeat) {
           this.refs.password_repeat.setError('Passwords do not match')
+
           return
         }
+
         this.refs.password_repeat.removeError()
 
         const data: DataRegisterForm = {

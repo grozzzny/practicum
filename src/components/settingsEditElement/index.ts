@@ -34,6 +34,7 @@ export class SettingsEditElement extends Block<
     if (!this.validate()) {
       return null
     }
+
     return this.refs.input.value()
   }
 
@@ -50,11 +51,15 @@ export class SettingsEditElement extends Block<
   private validate() {
     const value = this.refs.input.value()
     const error = this.props.validate?.(value)
+
     if (error) {
       this.setError(error)
+
       return false
     }
+
     this.removeError()
+
     return true
   }
 
