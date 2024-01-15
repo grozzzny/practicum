@@ -60,7 +60,7 @@ export const passwordValidator: Validator = (value) => {
   return false
 }
 
-export const passwordRepeatValidator: Validator = (value) => {
+export const emptyValidator: Validator = (value) => {
   if (value.length === 0) {
     return 'Field can not be empty'
   }

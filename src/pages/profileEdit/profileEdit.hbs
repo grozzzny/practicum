@@ -3,14 +3,14 @@
   <div class='container-chats__content container-chats__content--top'>
     {{#> Settings title="Change data" }}
       {{#> FormAuth }}
-        {{> SettingsEditElement type="text" name="email" label="Email" value="grozzzzny@yandex" error="It's not Email" }}
-        {{> SettingsEditElement type="text" name="login" label="Login" value="grozzzzny" }}
-        {{> SettingsEditElement type="text" name="first_name" label="Name" value="Dmitriy" }}
-        {{> SettingsEditElement type="text" name="second_name" label="Surname" value="Groznyy" }}
-        {{> SettingsEditElement type="text" name="display_name" label="Name in chat" value="Dmitriy" }}
-        {{> SettingsEditElement type="text" name="phone" label="Phone" value="+7 (911) 458 71 42" }}
+        {{{ SettingsEditElement type="text" name="email" label="Email" value="grozzzzny@yandex" ref="email" validate=validators.email }}}
+        {{{ SettingsEditElement type="text" name="login" label="Login" value="grozzzzny" ref="login" validate=validators.login }}}
+        {{{ SettingsEditElement type="text" name="first_name" label="Name" value="Dmitriy" ref="first_name" validate=validators.first_name }}}
+        {{{ SettingsEditElement type="text" name="second_name" label="Surname" value="Groznyy" ref="second_name" validate=validators.second_name }}}
+        {{{ SettingsEditElement type="text" name="display_name" label="Name in chat" value="Dmitriy" ref="display_name" validate=validators.display_name }}}
+        {{{ SettingsEditElement type="text" name="phone" label="Phone" value="79114587142" ref="phone" validate=validators.phone }}}
         <div class='settings__buttons'>
-          {{{ Button label="Save" type="primary" page="profile" }}}
+          {{{ Button label="Save" type="primary" typeButton="submit" onClick=onSave }}}
           {{{ Button label="Cancel" type="link" page="profile" }}}
         </div>
       {{/FormAuth}}

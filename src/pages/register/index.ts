@@ -4,7 +4,7 @@ import {
   emailValidator,
   firstNameValidator,
   loginValidator,
-  NameValidator, passwordRepeatValidator,
+  NameValidator, emptyValidator,
   passwordValidator,
   phoneValidator,
   secondNameValidator,
@@ -48,7 +48,7 @@ export class RegisterPage extends Block<
         second_name: secondNameValidator,
         phone: phoneValidator,
         password: passwordValidator,
-        password_repeat: passwordRepeatValidator
+        password_repeat: emptyValidator
       },
       onRegister: (event: PointerEvent) => {
         event.preventDefault()
