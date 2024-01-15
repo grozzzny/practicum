@@ -58,6 +58,12 @@ The project runs on port 3000, and you can access it at [http://localhost:3000/]
 
 Thank you for your interest in the Fast Chat project! Please note that the current version is intended solely for preview and exploration. 🌐
 
+**Automatic Code Formatting and Linting:**
+
+- ESLint: `npm run lint` or `yarn lint`
+- Stylelint: `npm run lint:styles` or `yarn lint:styles`
+- Prettier: `npm run format` or `yarn format`
+
 **Contact:**
 
 - Telegram: [@grozzzzny](https://t.me/grozzzzny)
