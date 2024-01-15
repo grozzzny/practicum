@@ -1,0 +1,23 @@
+.messages {
+  display: flex;
+  padding: 25px 0;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 25px;
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+.message-datetime {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

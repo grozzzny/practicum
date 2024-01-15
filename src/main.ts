@@ -1,40 +1,31 @@
 import Handlebars from 'handlebars'
 import * as Components from './components'
-import * as Pages from './pages'
+import * as Partials from './partials'
+import { registerComponent } from './core/resgiterComponent'
+import { PagesName, navigate } from './core/navigate'
+import Block from './core/Block'
 
-const pages = {
-  login: [Pages.LoginPage],
-  register: [Pages.RegisterPage],
-  chats: [Pages.ChatsPage],
-  dialog: [Pages.DialogPage],
-  removeUser: [Pages.RemoveUserPage],
-  addUser: [Pages.AddUserPage],
-  profile: [Pages.ProfilePage],
-  profileEdit: [Pages.ProfileEditPage],
-  profilePassword: [Pages.ProfilePasswordPage],
-  changeAvatar: [Pages.ChangeAvatarPage],
-  error: [Pages.ErrorPage]
-}
+Object.entries(Partials as Record<string, string>).forEach(
+	([name, component]) => {
+		Handlebars.registerPartial(name, component)
+	}
+)
 
-Object.entries(Components).forEach(([name, component]) => {
-  Handlebars.registerPartial(name, component)
-})
-
-function navigate(page: string) {
-  //@ts-ignore
-  const [source, context] = pages[page]
-  const container = document.getElementById('app')!
-  container.innerHTML = Handlebars.compile(source)(context)
-}
+Object.entries(Components as Record<string, typeof Block>).forEach(
+	([name, component]) => {
+		registerComponent(name, component)
+	}
+)
 
 document.addEventListener('DOMContentLoaded', () => navigate('login'))
 
 document.addEventListener('click', (e) => {
-  //@ts-ignore
-  const page = e.target.getAttribute('page')
-  if (page) {
-    navigate(page)
-    e.preventDefault()
-    e.stopImmediatePropagation()
-  }
+	const target = e.target as HTMLElement
+	const page = target.getAttribute('page') as PagesName
+
+	if (page) {
+		e.preventDefault()
+		e.stopImmediatePropagation()
+		navigate(page)
+	}
 })

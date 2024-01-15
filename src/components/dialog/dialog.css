@@ -7,19 +7,22 @@
   border-top: 1px solid #fff;
   background: linear-gradient(
     270deg,
-    rgba(238, 238, 238, 0.3) 0%,
-    rgba(255, 255, 255, 0.3) 100%
+    rgb(238 238 238 / 30%) 0%,
+    rgb(255 255 255 / 30%) 100%
   );
   position: relative;
   cursor: default;
   user-select: none;
 }
+
 .dialog:last-child {
   border-bottom: 1px solid #fff;
 }
+
 .dialog__avatar {
   display: flex;
 }
+
 .dialog__body {
   display: flex;
   width: 100%;
@@ -27,6 +30,7 @@
   align-items: flex-start;
   position: relative;
 }
+
 .dialog__name {
   padding-right: 45px;
   color: var(--black);
@@ -35,16 +39,18 @@
   font-weight: 700;
   line-height: normal;
 }
+
 .dialog__time {
   position: absolute;
   right: -1px;
   top: 2px;
-  color: rgba(77, 77, 77, 0.5);
+  color: rgb(77 77 77 / 50%);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
+
 .dialog__message {
   color: var(--black);
   font-size: 14px;
@@ -52,6 +58,7 @@
   font-weight: 400;
   line-height: normal;
 }
+
 .dialog__count {
   border-radius: 37px;
   background: var(--main-color);
@@ -70,13 +77,16 @@
   line-height: normal;
   display: none;
 }
+
 .dialog__count--visible {
   display: flex;
 }
+
 .dialog--active {
   border-color: white;
   background: white;
 }
-.dialog:hover:not(.dialog--active){
+
+.dialog:hover:not(.dialog--active) {
   opacity: 0.8;
 }

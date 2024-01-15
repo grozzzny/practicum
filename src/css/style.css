@@ -1,27 +1,6 @@
 /* Common */
-@import '/src/css/base.css';
-@import '/src/css/common.css';
-@import '/src/css/containerModal.css';
-@import '/src/css/containerChats.css';
-@import '/src/css/containerError.css';
-
-/* Components */
-@import '/src/components/modal/modal.css';
-@import '/src/components/field/field.css';
-@import '/src/components/button/button.css';
-@import '/src/components/formAuth/formAuth.css';
-@import '/src/components/input/input.css';
-@import '/src/components/dialog/dialog.css';
-@import '/src/components/side/side.css';
-@import '/src/components/messages/messages.css';
-@import '/src/components/message/message.css';
-@import '/src/components/chat/chat.css';
-@import '/src/components/menuElement/menuElement.css';
-@import '/src/components/menu/menu.css';
-@import '/src/components/settings/settings.css';
-@import '/src/components/settingsElement/settingsElement.css';
-@import '/src/components/settingsPreview/settingsPreview.css';
-@import '/src/components/settingsEditElement/settingsEditElement.css';
-@import '/src/components/uploadFile/uploadFile.css';
-@import '/src/components/error/error.css';
-
+@import url('/src/css/base.css');
+@import url('/src/css/common.css');
+@import url('/src/css/containerModal.css');
+@import url('/src/css/containerChats.css');
+@import url('/src/css/containerError.css');

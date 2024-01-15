@@ -6,9 +6,11 @@
   padding-top: 60px;
   flex-direction: column;
 }
+
 .container-modal__logo {
   margin-bottom: 61px;
 }
+
 .container-modal__buttons > *:first-child {
   margin-bottom: 20px;
   margin-top: 70px;
