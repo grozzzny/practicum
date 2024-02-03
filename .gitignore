@@ -25,6 +25,8 @@ dist-ssr
 *.sln
 *.sw?
 
+tmp
+
 .sass-cache
 package-lock.json
 yarn.lock

@@ -1,15 +1,17 @@
 .field {
   margin-bottom: 20px;
 }
+
 .field__label {
   color: var(--black);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  transition: .2s all ease;
+  transition: 0.2s all ease;
   display: block;
 }
+
 .field__error {
   color: var(--red);
   font-size: 14px;
@@ -17,7 +19,8 @@
   font-weight: 400;
   line-height: normal;
 }
-.field--error input{
+
+.field--error input {
   border-color: var(--red);
   background-color: var(--red-light);
 }
