@@ -26,7 +26,8 @@
           {
             "singleQuote": true,
             "trailingComma": "none",
-            "semi": false
+            "semi": false,
+            "insert_final_newline": true
           }
         ]
       }

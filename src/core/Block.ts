@@ -3,10 +3,18 @@ import Handlebars from 'handlebars'
 import EventBus from './EventBus'
 
 export type RefType = {
-	[key: string]: Block<PropsType, RefType, HTMLElement | null> | undefined
+	[key: string]: Block<PropsType, RefType, HTMLElement | null> | HTMLElement | undefined
 }
 
 export type PropsType = Record<string | symbol, any>
+
+export type EventName = keyof HTMLElementEventMap
+
+export type EventListType = {
+	[key in EventName]: (e: Event) => void
+}
+
+export type Events = Partial<EventListType>
 
 class Block<
 	Props extends PropsType = object,
@@ -27,7 +35,7 @@ class Block<
 
 	protected refs: Refs = {} as Refs
 
-	protected eventsElement: Record<string, (event: Event) => void> = {}
+	protected eventsElement: Events = {}
 
 	private children: Block[] = []
 
@@ -43,19 +51,19 @@ class Block<
 	}
 
 	_removeEventsElement() {
-		Object.keys(this.eventsElement).forEach((eventName) => {
+		;(Object.keys(this.eventsElement) as EventName[]).forEach((eventName) => {
 			this._element!.removeEventListener(
 				eventName,
-				this.eventsElement[eventName]
+				this.eventsElement[eventName]!
 			)
 		})
 	}
 
 	_addEventsElement() {
-		Object.keys(this.eventsElement).forEach((eventName) => {
+		;(Object.keys(this.eventsElement) as EventName[]).forEach((eventName) => {
 			this._element!.addEventListener(
 				eventName,
-				this.eventsElement[eventName],
+				this.eventsElement[eventName]!,
 				true
 			)
 		})
@@ -168,6 +176,16 @@ class Block<
 
 			stub?.replaceWith(child.getContent()!)
 		})
+
+		this.refs = Array.from(temp.content.querySelectorAll('[ref]')).reduce(
+			(list, element) => {
+				const key = element.getAttribute('ref')!
+				list[key] = element
+				element.removeAttribute('ref')
+				return list
+			},
+			contextAndStubs.__refs
+		)
 
 		return temp.content
 	}
