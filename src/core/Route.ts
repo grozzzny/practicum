@@ -1,5 +1,6 @@
 import { render } from '../utils/render'
 import Block, { PropsType, RefType } from './Block'
+import { Middleware } from './Router'
 
 export default class Route {
 	private block: Block<PropsType, RefType, HTMLElement> | null = null
@@ -7,7 +8,8 @@ export default class Route {
 	constructor(
 		private pathname: string | RegExp,
 		private readonly blockClass: typeof Block<PropsType, RefType, HTMLElement>,
-		private readonly props: PropsType
+		private readonly props: PropsType,
+		readonly middlewares: Middleware[] = []
 	) {}
 
 	navigate(pathname: string) {

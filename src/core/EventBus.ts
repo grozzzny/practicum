@@ -24,8 +24,12 @@ export default class EventBus<
 		)
 	}
 
+	hasEvent(event: Event): boolean {
+		return !!this.listeners[event]
+	}
+
 	emit(event: Event, ...args: Method[Event]) {
-		if (!this.listeners[event]) {
+		if (!this.hasEvent(event)) {
 			throw new Error(`No event: ${event}`)
 		}
 

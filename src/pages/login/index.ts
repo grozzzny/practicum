@@ -8,6 +8,7 @@ import {
 	loginValidator,
 	passwordValidator
 } from '../../utils/validators'
+import { SetTitle } from '../../utils/decorators'
 
 interface LoginPageProps {
 	onLogin: (event: PointerEvent) => void
@@ -19,6 +20,7 @@ type DataLoginForm = {
 	password: string
 }
 
+@SetTitle('Login')
 export class LoginPage extends Block<
 	LoginPageProps,
 	{

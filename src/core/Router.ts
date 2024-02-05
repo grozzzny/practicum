@@ -1,6 +1,7 @@
 import Block, { PropsType, RefType } from './Block'
 import Route from './Route'
-import { isGuest } from '../services/authService'
+
+export type Middleware = (router: Router, next: () => void) => void
 
 class Router {
 	private routes: Route[] = []
@@ -13,9 +14,15 @@ class Router {
 
 	use(
 		pathname: string | RegExp,
-		blockClass: typeof Block<PropsType, RefType, HTMLElement>
+		blockClass: typeof Block<PropsType, RefType, HTMLElement>,
+		middlewares: Middleware[] = [(_router, next) => next()]
 	) {
-		const route = new Route(pathname, blockClass, { rootQuery: this.rootQuery })
+		const route = new Route(
+			pathname,
+			blockClass,
+			{ rootQuery: this.rootQuery },
+			middlewares
+		)
 
 		this.routes.push(route)
 
@@ -27,12 +34,6 @@ class Router {
 			const window = event.target as Window
 			this.onRoute(window.location.pathname)
 		})
-
-		if (await isGuest()) {
-			this.go('/messenger')
-		} else {
-			this.go('/')
-		}
 
 		this.onRoute(window.location.pathname)
 	}
@@ -49,7 +50,11 @@ class Router {
 
 		this.currentRoute = route
 
-		route.render()
+		const next = () => route.render()
+
+		route.middlewares.reduceRight((next: () => void, middleware) => {
+			return () => middleware(this, next)
+		}, next)()
 	}
 
 	go(pathname: string) {

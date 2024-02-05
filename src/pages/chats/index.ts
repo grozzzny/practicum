@@ -2,6 +2,7 @@ import template from './chats.hbs?raw'
 import Block from '../../core/Block'
 import { Chat, ModalAddUser, ModalRemoveUser, Side } from '../../components'
 import chats, { ChatType } from '../../data/chats'
+import { SetTitle } from '../../utils/decorators'
 
 interface ChatPageProps {
 	onHandler: (event: Event, chat: ChatType) => void
@@ -9,6 +10,7 @@ interface ChatPageProps {
 	onModal: (event: Event, modalName: string | undefined) => void
 }
 
+@SetTitle('Messenger')
 export class ChatsPage extends Block<
 	ChatPageProps,
 	{

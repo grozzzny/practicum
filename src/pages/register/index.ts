@@ -13,6 +13,7 @@ import {
 } from '../../utils/validators'
 import { navigate } from '../../core/navigate'
 import { Field } from '../../components'
+import { SetTitle } from '../../utils/decorators'
 
 interface RegisterPageProps {
 	onRegister: (event: PointerEvent) => void
@@ -28,6 +29,7 @@ type DataRegisterForm = {
 	password: string
 }
 
+@SetTitle('Registration')
 export class RegisterPage extends Block<
 	RegisterPageProps,
 	{
