@@ -24,7 +24,8 @@ export class LoginPage extends Block<
 	{
 		login: Field
 		password: Field
-	}
+	},
+	HTMLElement
 > {
 	constructor() {
 		super({
@@ -49,7 +50,7 @@ export class LoginPage extends Block<
 				console.log(data)
 				navigate('chats')
 			}
-		})
+		}, 'flex')
 	}
 
 	protected render(): string {

@@ -38,7 +38,8 @@ export class RegisterPage extends Block<
 		phone: Field
 		password: Field
 		password_repeat: Field
-	}
+	},
+	HTMLElement
 > {
 	constructor() {
 		super({

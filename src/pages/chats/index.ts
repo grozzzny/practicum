@@ -16,7 +16,8 @@ export class ChatsPage extends Block<
 		chat: Chat
 		modalAddUser: ModalAddUser
 		modalRemoveUser: ModalRemoveUser
-	}
+	},
+	HTMLElement
 > {
 	constructor() {
 		super({

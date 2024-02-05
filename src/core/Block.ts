@@ -3,7 +3,10 @@ import Handlebars from 'handlebars'
 import EventBus from './EventBus'
 
 export type RefType = {
-	[key: string]: Block<PropsType, RefType, HTMLElement | null> | HTMLElement | undefined
+	[key: string]:
+		| Block<PropsType, RefType, HTMLElement | null>
+		| HTMLElement
+		| undefined
 }
 
 export type PropsType = Record<string | symbol, any>
@@ -43,7 +46,10 @@ class Block<
 
 	private _element: Element = null as Element
 
-	constructor(props: Props = {} as Props) {
+	constructor(
+		props: Props = {} as Props,
+		private readonly styleDisplay: 'flex' | 'block' = 'block'
+	) {
 		this.props = this._makePropsProxy(props)
 		this.eventBus = new EventBus()
 		this._registerEvents()
@@ -232,7 +238,7 @@ class Block<
 	}
 
 	show() {
-		this.getContent()!.style.display = 'block'
+		this.getContent()!.style.display = this.styleDisplay
 	}
 
 	hide() {
