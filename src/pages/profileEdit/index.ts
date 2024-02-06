@@ -12,6 +12,7 @@ import {
 } from '../../utils/validators'
 import { SettingsEditElement } from '../../components'
 import { navigate } from '../../core/navigate'
+import { SetTitle } from '../../utils/decorators'
 
 interface ProfileEditPageProps {
 	onSave: (event: PointerEvent) => void
@@ -27,6 +28,7 @@ type DataProfileEditForm = {
 	phone: string
 }
 
+@SetTitle('Change data')
 export class ProfileEditPage extends Block<
 	ProfileEditPageProps,
 	{
@@ -36,7 +38,8 @@ export class ProfileEditPage extends Block<
 		second_name: SettingsEditElement
 		phone: SettingsEditElement
 		display_name: SettingsEditElement
-	}
+	},
+	HTMLElement
 > {
 	constructor() {
 		super({
@@ -80,7 +83,7 @@ export class ProfileEditPage extends Block<
 				console.log(data)
 				navigate('profile')
 			}
-		})
+		}, 'flex')
 	}
 
 	protected render(): string {

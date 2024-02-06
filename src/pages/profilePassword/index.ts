@@ -8,6 +8,7 @@ import {
 } from '../../utils/validators'
 import { navigate } from '../../core/navigate'
 import { SettingsEditElement } from '../../components'
+import { SetTitle } from '../../utils/decorators'
 
 interface ProfilePasswordPageProps {
 	onSave: (event: PointerEvent) => void
@@ -18,13 +19,15 @@ type DataProfilePasswordForm = {
 	password: string
 }
 
+@SetTitle('Change password')
 export class ProfilePasswordPage extends Block<
 	ProfilePasswordPageProps,
 	{
 		old_password: SettingsEditElement
 		new_password: SettingsEditElement
 		new_password_repeat: SettingsEditElement
-	}
+	},
+	HTMLElement
 > {
 	constructor() {
 		super({
@@ -57,7 +60,7 @@ export class ProfilePasswordPage extends Block<
 				console.log(data)
 				navigate('profile')
 			}
-		})
+		}, 'flex')
 	}
 
 	protected render(): string {
