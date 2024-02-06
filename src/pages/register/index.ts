@@ -95,7 +95,7 @@ export class RegisterPage extends Block<
 				console.log(data)
 				// navigate('chats')
 			}
-		})
+		}, 'flex')
 	}
 
 	protected render(): string {
