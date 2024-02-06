@@ -1,6 +1,5 @@
 import { BaseAPI } from './BaseAPI'
-import { DataLoginForm } from '../components/formLogin'
-import { DataRegistrationForm } from '../components/formRegistration'
+import { DataLoginForm, DataRegistrationForm, User } from '../type'
 
 class AuthAPI extends BaseAPI {
 	constructor() {
@@ -24,17 +23,6 @@ class AuthAPI extends BaseAPI {
 	public logout() {
 		return this.transport().post<unknown>('/logout')
 	}
-}
-
-export type User = {
-	id: number
-	first_name: string
-	second_name: string
-	display_name: string
-	phone: string
-	login: string
-	avatar: string
-	email: string
 }
 
 export default new AuthAPI()

@@ -1,6 +1,5 @@
 import AuthAPI from '../api/AuthAPI'
-import { DataLoginForm } from '../components/formLogin'
-import { DataRegistrationForm } from '../components/formRegistration'
+import { DataLoginForm, DataRegistrationForm } from '../type'
 
 export const isGuest = async(): Promise<boolean> => {
 	try {

@@ -1,9 +1,10 @@
 import Block from '../../core/Block'
 import template from './login.hbs?raw'
 import { SetTitle } from '../../utils/decorators'
-import { DataLoginForm, FormLogin } from '../../components/formLogin'
+import { FormLogin } from '../../components'
 import AuthController from '../../controllers/AuthController'
 import { ErrorAPI } from '../../utils/HTTPTransport'
+import { DataLoginForm } from '../../type'
 
 interface LoginPageProps {
 	onLogin: (data: DataLoginForm) => void

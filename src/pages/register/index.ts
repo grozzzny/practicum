@@ -2,9 +2,9 @@ import template from './register.hbs?raw'
 import Block from '../../core/Block'
 import { FormRegistration } from '../../components'
 import { SetTitle } from '../../utils/decorators'
-import { DataRegistrationForm } from '../../components/formRegistration'
 import AuthController from '../../controllers/AuthController'
 import { ErrorAPI } from '../../utils/HTTPTransport'
+import { DataRegistrationForm } from '../../type'
 
 interface RegisterPageProps {
 	onRegister: (data: DataRegistrationForm) => void

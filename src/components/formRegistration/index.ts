@@ -1,11 +1,16 @@
 import template from './formRegistration.hbs?raw'
 import { Field } from '../field'
 import {
-	emailValidator, emptyValidator, firstNameValidator,
+	emailValidator,
+	emptyValidator,
+	firstNameValidator,
 	loginValidator,
-	passwordValidator, phoneValidator, secondNameValidator,
+	passwordValidator,
+	phoneValidator,
+	secondNameValidator,
 } from '../../utils/validators'
 import { Form, FormProps, FormRefs } from '../form'
+import { DataRegistrationForm } from '../../type'
 
 interface FormRegistrationProps extends FormProps{
 	onRegister: (data: DataRegistrationForm) => void
@@ -19,15 +24,6 @@ interface FormRegistrationRefs extends FormRefs{
 	phone: Field
 	password: Field
 	password_repeat: Field
-}
-
-export type DataRegistrationForm = {
-	email: string
-	login: string
-	first_name: string
-	second_name: string
-	phone: string
-	password: string
 }
 
 export class FormRegistration extends Form<

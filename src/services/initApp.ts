@@ -1,6 +1,6 @@
 import router from '../core/Router'
 import {
-	ChatsPage,
+	ChatsPageConnect,
 	ErrorPage,
 	LoginPage,
 	ProfileEditPage,
@@ -17,7 +17,7 @@ export const initApp = async () => {
 		.use('/settings', ProfilePage, [redirectToHome])
 		.use('/profile', ProfileEditPage, [redirectToHome])
 		.use('/password', ProfilePasswordPage, [redirectToHome])
-		.use('/messenger', ChatsPage, [redirectToHome])
+		.use('/messenger', ChatsPageConnect, [redirectToHome])
 		.use(/.*?/, ErrorPage)
 
 	await router.start()

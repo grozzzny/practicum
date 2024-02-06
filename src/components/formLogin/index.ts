@@ -5,6 +5,7 @@ import {
 	passwordValidator,
 } from '../../utils/validators'
 import { Form, FormProps, FormRefs } from '../form'
+import { DataLoginForm } from '../../type'
 
 interface FormLoginProps extends FormProps{
 	onLogin: (data: DataLoginForm) => void
@@ -13,11 +14,6 @@ interface FormLoginProps extends FormProps{
 interface FormLoginRefs extends FormRefs{
 	login: Field
 	password: Field
-}
-
-export type DataLoginForm = {
-	login: string
-	password: string
 }
 
 export class FormLogin extends Form<

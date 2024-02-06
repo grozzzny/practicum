@@ -1,7 +1,6 @@
 import router from '../core/Router'
-import { DataLoginForm } from '../components/formLogin'
 import { logout, signin, signup } from '../services/authService'
-import { DataRegistrationForm } from '../components/formRegistration'
+import { DataLoginForm, DataRegistrationForm } from '../type'
 
 class AuthController {
 	public async signup(data: DataRegistrationForm) {

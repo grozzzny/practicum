@@ -3,6 +3,7 @@ import Block from '../../core/Block'
 import { Chat, ModalAddUser, ModalRemoveUser, Side } from '../../components'
 import chats, { ChatType } from '../../data/chats'
 import { SetTitle } from '../../utils/decorators'
+import { connect } from '../../utils/connect'
 
 interface ChatPageProps {
 	onHandler: (event: Event, chat: ChatType) => void
@@ -21,29 +22,35 @@ export class ChatsPage extends Block<
 	},
 	HTMLElement
 > {
-	constructor() {
-		super({
-			onHandler: (event, chat) => {
-				event.preventDefault()
-				this.refs.chat.setProps({
-					selectedChat: chat
-				})
+	constructor(props: ChatPageProps) {
+		super(
+			{
+				...props,
+				onHandler: (event, chat) => {
+					event.preventDefault()
+					this.refs.chat.setProps({
+						selectedChat: chat
+					})
+				},
+				chats,
+				onModal: (event, modalName) => {
+					event.preventDefault()
+					Object.entries(this.refs).forEach(([_name, block]) => {
+						if ('modalName' in block) {
+							block.setProps({
+								modalVisible: block.modalName === modalName
+							})
+						}
+					})
+				}
 			},
-			chats,
-			onModal: (event, modalName) => {
-				event.preventDefault()
-				Object.entries(this.refs).forEach(([_name, block]) => {
-					if ('modalName' in block) {
-						block.setProps({
-							modalVisible: block.modalName === modalName
-						})
-					}
-				})
-			}
-		}, 'flex')
+			'flex'
+		)
 	}
 
 	protected render(): string {
 		return template
 	}
 }
+
+export const ChatsPageConnect = connect(ChatsPage, () => ({}))
