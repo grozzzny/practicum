@@ -1,4 +1,5 @@
 import { BaseAPI } from './BaseAPI'
+import { DataLoginForm } from '../components/formLogin'
 
 class AuthAPI extends BaseAPI {
 	constructor() {
@@ -11,10 +12,7 @@ class AuthAPI extends BaseAPI {
 		})
 	}
 
-	public signin(data: {
-		login: string
-		password: string
-	}) {
+	public signin(data: DataLoginForm) {
 		return this.transport().post<unknown>('/signin', { data })
 	}
 

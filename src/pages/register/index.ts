@@ -11,7 +11,6 @@ import {
 	phoneValidator,
 	secondNameValidator
 } from '../../utils/validators'
-import { navigate } from '../../core/navigate'
 import { Field } from '../../components'
 import { SetTitle } from '../../utils/decorators'
 
@@ -94,7 +93,7 @@ export class RegisterPage extends Block<
 				}
 
 				console.log(data)
-				navigate('chats')
+				// navigate('chats')
 			}
 		})
 	}

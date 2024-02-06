@@ -1,58 +1,33 @@
 import Block from '../../core/Block'
 import template from './login.hbs?raw'
-import { Field } from '../../components'
-import { navigate } from '../../core/navigate'
-import {
-	NameValidator,
-	Validator,
-	loginValidator,
-	passwordValidator
-} from '../../utils/validators'
 import { SetTitle } from '../../utils/decorators'
+import { DataLoginForm, FormLogin } from '../../components/formLogin'
+import AuthController from '../../controllers/AuthController'
+import { ErrorAPI } from '../../utils/HTTPTransport'
 
 interface LoginPageProps {
-	onLogin: (event: PointerEvent) => void
-	validators: Record<NameValidator, Validator>
-}
-
-type DataLoginForm = {
-	login: string
-	password: string
+	onLogin: (data: DataLoginForm) => void
 }
 
 @SetTitle('Login')
 export class LoginPage extends Block<
 	LoginPageProps,
 	{
-		login: Field
-		password: Field
+		form: FormLogin
 	},
 	HTMLElement
 > {
 	constructor() {
-		super({
-			validators: {
-				login: loginValidator,
-				password: passwordValidator
+		super(
+			{
+				onLogin: (data: DataLoginForm) => {
+					AuthController.signin(data).catch((error: ErrorAPI) => {
+						this.refs.form.showError(error.reason)
+					})
+				}
 			},
-			onLogin: (event: PointerEvent) => {
-				event.preventDefault()
-				const login = this.refs.login.value()
-				const password = this.refs.password.value()
-
-				if (!login || !password) {
-					return
-				}
-
-				const data: DataLoginForm = {
-					login,
-					password
-				}
-
-				console.log(data)
-				navigate('chats')
-			}
-		}, 'flex')
+			'flex'
+		)
 	}
 
 	protected render(): string {

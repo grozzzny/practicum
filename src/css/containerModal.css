@@ -11,7 +11,9 @@
   margin-bottom: 61px;
 }
 
-.container-modal__buttons > *:first-child {
-  margin-bottom: 20px;
-  margin-top: 70px;
+.container-modal__buttons {
+  margin-top: 50px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
 }
