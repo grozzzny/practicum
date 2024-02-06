@@ -1,16 +1,18 @@
-import Block from '../../core/Block'
 import template from './formLogin.hbs?raw'
 import { Field } from '../field'
 import {
 	loginValidator,
 	passwordValidator,
-	Validators
 } from '../../utils/validators'
-import { ErrorLine } from '../errorLine'
+import { Form, FormProps, FormRefs } from '../form'
 
-interface FormLoginProps {
+interface FormLoginProps extends FormProps{
 	onLogin: (data: DataLoginForm) => void
-	validators: Validators
+}
+
+interface FormLoginRefs extends FormRefs{
+	login: Field
+	password: Field
 }
 
 export type DataLoginForm = {
@@ -18,13 +20,9 @@ export type DataLoginForm = {
 	password: string
 }
 
-export class FormLogin extends Block<
+export class FormLogin extends Form<
 	FormLoginProps,
-	{
-		login: Field
-		password: Field
-		errorLine: ErrorLine
-	},
+	FormLoginRefs,
 	HTMLElement
 > {
 	constructor(props: FormLoginProps) {
@@ -51,23 +49,6 @@ export class FormLogin extends Block<
 				login,
 				password
 			})
-	}
-
-	public showError(error: string) {
-		this.refs.errorLine.setProps({
-			error
-		})
-		setTimeout(() => {
-			this.refs.errorLine.setProps({
-				error: undefined
-			})
-		}, 3000)
-	}
-
-	protected init(): void {
-		this.eventsElement = {
-			submit: this.onSubmit.bind(this)
-		}
 	}
 
 	protected render(): string {

@@ -43,7 +43,7 @@ export class Chat extends Block<
 
 				console.log(data)
 			}
-		})
+		}, 'flex')
 	}
 
 	protected init() {

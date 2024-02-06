@@ -1,12 +1,13 @@
 import { BaseAPI } from './BaseAPI'
 import { DataLoginForm } from '../components/formLogin'
+import { DataRegistrationForm } from '../components/formRegistration'
 
 class AuthAPI extends BaseAPI {
 	constructor() {
 		super('/auth')
 	}
 
-	public signup(data: SignUpData) {
+	public signup(data: DataRegistrationForm) {
 		return this.transport().post<{ id: number }>('/signup', {
 			data
 		})
@@ -34,15 +35,6 @@ export type User = {
 	login: string
 	avatar: string
 	email: string
-}
-
-export type SignUpData = {
-	first_name: string
-	second_name: string
-	login: string
-	email: string
-	password: string
-	phone: string
 }
 
 export default new AuthAPI()

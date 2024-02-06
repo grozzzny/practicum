@@ -40,7 +40,7 @@ export class ChatsPage extends Block<
 					}
 				})
 			}
-		})
+		}, 'flex')
 	}
 
 	protected render(): string {
