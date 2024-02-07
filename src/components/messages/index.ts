@@ -12,7 +12,7 @@ export class Messages extends Block<MessagesProps, RefType, HTMLElement> {
 
 	componentDidMount() {
 		this.element.parentElement!.scrollTop = this.element.parentElement!.scrollHeight
-		this.element.style.visibility = 'visible'
+		this.element.classList.remove('messages--hidden')
 	}
 }
 

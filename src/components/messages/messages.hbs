@@ -1,8 +1,11 @@
-<div class='messages' style='visibility: hidden'>
-  <div class='message-datetime'>
-    14 December
+<div class='messages messages--hidden'>
+  <div class="messages-loader"></div>
+  <div class='messages--container'>
+    <div class='message-datetime'>
+      14 December
+    </div>
+    {{#each (messages)}}
+      {{> Message}}
+    {{/each}}
   </div>
-  {{#each (messages)}}
-    {{> Message}}
-  {{/each}}
 </div>
