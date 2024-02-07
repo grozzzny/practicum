@@ -4,6 +4,8 @@ import store from '../core/Store'
 
 export const isGuest = async(): Promise<boolean> => {
 	try {
+		const { user: userState } = store.getState()
+		if(userState) return false
 		const user = await AuthAPI.getUser()
 		store.set('user', user)
 		return false

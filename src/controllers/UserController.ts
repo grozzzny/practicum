@@ -1,10 +1,12 @@
 import router from '../core/Router'
 import { DataProfileEditForm, DataProfilePasswordForm } from '../type'
 import { changePassword, changeProfile } from '../services/userService'
+import store from '../core/Store'
 
 class UserController {
 	public async changeProfile(data: DataProfileEditForm) {
-		await changeProfile(data)
+		const user = await changeProfile(data)
+		store.set('user', user)
 		router.go('/settings')
 	}
 
