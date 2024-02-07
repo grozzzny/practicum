@@ -1,9 +1,11 @@
 import AuthAPI from '../api/AuthAPI'
 import { DataLoginForm, DataRegistrationForm } from '../type'
+import store from '../core/Store'
 
 export const isGuest = async(): Promise<boolean> => {
 	try {
-		await AuthAPI.getUser()
+		const user = await AuthAPI.getUser()
+		store.set('user', user)
 		return false
 	} catch (e) {
 		console.error(e)

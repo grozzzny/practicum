@@ -1,7 +1,7 @@
 export { LoginPage } from './login'
 export { RegisterPage } from './register'
 export { ChatsPageConnect } from './chats'
-export { ProfilePage } from './profile'
+export { ProfilePageConnect } from './profile'
 export { ProfileEditPage } from './profileEdit'
 export { ProfilePasswordPage } from './profilePassword'
 export { ChangeAvatarPage } from './changeAvatar'

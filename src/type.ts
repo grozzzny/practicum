@@ -12,12 +12,12 @@ export type DataLoginForm = {
 
 export type User = {
 	id: number
-	login: string
-	firstName: string
-	secondName: string
-	displayName: string
-	avatar: string
+	first_name: string
+	second_name: string
+	display_name: string
 	phone: string
+	login: string
+	avatar: string
 	email: string
 }
 
@@ -31,8 +31,8 @@ export type Chat = {
 	id: number
 	title: string
 	avatar: null | string
-	unreadCount: number
-	lastMessage: LastMessage | null
+	unread_count: number
+	last_message: LastMessage | null
 }
 
 export type DataRegistrationForm = {

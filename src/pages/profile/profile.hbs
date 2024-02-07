@@ -2,13 +2,13 @@
   {{{ Side close=true }}}
   <div class='container-chats__content container-chats__content--top'>
     {{#> Settings title="Profile" }}
-      {{> SettingsPreview name="Dmitriy" page="changeAvatar" }}
-      {{> SettingsElement type="text" label="Email" value="grozzzny@yandex.ru" }}
-      {{> SettingsElement type="text" label="Login" value="grozzzzny" }}
-      {{> SettingsElement type="text" label="Name" value="Dmitriy" }}
-      {{> SettingsElement type="text" label="Surname" value="Groznyy" }}
-      {{> SettingsElement type="text" label="Name in chat" value="Dmitriy" }}
-      {{> SettingsElement type="text" label="Phone" value="+7 (911) 458 71 42" }}
+      {{> SettingsPreview name=user.first_name page="changeAvatar" }}
+      {{> SettingsElement type="text" label="Email" value=user.email }}
+      {{> SettingsElement type="text" label="Login" value=user.login }}
+      {{> SettingsElement type="text" label="Name" value=user.first_name }}
+      {{> SettingsElement type="text" label="Surname" value=user.second_name }}
+      {{> SettingsElement type="text" label="Name in chat" value=user.display_name }}
+      {{> SettingsElement type="text" label="Phone" value=user.phone }}
       <div class='settings__links'>
         {{{ SettingsButtonElement label="Change data" page="/profile" }}}
         {{{ SettingsButtonElement label="Change password" page="/password" }}}

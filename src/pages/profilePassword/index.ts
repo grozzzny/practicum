@@ -6,7 +6,6 @@ import {
 	emptyValidator,
 	passwordValidator
 } from '../../utils/validators'
-import { navigate } from '../../core/navigate'
 import { SettingsEditElement } from '../../components'
 import { SetTitle } from '../../utils/decorators'
 
@@ -58,7 +57,6 @@ export class ProfilePasswordPage extends Block<
 				}
 
 				console.log(data)
-				navigate('profile')
 			}
 		}, 'flex')
 	}

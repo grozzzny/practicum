@@ -11,7 +11,6 @@ import {
 	secondNameValidator
 } from '../../utils/validators'
 import { SettingsEditElement } from '../../components'
-import { navigate } from '../../core/navigate'
 import { SetTitle } from '../../utils/decorators'
 
 interface ProfileEditPageProps {
@@ -81,7 +80,6 @@ export class ProfileEditPage extends Block<
 				}
 
 				console.log(data)
-				navigate('profile')
 			}
 		}, 'flex')
 	}
