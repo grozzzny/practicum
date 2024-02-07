@@ -1,8 +1,12 @@
-import Block, { PropsType } from '../../core/Block'
+import Block from '../../core/Block'
 import template from './buttonProfile.hbs?raw'
 import router from '../../core/Router'
 
-export class ButtonProfile extends Block<PropsType> {
+type ButtonProfileProps = {
+	image: string
+}
+
+export class ButtonProfile extends Block<ButtonProfileProps> {
 	protected init(): void {
 		this.eventsElement = {
 			click: () => {

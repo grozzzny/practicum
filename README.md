@@ -53,6 +53,15 @@ Repeat this step for other sprints if needed.
 
 Now you can locally execute the Bats tests for your project. Ensure that you have the necessary setup and dependencies to match the GitHub Actions configuration.
 
+**New Pages Added in Sprint 3:**
+- /login - Login page
+- /sign-up - Registration page
+- /settings - User profile settings
+- /messenger - Chat page
+- /profile - Profile settings
+- /password - Password change page
+- /error.*? - Error page
+
 **Note:**
 The project runs on port 3000, and you can access it at [http://localhost:3000/](http://localhost:3000/).
 

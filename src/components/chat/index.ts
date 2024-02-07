@@ -4,6 +4,7 @@ import './chat.css'
 import { ChatType } from '../../data/chats'
 import { Input } from '../input'
 import { messageValidator } from '../../utils/validators'
+import { User } from '../../type'
 
 const CLASS_NAME_INPUT_ERROR = 'input__error'
 
@@ -11,6 +12,7 @@ interface ChatProps {
 	selectedChat: ChatType | null
 	onSend: (event: PointerEvent | SubmitEvent) => void
 	onModal: (event: Event, modal: string | undefined) => void
+	user: User
 }
 
 export class Chat extends Block<

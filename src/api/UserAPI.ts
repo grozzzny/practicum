@@ -15,7 +15,7 @@ class UserAPI extends BaseAPI {
 	public changeAvatar(file: File) {
 		const data = new FormData()
 		data.append('avatar', file)
-		return this.transport().put<unknown>('/profile/avatar', {
+		return this.transport().put<User>('/profile/avatar', {
 			data
 		})
 	}

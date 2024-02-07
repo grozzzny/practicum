@@ -39,6 +39,7 @@
 
 .uploadFile__error {
   color: var(--red);
+  display: none;
 }
 
 .uploadFile__message {
@@ -51,4 +52,11 @@
 
 .uploadFile__input {
   display: none;
+}
+
+.uploadFile.uploadFile--error .uploadFile__message{
+  display: none;
+}
+.uploadFile.uploadFile--error .uploadFile__error{
+  display: block;
 }

@@ -2,7 +2,7 @@
   {{{ Side close=true }}}
   <div class='container-chats__content container-chats__content--top'>
     {{#> Settings title="Profile" }}
-      {{> SettingsPreview name=user.first_name page="changeAvatar" }}
+      {{{ SettingsPreview modal="modalAvatar" image=user.avatar onClick=onModal name=user.first_name }}}
       {{> SettingsElement type="text" label="Email" value=user.email }}
       {{> SettingsElement type="text" label="Login" value=user.login }}
       {{> SettingsElement type="text" label="Name" value=user.first_name }}
@@ -16,4 +16,5 @@
       </div>
     {{/Settings}}
   </div>
+  {{{ ModalAvatar ref='modalAvatar' }}}
 </div>

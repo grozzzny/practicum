@@ -6,6 +6,10 @@
   align-self: stretch;
 }
 
+.settingsPreview:hover .settingsPreview__name {
+  text-decoration: underline;
+}
+
 .settingsPreview__image {
   display: flex;
   border: none;
@@ -16,6 +20,11 @@
   border-radius: 50px;
   overflow: hidden;
   transition: 0.2s all ease;
+}
+
+.settingsPreview__image img{
+  object-fit: cover;
+  object-position: center;
 }
 
 .settingsPreview__image:hover {

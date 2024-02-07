@@ -23,6 +23,10 @@ export type User = {
 
 export type DataProfileEditForm = Omit<User, 'id' | 'avatar'>
 
+export type DataAvatarForm = {
+	avatar: File
+}
+
 type LastMessage = {
 	user: User
 	time: string
