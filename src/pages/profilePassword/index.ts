@@ -1,62 +1,30 @@
 import template from './profilePassword.hbs?raw'
 import Block from '../../core/Block'
-import {
-	NameValidator,
-	Validator,
-	emptyValidator,
-	passwordValidator
-} from '../../utils/validators'
-import { SettingsEditElement } from '../../components'
 import { SetTitle } from '../../utils/decorators'
+import { DataProfilePasswordForm } from '../../type'
+import { FormPassword } from '../../components'
+import UserController from '../../controllers/UserController'
+import { ErrorAPI } from '../../utils/HTTPTransport'
 
 interface ProfilePasswordPageProps {
-	onSave: (event: PointerEvent) => void
-	validators: Record<NameValidator, Validator>
-}
-
-type DataProfilePasswordForm = {
-	password: string
+	onSave: (data: DataProfilePasswordForm) => void
 }
 
 @SetTitle('Change password')
 export class ProfilePasswordPage extends Block<
 	ProfilePasswordPageProps,
 	{
-		old_password: SettingsEditElement
-		new_password: SettingsEditElement
-		new_password_repeat: SettingsEditElement
+		form: FormPassword
 	},
 	HTMLElement
 > {
-	constructor() {
+	constructor(props: ProfilePasswordPageProps) {
 		super({
-			validators: {
-				password: passwordValidator,
-				empty: emptyValidator
-			},
-			onSave: (event: PointerEvent) => {
-				event.preventDefault()
-				const old_password = this.refs.old_password.value()
-				const new_password = this.refs.new_password.value()
-				const new_password_repeat = this.refs.new_password_repeat.value()
-
-				if (!old_password || !new_password || !new_password_repeat) {
-					return
-				}
-
-				if (new_password !== new_password_repeat) {
-					this.refs.new_password_repeat.setError('Passwords do not match')
-
-					return
-				}
-
-				this.refs.new_password_repeat.removeError()
-
-				const data: DataProfilePasswordForm = {
-					password: new_password
-				}
-
-				console.log(data)
+			...props,
+			onSave: (data: DataProfilePasswordForm) => {
+				UserController.changePassword(data).catch((error: ErrorAPI) => {
+					this.refs.form.showError(error.reason)
+				})
 			}
 		}, 'flex')
 	}
@@ -65,3 +33,4 @@ export class ProfilePasswordPage extends Block<
 		return template
 	}
 }
+

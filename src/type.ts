@@ -21,6 +21,8 @@ export type User = {
 	email: string
 }
 
+export type DataProfileEditForm = Omit<User, 'id' | 'avatar'>
+
 type LastMessage = {
 	user: User
 	time: string
@@ -42,4 +44,9 @@ export type DataRegistrationForm = {
 	second_name: string
 	phone: string
 	password: string
+}
+
+export type DataProfilePasswordForm = {
+	oldPassword: string
+	newPassword: string
 }

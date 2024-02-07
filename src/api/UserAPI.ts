@@ -1,12 +1,12 @@
 import { BaseAPI } from './BaseAPI'
-import { User } from '../type'
+import { DataProfileEditForm, DataProfilePasswordForm, User } from '../type'
 
 class UserAPI extends BaseAPI {
 	constructor() {
 		super('/user')
 	}
 
-	public changeProfile(data: Omit<User, 'id' | 'avatar'>) {
+	public changeProfile(data: DataProfileEditForm) {
 		return this.transport().put<User>('/profile', {
 			data
 		})
@@ -20,7 +20,7 @@ class UserAPI extends BaseAPI {
 		})
 	}
 
-	public changePassword(data: { oldPassword: string; newPassword: string }) {
+	public changePassword(data: DataProfilePasswordForm) {
 		return this.transport().put<unknown>('/password', {
 			data
 		})

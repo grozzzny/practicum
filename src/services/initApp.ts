@@ -3,7 +3,7 @@ import {
 	ChatsPageConnect,
 	ErrorPage,
 	LoginPage,
-	ProfileEditPage,
+	ProfileEditPageConnect,
 	ProfilePageConnect,
 	ProfilePasswordPage,
 	RegisterPage
@@ -15,7 +15,7 @@ export const initApp = async () => {
 		.use('/', LoginPage, [redirectToMessenger])
 		.use('/sign-up', RegisterPage, [redirectToMessenger])
 		.use('/settings', ProfilePageConnect, [redirectToHome])
-		.use('/profile', ProfileEditPage, [redirectToHome])
+		.use('/profile', ProfileEditPageConnect, [redirectToHome])
 		.use('/password', ProfilePasswordPage, [redirectToHome])
 		.use('/messenger', ChatsPageConnect, [redirectToHome])
 		.use(/.*?/, ErrorPage)

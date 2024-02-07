@@ -2,18 +2,7 @@
   {{{ Side close=true }}}
   <div class='container-chats__content container-chats__content--top'>
     {{#> Settings title="Change data" }}
-      {{#> FormAuth }}
-        {{{ SettingsEditElement type="text" name="email" label="Email" value="grozzzzny@yandex" ref="email" validate=validators.email }}}
-        {{{ SettingsEditElement type="text" name="login" label="Login" value="grozzzzny" ref="login" validate=validators.login }}}
-        {{{ SettingsEditElement type="text" name="first_name" label="Name" value="Dmitriy" ref="first_name" validate=validators.first_name }}}
-        {{{ SettingsEditElement type="text" name="second_name" label="Surname" value="Groznyy" ref="second_name" validate=validators.second_name }}}
-        {{{ SettingsEditElement type="text" name="display_name" label="Name in chat" value="Dmitriy" ref="display_name" validate=validators.display_name }}}
-        {{{ SettingsEditElement type="text" name="phone" label="Phone" value="79114587142" ref="phone" validate=validators.phone }}}
-        <div class='settings__buttons'>
-          {{{ Button label="Save" type="primary" typeButton="submit" onClick=onSave }}}
-          {{{ Button label="Cancel" type="link" page="/settings" }}}
-        </div>
-      {{/FormAuth}}
+      {{{ FormProfile ref="form" user=user onSave=onSave }}}
     {{/Settings}}
   </div>
 </div>
