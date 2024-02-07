@@ -153,6 +153,7 @@ class Block<
 
 		if (this._element) {
 			this._removeEventsElement()
+			newElement.style.display = this._element.style.display
 			this._element.replaceWith(newElement)
 		}
 
