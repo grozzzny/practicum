@@ -46,18 +46,6 @@ export class Chat extends Block<
 		}, 'flex')
 	}
 
-	protected init() {
-		this.eventsElement = {
-			load: () => {
-				const scrollableDiv = document.getElementsByClassName('chat__body')
-
-				if (scrollableDiv.length > 0) {
-					scrollableDiv[0].scrollTop = scrollableDiv[0].scrollHeight
-				}
-			}
-		}
-	}
-
 	protected render(): string {
 		return template
 	}

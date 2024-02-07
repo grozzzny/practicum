@@ -1,7 +1,20 @@
+import Block, { RefType } from '../../core/Block'
+import template from './messages.hbs?raw'
 import './messages.css'
 import Handlebars from 'handlebars'
 
-export { default as Messages } from './messages.hbs?raw'
+export interface MessagesProps {}
+
+export class Messages extends Block<MessagesProps, RefType, HTMLElement> {
+	protected render(): string {
+		return template
+	}
+
+	componentDidMount() {
+		this.element.parentElement!.scrollTop = this.element.parentElement!.scrollHeight
+		this.element.style.visibility = 'visible'
+	}
+}
 
 Handlebars.registerHelper('messages', () => [
 	{
