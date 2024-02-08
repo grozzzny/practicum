@@ -1,17 +1,16 @@
 import Block from '../../core/Block'
 import template from './dialog.hbs?raw'
 import './dialog.css'
-import { ChatType } from '../../data/chats'
+import { ChatType } from '../../type'
+import { getUrlAvatar } from '../../services/userService'
+import store from '../../core/Store'
 
 interface DialogProps {
-	id: number
+	activeChat?: ChatType
+	chat: ChatType
 	active: boolean
-	avatar: string
-	time: string
-	name: string
-	message: string
-	count: number
-	onHandler: (event: Event, chat: ChatType) => void
+	time: string | undefined
+	avatar: string | undefined
 }
 
 export class Dialog extends Block<
@@ -21,13 +20,20 @@ export class Dialog extends Block<
 > {
 	constructor(props: DialogProps) {
 		super({
-			...props
+			...props,
+			active: props.activeChat?.id === props.chat.id,
+			time: props.chat.last_message?.time,
+			avatar: props.chat.avatar ? getUrlAvatar(props.chat.avatar) : undefined
 		})
 	}
 
 	protected init() {
 		this.eventsElement = {
-			click: (event) => this.props.onHandler(event, this.props)
+			click: () => {
+				if(!this.props.active) {
+					store.set('activeChat', this.props.chat)
+				}
+			}
 		}
 	}
 

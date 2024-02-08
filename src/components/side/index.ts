@@ -2,16 +2,16 @@ import Block from '../../core/Block'
 import template from './side.hbs?raw'
 import './side.css'
 import { Input } from '../input'
-import { ChatType } from '../../data/chats'
-import { User } from '../../type'
+import { ChatType, User } from '../../type'
 import { getUrlAvatar } from '../../services/userService'
 
 interface SideProps {
 	close?: boolean
 	chats: ChatType[]
-	onHandler: (event: Event, chat: ChatType) => void
 	user?: User,
+	activeChat?: ChatType,
 	avatar: string | undefined
+	onModal: (event: Event, modal: string | undefined) => void
 }
 
 export class Side extends Block<

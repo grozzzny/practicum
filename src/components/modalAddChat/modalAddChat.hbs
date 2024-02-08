@@ -1,0 +1,9 @@
+<div>
+  {{#if modalVisible}}
+    <div class='modal__background'>
+      {{#> Modal type="default" title="Add chat" }}
+        {{{ FormOneField btnText="Add" label="Title" validator=validator ref="form" onSend=onSend}}}
+      {{/Modal}}
+    </div>
+  {{/if}}
+</div>

@@ -11,16 +11,11 @@
       {{{ Input ref="search" type='search' name='search' placeholder='Search' }}}
     </div>
     <div class='side__dialogs'>
+      {{#> Menu type="side" }}
+        {{{ MenuElement modal="addChat" icon="menuIcons/add.png" onClick=onModal label="Add chat" }}}
+      {{/Menu}}
       {{#each chats}}
-        {{{ Dialog id=this.id
-                   active=this.active
-                   avatar=this.avatar
-                   time=this.time
-                   name=this.name
-                   message=this.message
-                   count=this.count
-                   onHandler=../onHandler
-        }}}
+        {{{ Dialog activeChat=../activeChat chat=this }}}
       {{/each}}
     </div>
   </div>

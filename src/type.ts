@@ -1,7 +1,7 @@
 export type AppState = {
 	error: string | null
 	user: User | null
-	isOpenDialogChat: boolean
+	activeChat: ChatType | null,
 	chats: ChatType[]
 }
 
@@ -23,8 +23,8 @@ export type User = {
 
 export type DataProfileEditForm = Omit<User, 'id' | 'avatar'>
 
-export type DataCreateForm = {
-	login: string
+export type DataFormOneField = {
+	value: string
 }
 
 export type DataAvatarForm = {
@@ -63,4 +63,8 @@ export type QyeryParamsGetChats = {
 	offset?: string
 	limit?: string
 	title?: string
+}
+
+export type DataCreateChat = {
+	title: string
 }

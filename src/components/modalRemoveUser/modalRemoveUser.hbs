@@ -2,12 +2,7 @@
   {{#if modalVisible}}
     <div class='modal__background'>
       {{#> Modal type="default" title="Remove User" }}
-        {{#> FormAuth }}
-          {{{ Field ref="login" type="text" name="login" label="Login" validate=validators.login }}}
-          <div class='container-modal__buttons'>
-            {{{ Button label="Remove" type="primary" onClick=onSend }}}
-          </div>
-        {{/FormAuth}}
+        {{{ FormOneField btnText="Add" label="Login" validator=validator ref="form" onSend=onSend}}}
       {{/Modal}}
     </div>
   {{/if}}

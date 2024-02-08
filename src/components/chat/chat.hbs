@@ -1,36 +1,28 @@
-<div class='container-chats__content'>
-  <div class='chat'>
-    <div class='chat__header'>
-      {{#if selectedChat}}
+{{#if activeChat}}
+  <div class='container-chats__content'>
+    <div class='chat'>
+      <div class='chat__header'>
         <div class='profile hover-disabled'>
           <div class='profile__avatar'>
             <img width='64px' height='64px' src={{#if avatar}}{{avatar}}{{else}}ellipse.svg{{/if}} alt='avatar'>
           </div>
           <div class='profile__name'>
-            {{selectedChat.name}}
+            {{activeChat.title}}
           </div>
         </div>
-      {{/if}}
-      <div class='menu-profile'>
-        <button class='menu-profile__btn'>
-          <img class='hover-disabled' width='27px' height='45px' src='btnMenu.svg' alt='btn'>
-        </button>
-        {{#> Menu type="top" }}
-          {{{ MenuElement modal="addUser" icon="menuIcons/add.png" onClick=onModal label="Add user" }}}
-          {{{ MenuElement modal="removeUser" icon="menuIcons/del.png" onClick=onModal label="Remove user" }}}
-        {{/Menu}}
-      </div>
-    </div>
-    <div class='chat__body'>
-      {{#if selectedChat}}
-            {{{ Messages }}}
-      {{else}}
-        <div class='container-chats__content container-chats__content--center'>
-          <span>Select a chat room to send a message</span>
+        <div class='menu-profile'>
+          <button class='menu-profile__btn'>
+            <img class='hover-disabled' width='27px' height='45px' src='btnMenu.svg' alt='btn'>
+          </button>
+          {{#> Menu type="top" }}
+            {{{ MenuElement modal="addUser" icon="menuIcons/add.png" onClick=onModal label="Add user" }}}
+            {{{ MenuElement modal="removeUser" icon="menuIcons/del.png" onClick=onModal label="Remove user" }}}
+          {{/Menu}}
         </div>
-      {{/if}}
-    </div>
-    {{#if selectedChat}}
+      </div>
+      <div class='chat__body'>
+        {{{ Messages }}}
+      </div>
       <div class='chat__footer'>
         <div class='message-control'>
           <div class='message-control__attachments'>
@@ -53,6 +45,10 @@
           </div>
         </div>
       </div>
-    {{/if}}
+    </div>
   </div>
-</div>
+{{else}}
+  <div class='container-chats__content container-chats__content--center'>
+    <span>Select a chat room to send a message</span>
+  </div>
+{{/if}}

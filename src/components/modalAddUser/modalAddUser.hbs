@@ -2,7 +2,7 @@
   {{#if modalVisible}}
     <div class='modal__background'>
       {{#> Modal type="default" title="Add User" }}
-        {{{ FormCreate ref="form" onCreate=onCreate}}}
+        {{{ FormOneField btnText="Add" label="Login" validator=validator ref="form" onSend=onSend}}}
       {{/Modal}}
     </div>
   {{/if}}

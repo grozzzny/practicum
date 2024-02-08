@@ -8,7 +8,7 @@ import { ChatType, User } from '../../type'
 const CLASS_NAME_INPUT_ERROR = 'input__error'
 
 interface ChatProps {
-	selectedChat: ChatType | null
+	activeChat: ChatType | null
 	onSend: (event: PointerEvent | SubmitEvent) => void
 	onModal: (event: Event, modal: string | undefined) => void
 	user: User

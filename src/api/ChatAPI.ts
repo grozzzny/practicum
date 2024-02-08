@@ -1,5 +1,5 @@
 import { BaseAPI } from './BaseAPI'
-import { ChatType, QyeryParamsGetChats, User } from '../type'
+import { ChatType, DataCreateChat, QyeryParamsGetChats, User } from '../type'
 
 class ChatAPI extends BaseAPI {
 	constructor() {
@@ -12,8 +12,8 @@ class ChatAPI extends BaseAPI {
 		})
 	}
 
-	public createChat(data: { title: string }) {
-		return this.transport().post<unknown>('', {
+	public createChat(data: DataCreateChat) {
+		return this.transport().post<{id: number}>('', {
 			data
 		})
 	}
