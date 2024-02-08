@@ -1,21 +1,16 @@
 import template from './modalAddUser.hbs?raw'
 import { ModalBlock, ModalProps } from '../modalBlock'
-import { Field } from '../field'
-import {
-	NameValidator,
-	Validator,
-	loginValidator
-} from '../../utils/validators'
+import { DataCreateForm } from '../../type'
+import { FormCreate } from '../formCreate'
 
 interface ModalAddUserProps extends ModalProps {
-	onSend: (event: PointerEvent) => void
-	validators: Record<NameValidator, Validator>
+	onCreate: (data: DataCreateForm) => void
 }
 
 export class ModalAddUser extends ModalBlock<
 	ModalAddUserProps,
 	{
-		login: Field
+		form: FormCreate
 	}
 > {
 	public modalName = 'addUser'
@@ -23,26 +18,8 @@ export class ModalAddUser extends ModalBlock<
 	constructor(props: ModalAddUserProps) {
 		super({
 			...props,
-			validators: {
-				login: loginValidator
-			},
-			onSend: (event: PointerEvent) => {
-				event.preventDefault()
-				const login = this.refs.login.value()
-
-				if (!login) {
-					return
-				}
-
-				const data: { login: string } = {
-					login
-				}
-
+			onCreate: (data: DataCreateForm) => {
 				console.log(data)
-
-				this.setProps({
-					modalVisible: false
-				})
 			}
 		})
 	}

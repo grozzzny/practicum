@@ -1,10 +1,9 @@
 import Block from '../../core/Block'
 import template from './chat.hbs?raw'
 import './chat.css'
-import { ChatType } from '../../data/chats'
 import { Input } from '../input'
 import { messageValidator } from '../../utils/validators'
-import { User } from '../../type'
+import { ChatType, User } from '../../type'
 
 const CLASS_NAME_INPUT_ERROR = 'input__error'
 

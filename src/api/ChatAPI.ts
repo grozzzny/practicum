@@ -1,13 +1,13 @@
 import { BaseAPI } from './BaseAPI'
-import { User } from './AuthAPI'
+import { ChatType, QyeryParamsGetChats, User } from '../type'
 
 class ChatAPI extends BaseAPI {
 	constructor() {
 		super('/chats')
 	}
 
-	public getChats(data: { offset?: string; limit?: string; title?: string }) {
-		return this.transport().get<Chat[]>('', {
+	public getChats(data: QyeryParamsGetChats) {
+		return this.transport().get<ChatType[]>('', {
 			data
 		})
 	}
@@ -53,26 +53,6 @@ class ChatAPI extends BaseAPI {
 
 	public addUser(data: { users: number[]; chatId: number }) {
 		return this.transport().put<unknown>(`/users`, { data })
-	}
-}
-
-export type Chat = {
-	id: number
-	title: string
-	avatar: string
-	unread_count: number
-	created_by: number
-	last_message?: {
-		user: {
-			first_name: string
-			second_name: string
-			avatar: string
-			email: string
-			login: string
-			phone: string
-		}
-		time: string
-		content: string
 	}
 }
 

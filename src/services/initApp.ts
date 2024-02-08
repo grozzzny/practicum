@@ -8,7 +8,7 @@ import {
 	ProfilePasswordPage,
 	RegisterPage
 } from '../pages'
-import { redirectToHome, redirectToMessenger } from '../utils/middlewares'
+import { loadChats, redirectToHome, redirectToMessenger } from '../utils/middlewares'
 
 export const initApp = async () => {
 	router
@@ -17,7 +17,7 @@ export const initApp = async () => {
 		.use('/settings', ProfilePageConnect, [redirectToHome])
 		.use('/profile', ProfileEditPageConnect, [redirectToHome])
 		.use('/password', ProfilePasswordPage, [redirectToHome])
-		.use('/messenger', ChatsPageConnect, [redirectToHome])
+		.use('/messenger', ChatsPageConnect, [redirectToHome, loadChats])
 		.use(/.*?/, ErrorPage)
 
 	await router.start()
