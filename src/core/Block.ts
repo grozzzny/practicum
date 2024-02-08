@@ -47,8 +47,7 @@ class Block<
 	private _element: Element = null as Element
 
 	constructor(
-		props: Props = {} as Props,
-		private readonly styleDisplay: 'flex' | 'block' = 'block'
+		props: Props = {} as Props
 	) {
 		this.props = this._makePropsProxy(props)
 		this.eventBus = new EventBus()
@@ -236,14 +235,6 @@ class Block<
 				throw new Error('No access')
 			}
 		})
-	}
-
-	show() {
-		this.getContent()!.style.display = this.styleDisplay
-	}
-
-	hide() {
-		this.getContent()!.style.display = 'none'
 	}
 }
 

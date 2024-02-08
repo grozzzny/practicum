@@ -26,7 +26,7 @@ export class ProfilePasswordPage extends Block<
 					this.refs.form.showError(error.reason)
 				})
 			}
-		}, 'flex')
+		})
 	}
 
 	protected render(): string {

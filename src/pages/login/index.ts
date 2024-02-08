@@ -26,8 +26,7 @@ export class LoginPage extends Block<
 						this.refs.form.showError(error.reason)
 					})
 				}
-			},
-			'flex'
+			}
 		)
 	}
 

@@ -45,8 +45,7 @@ export class ChatsPage extends Block<
 						}
 					})
 				}
-			},
-			'flex'
+			}
 		)
 	}
 

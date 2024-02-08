@@ -32,8 +32,7 @@ export class ProfilePage extends Block<ProfilePageProps, {
 						}
 					})
 				}
-			},
-			'flex'
+			}
 		)
 	}
 
