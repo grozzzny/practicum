@@ -16,6 +16,7 @@ class Store extends EventBus<StoreEventMethods> {
 		user: null,
 		activeChat: null,
 		chatUsers: [],
+		messages: [],
 		chats: []
 	}
 

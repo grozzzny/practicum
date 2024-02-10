@@ -1,5 +1,5 @@
 import EventBus from '../core/EventBus'
-import { Message } from '../type'
+import { MessageType } from '../type'
 
 export enum WSEvents {
 	Error = 'error',
@@ -9,7 +9,7 @@ export enum WSEvents {
 }
 
 type WSEventMethods = {
-	[WSEvents.Message]: [Message]
+	[WSEvents.Message]: [MessageType]
 	[WSEvents.Error]: [Event]
 	[WSEvents.Connected]: [void]
 	[WSEvents.Close]: [void]

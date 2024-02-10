@@ -19,8 +19,7 @@ class ChatWS {
 			this.transport.on(WSEvents.Connected, async () => {
 				console.log('WSEvents.Connected')
 				this.transport?.on(WSEvents.Message, updateMessages)
-				const messages = await this.getMessages()
-				console.log('messages', messages)
+				await this.getMessages()
 			})
 
 			this.transport.on(WSEvents.Close, () => {

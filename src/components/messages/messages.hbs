@@ -1,4 +1,4 @@
-<div class='messages messages--hidden'>
+<div class='messages'>
   <div class="messages-loader"></div>
   <div class='messages--container'>
     {{#if isFewUsers}}
@@ -6,11 +6,8 @@
         Add a user to the chat
       </div>
     {{else}}
-      <div class='message-datetime'>
-        14 December
-      </div>
-      {{#each (messages)}}
-        {{> Message}}
+      {{#each messages}}
+        {{{ Message user=../user message=this }}}
       {{/each}}
     {{/if}}
   </div>

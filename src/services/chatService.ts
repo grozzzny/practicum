@@ -1,13 +1,15 @@
 import {
 	ChatType,
 	DataCreateChat,
-	DataLogin, Message,
-	QyeryParamsGetChats,
+	DataLogin,
+	MessageType,
+	QyeryParamsGetChats
 } from '../type'
 import ChatAPI from '../api/ChatAPI'
 import store from '../core/Store'
 import ChatWS from '../api/ChatWS'
 import { search } from './userService'
+import { sanitizeInput } from '../utils/helper'
 
 export const getChats = (data: QyeryParamsGetChats) => {
 	return ChatAPI.getChats(data)
@@ -54,17 +56,27 @@ export const createChat = (data: DataCreateChat) => {
 }
 
 export const sendMessage = async (message: string) => {
-	await ChatWS.sendMessage(message)
+	await ChatWS.sendMessage(sanitizeInput(message))
 }
 
-export const updateMessages = (data: Message) => {
-	console.log('data', data)
+export const updateMessages = (data: MessageType | MessageType[]) => {
+	const oldMessages = store.getState().messages
+	let newMessages: MessageType[] = []
+	if(Array.isArray(data)){
+		newMessages = [...oldMessages, ...data]
+		const sort = (a:Record<string, any>, b: Record<string, any>) => (b.time - a.time ? 1 : -1);
+		newMessages.sort(sort);
+	} else {
+		newMessages =[...oldMessages, data]
+	}
+
+	store.set('messages', newMessages)
 }
 
 export const setActiveChat = async (chat: ChatType) => {
 	ChatWS.dicsonnect()
 	const state = store.getState()
-	// store.set('messages', [])
+	store.set('messages', [])
 
 	store.set('activeChat', chat)
 	const chatUsers = await getUsers(chat.id)

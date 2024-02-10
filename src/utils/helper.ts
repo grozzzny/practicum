@@ -8,6 +8,19 @@ export type Indexed<T = unknown> = {
 	[key in string]: T
 }
 
+export function sanitizeInput(input: string): string {
+	return input.replace(/</g, '&lt;').replace(/>/g, '&gt;')
+}
+
+export function formatDateTime(inputDate: string): string {
+	const dateObj = new Date(inputDate)
+
+	const hours = dateObj.getHours().toString().padStart(2, '0')
+	const minutes = dateObj.getMinutes().toString().padStart(2, '0')
+
+	return `${hours}:${minutes}`
+}
+
 export function set(
 	object: Indexed | unknown,
 	path: string,

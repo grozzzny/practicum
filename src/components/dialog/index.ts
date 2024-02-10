@@ -4,6 +4,7 @@ import './dialog.css'
 import { ChatType } from '../../type'
 import { getUrlAvatar } from '../../services/userService'
 import { setActiveChat } from '../../services/chatService'
+import { formatDateTime } from '../../utils/helper'
 
 interface DialogProps {
 	activeChat?: ChatType
@@ -22,7 +23,7 @@ export class Dialog extends Block<
 		super({
 			...props,
 			active: props.activeChat?.id === props.chat.id,
-			time: props.chat.last_message?.time,
+			time: props.chat.last_message ? formatDateTime(props.chat.last_message.time) : '',
 			avatar: props.chat.avatar ? getUrlAvatar(props.chat.avatar) : undefined
 		})
 	}

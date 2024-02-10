@@ -2,6 +2,7 @@ export type AppState = {
 	error: string | null
 	user: User | null
 	chatUsers: User[]
+	messages: MessageType[]
 	activeChat: ChatType | null
 	chats: ChatType[]
 }
@@ -81,7 +82,7 @@ export type DataCreateChat = {
 	title: string
 }
 
-export type Message = {
+export type MessageType = {
 	chat_id: number
 	content: string
 	id: number
@@ -89,6 +90,7 @@ export type Message = {
 	time: string
 	type: string
 	user_id: number
+	file?: null | string
 }
 
 export type DataFormSend = {

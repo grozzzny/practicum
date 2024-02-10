@@ -4,6 +4,7 @@ import './chat.css'
 import { ChatType, DataFormSend, User } from '../../type'
 import { FormSend } from '../formSend'
 import { sendMessage } from '../../services/chatService'
+import { Messages } from '../messages'
 
 interface ChatProps {
 	activeChat: ChatType | null
@@ -11,6 +12,7 @@ interface ChatProps {
 	onSend: (data: DataFormSend) => void
 	onModal: (event: Event, modal: string | undefined) => void
 	user: User
+	messages: Messages[]
 }
 
 export class Chat extends Block<
@@ -26,6 +28,7 @@ export class Chat extends Block<
 			onSend: ({message}: DataFormSend) => {
 				sendMessage(message).then(() => {
 					this.refs.form.clear()
+					this.refs.form.focus()
 				}).catch((error) => {
 					this.refs.form.showError(error)
 				})

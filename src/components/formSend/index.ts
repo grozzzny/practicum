@@ -61,7 +61,15 @@ export class FormSend extends Form<
 		this.refs.message.clear()
 	}
 
+	public focus() {
+		this.refs.message.focus()
+	}
+
 	protected render(): string {
 		return template
+	}
+
+	componentDidMount() {
+		this.refs.message.focus()
 	}
 }

@@ -23,6 +23,11 @@ export class Input extends Block<InputProps, RefType, HTMLElement> {
 		return this.element.getElementsByTagName('input')[0].value = ''
 	}
 
+	public focus() {
+		console.log('this.element.getElementsByTagName(\'input\')[0]', this.element.getElementsByTagName('input')[0])
+		return this.element.getElementsByTagName('input')[0].focus()
+	}
+
 	public value(): string {
 		return this.element.getElementsByTagName('input')[0].value
 	}
