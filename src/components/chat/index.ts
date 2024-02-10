@@ -10,6 +10,7 @@ interface ChatProps {
 	activeChat: ChatType | null
 	chatUsers: User[]
 	onSend: (data: DataFormSend) => void
+	onAdd: (event: Event) => void
 	onModal: (event: Event, modal: string | undefined) => void
 	user: User
 	messages: Messages[]
@@ -25,6 +26,10 @@ export class Chat extends Block<
 	constructor(props: ChatProps) {
 		super({
 			...props,
+			onAdd: (event) => {
+				event.preventDefault()
+				alert('not work')
+			},
 			onSend: ({message}: DataFormSend) => {
 				sendMessage(message).then(() => {
 					this.refs.form.clear()

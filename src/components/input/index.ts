@@ -24,7 +24,6 @@ export class Input extends Block<InputProps, RefType, HTMLElement> {
 	}
 
 	public focus() {
-		console.log('this.element.getElementsByTagName(\'input\')[0]', this.element.getElementsByTagName('input')[0])
 		return this.element.getElementsByTagName('input')[0].focus()
 	}
 
