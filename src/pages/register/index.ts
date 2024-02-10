@@ -3,7 +3,7 @@ import Block from '../../core/Block'
 import { FormRegistration } from '../../components'
 import { SetTitle } from '../../utils/decorators'
 import AuthController from '../../controllers/AuthController'
-import { ErrorAPI } from '../../utils/HTTPTransport'
+import { ErrorAPIType } from '../../utils/HTTPTransport'
 import { DataRegistrationForm } from '../../type'
 
 interface RegisterPageProps {
@@ -21,7 +21,7 @@ export class RegisterPage extends Block<
 	constructor() {
 		super({
 			onRegister: (data: DataRegistrationForm) => {
-				AuthController.signup(data).catch((error: ErrorAPI) => {
+				AuthController.signup(data).catch((error: ErrorAPIType) => {
 					this.refs.form.showError(error.reason)
 				})
 			}

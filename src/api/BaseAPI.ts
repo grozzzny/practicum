@@ -1,6 +1,6 @@
 import { HTTPTransport } from '../utils/HTTPTransport'
 
-const URL_API = 'https://ya-praktikum.tech/api/v2'
+export const URL_API = 'https://ya-praktikum.tech/api/v2'
 
 // @see https://ya-praktikum.tech/api/v2/swagger
 export abstract class BaseAPI {

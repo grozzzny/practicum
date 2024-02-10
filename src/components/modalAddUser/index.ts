@@ -3,6 +3,8 @@ import { ModalBlock, ModalProps } from '../modalBlock'
 import { DataFormOneField } from '../../type'
 import { FormOneField } from '../formOneField'
 import { loginValidator, Validator } from '../../utils/validators'
+import { addUser } from '../../services/chatService'
+import { ErrorAPIType } from '../../utils/HTTPTransport'
 
 interface ModalAddUserProps extends ModalProps {
 	onSend: (data: DataFormOneField) => void
@@ -21,12 +23,16 @@ export class ModalAddUser extends ModalBlock<
 		super({
 			...props,
 			validator: loginValidator,
-			onSend: (data: DataFormOneField) => {
-				console.log(data)
-				this.refs.form.showError(data.value)
-				// this.setProps({
-				// 	modalVisible: false
-				// })
+			onSend: ({ value: login }: DataFormOneField) => {
+				addUser({ login })
+					.then(() => {
+						this.setProps({
+							modalVisible: false
+						})
+					})
+					.catch((error: ErrorAPIType) => {
+						this.refs.form.showError(error.reason)
+					})
 			}
 		})
 	}

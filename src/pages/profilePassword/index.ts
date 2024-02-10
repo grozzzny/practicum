@@ -4,7 +4,7 @@ import { SetTitle } from '../../utils/decorators'
 import { DataProfilePasswordForm } from '../../type'
 import { FormPassword } from '../../components'
 import UserController from '../../controllers/UserController'
-import { ErrorAPI } from '../../utils/HTTPTransport'
+import { ErrorAPIType } from '../../utils/HTTPTransport'
 
 interface ProfilePasswordPageProps {
 	onSave: (data: DataProfilePasswordForm) => void
@@ -22,7 +22,7 @@ export class ProfilePasswordPage extends Block<
 		super({
 			...props,
 			onSave: (data: DataProfilePasswordForm) => {
-				UserController.changePassword(data).catch((error: ErrorAPI) => {
+				UserController.changePassword(data).catch((error: ErrorAPIType) => {
 					this.refs.form.showError(error.reason)
 				})
 			}

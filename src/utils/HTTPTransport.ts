@@ -15,7 +15,16 @@ type RequestOptions = {
 	responseType?: XMLHttpRequestResponseType
 }
 
-export type ErrorAPI = {
+export class ErrorAPI extends Error {
+	reason: string
+	constructor(reason: string) {
+		super('API error')
+		this.name = 'ErrorAPI'
+		this.reason = reason
+	}
+}
+
+export type ErrorAPIType = {
 	status?: number
 	reason: string
 }
@@ -71,7 +80,7 @@ export class HTTPTransport {
 			responseType = 'json'
 		} = options
 
-		return new Promise((resolve, reject: (error: ErrorAPI) => void) => {
+		return new Promise((resolve, reject: (error: ErrorAPIType) => void) => {
 			const xhr = new XMLHttpRequest()
 			xhr.open(method, `${this.urlApi}${url}`)
 

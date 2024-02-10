@@ -2,17 +2,46 @@ import Block, { RefType } from '../../core/Block'
 import template from './messages.hbs?raw'
 import './messages.css'
 import Handlebars from 'handlebars'
+import { ChatType, User } from '../../type'
 
-export interface MessagesProps {}
+export interface MessagesProps {
+	activeChat: ChatType | null
+	chatUsers: User[]
+	isFewUsers: boolean
+}
 
 export class Messages extends Block<MessagesProps, RefType, HTMLElement> {
+	constructor(props: MessagesProps) {
+		super({
+			...props,
+			isFewUsers: props.chatUsers.length < 2
+		})
+	}
+
 	protected render(): string {
 		return template
 	}
 
-	componentDidMount() {
-		this.element.parentElement!.scrollTop = this.element.parentElement!.scrollHeight
-		this.element.classList.remove('messages--hidden')
+	async componentDidMount() {
+		// const state = store.getState()
+		// console.log('chatUsers', this.props.chatUsers)
+		// console.log('state', state)
+			this.element.parentElement!.scrollTop = this.element.parentElement!.scrollHeight
+			this.element.classList.remove('messages--hidden')
+
+
+		// const {token} = await getToken(state.activeChat?.id!)
+		// console.log('token', token)
+		// ChatWS.connect({
+		// 	userId: state.user?.id!,
+		// 	chatId: state.activeChat?.id!,
+		// 	token: token
+		// }).then(() => {
+		// 	this.element.parentElement!.scrollTop = this.element.parentElement!.scrollHeight
+		// 	this.element.classList.remove('messages--hidden')
+		// }).catch((error) => {
+		// 	console.error(error)
+		// })
 	}
 }
 

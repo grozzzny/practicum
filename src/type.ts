@@ -1,13 +1,18 @@
 export type AppState = {
 	error: string | null
 	user: User | null
-	activeChat: ChatType | null,
+	chatUsers: User[]
+	activeChat: ChatType | null
 	chats: ChatType[]
 }
 
 export type DataLoginForm = {
 	login: string
 	password: string
+}
+
+export type DataLogin = {
+	login: string
 }
 
 export type User = {
@@ -19,6 +24,13 @@ export type User = {
 	login: string
 	avatar: string
 	email: string
+}
+
+export type DataChatId = { chatId: number }
+
+export type DataUserChat = {
+	users: number[]
+	chatId: number
 }
 
 export type DataProfileEditForm = Omit<User, 'id' | 'avatar'>
@@ -67,4 +79,18 @@ export type QyeryParamsGetChats = {
 
 export type DataCreateChat = {
 	title: string
+}
+
+export type Message = {
+	chat_id: number
+	content: string
+	id: number
+	is_read: boolean
+	time: string
+	type: string
+	user_id: number
+}
+
+export type DataFormSend = {
+	message: string
 }

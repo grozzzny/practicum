@@ -3,7 +3,7 @@ import template from './dialog.hbs?raw'
 import './dialog.css'
 import { ChatType } from '../../type'
 import { getUrlAvatar } from '../../services/userService'
-import store from '../../core/Store'
+import { setActiveChat } from '../../services/chatService'
 
 interface DialogProps {
 	activeChat?: ChatType
@@ -31,7 +31,7 @@ export class Dialog extends Block<
 		this.eventsElement = {
 			click: () => {
 				if(!this.props.active) {
-					store.set('activeChat', this.props.chat)
+					setActiveChat(this.props.chat)
 				}
 			}
 		}

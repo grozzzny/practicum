@@ -3,7 +3,7 @@ import Block from '../../core/Block'
 import { SetTitle } from '../../utils/decorators'
 import { connect } from '../../utils/connect'
 import { DataProfileEditForm, User } from '../../type'
-import { ErrorAPI } from '../../utils/HTTPTransport'
+import { ErrorAPIType } from '../../utils/HTTPTransport'
 import UserController from '../../controllers/UserController'
 import { FormProfile } from '../../components'
 
@@ -24,7 +24,7 @@ export class ProfileEditPage extends Block<
 		super({
 			...props,
 			onSave: (data: DataProfileEditForm) => {
-				UserController.changeProfile(data).catch((error: ErrorAPI) => {
+				UserController.changeProfile(data).catch((error: ErrorAPIType) => {
 					this.refs.form.showError(error.reason)
 				})
 			}

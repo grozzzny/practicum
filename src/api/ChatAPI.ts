@@ -1,5 +1,5 @@
 import { BaseAPI } from './BaseAPI'
-import { ChatType, DataCreateChat, QyeryParamsGetChats, User } from '../type'
+import { ChatType, DataUserChat, DataChatId, DataCreateChat, QyeryParamsGetChats, User } from '../type'
 
 class ChatAPI extends BaseAPI {
 	constructor() {
@@ -18,7 +18,11 @@ class ChatAPI extends BaseAPI {
 		})
 	}
 
-	public deleteChat(data: { chatId: number }) {
+	public getToken(chatId: number) {
+		return this.transport().post<{token: string}>(`/token/${chatId}`)
+	}
+
+	public deleteChat(data: DataChatId) {
 		return this.transport().delete<{
 			userId: number
 			result: {
@@ -33,8 +37,8 @@ class ChatAPI extends BaseAPI {
 	}
 
 	public getUsers(
-		id: string,
-		data: { offset?: number; limit?: number; name: string; email: string }
+		id: number,
+		data?: { offset?: number; limit?: number; name?: string; email?: string }
 	) {
 		return this.transport().get<User[]>(`/${id}/users`, {
 			data
@@ -51,8 +55,12 @@ class ChatAPI extends BaseAPI {
 		return this.transport().put<unknown>(`/avatar`, { data })
 	}
 
-	public addUser(data: { users: number[]; chatId: number }) {
+	public addUser(data: DataUserChat) {
 		return this.transport().put<unknown>(`/users`, { data })
+	}
+
+	public removeUser(data: DataUserChat) {
+		return this.transport().delete<unknown>(`/users`, { data })
 	}
 }
 

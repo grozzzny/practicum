@@ -10,6 +10,7 @@ interface ChatPageProps {
 	activeChat: ChatType
 	onModal: (event: Event, modalName: string | undefined) => void
 	user: User
+	chatUsers: User[]
 }
 
 @SetTitle('Messenger')
@@ -51,4 +52,5 @@ export const ChatsPageConnect = connect(ChatsPage, (state) => ({
 	user: state.user,
 	chats: state.chats,
 	activeChat: state.activeChat,
+	chatUsers: state.chatUsers,
 }))

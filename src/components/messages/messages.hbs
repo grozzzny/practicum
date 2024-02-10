@@ -1,11 +1,17 @@
 <div class='messages messages--hidden'>
   <div class="messages-loader"></div>
   <div class='messages--container'>
-    <div class='message-datetime'>
-      14 December
-    </div>
-    {{#each (messages)}}
-      {{> Message}}
-    {{/each}}
+    {{#if isFewUsers}}
+      <div class="no-users-message">
+        Add a user to the chat
+      </div>
+    {{else}}
+      <div class='message-datetime'>
+        14 December
+      </div>
+      {{#each (messages)}}
+        {{> Message}}
+      {{/each}}
+    {{/if}}
   </div>
 </div>

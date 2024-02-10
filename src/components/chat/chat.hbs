@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class='chat__body'>
-        {{{ Messages }}}
+        {{{ Messages activeChat=activeChat chatUsers=chatUsers }}}
       </div>
       <div class='chat__footer'>
         <div class='message-control'>
@@ -36,12 +36,10 @@
             {{/Menu}}
           </div>
           <div class='message-control__input'>
-            <form id='formMessage' name='formMessage' method='POST' onsubmit='document.getElementById("buttonSend").click(); return false;'>
-              {{{ Input ref="message" name='message' placeholder='Message..' }}}
-            </form>
+            {{{ FormSend ref="form" onSend=onSend }}}
           </div>
           <div class='message-control__send'>
-            {{{ ButtonSend formName='formMessage' onClick=onSend }}}
+            {{{ ButtonSend buttonType='submit' formName='formMessage' }}}
           </div>
         </div>
       </div>

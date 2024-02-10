@@ -21,7 +21,6 @@ export const redirectToMessenger: Middleware = async (router, next) => {
 
 export const loadChats: Middleware = async (_router, next) => {
 	const chats = await getChats({ limit: '500' })
-	console.log('chats', chats)
 	store.set('chats', chats)
 	next()
 }

@@ -6,11 +6,16 @@ export enum StoreEvents {
 	Updated = 'Updated'
 }
 
-class Store extends EventBus {
+type StoreEventMethods = {
+	[StoreEvents.Updated]: [void]
+}
+
+class Store extends EventBus<StoreEventMethods> {
 	private state: AppState = {
 		error: null,
 		user: null,
-		isOpenDialogChat: false,
+		activeChat: null,
+		chatUsers: [],
 		chats: []
 	}
 

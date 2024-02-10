@@ -3,7 +3,7 @@ import template from './login.hbs?raw'
 import { SetTitle } from '../../utils/decorators'
 import { FormLogin } from '../../components'
 import AuthController from '../../controllers/AuthController'
-import { ErrorAPI } from '../../utils/HTTPTransport'
+import { ErrorAPIType } from '../../utils/HTTPTransport'
 import { DataLoginForm } from '../../type'
 
 interface LoginPageProps {
@@ -22,7 +22,7 @@ export class LoginPage extends Block<
 		super(
 			{
 				onLogin: (data: DataLoginForm) => {
-					AuthController.signin(data).catch((error: ErrorAPI) => {
+					AuthController.signin(data).catch((error: ErrorAPIType) => {
 						this.refs.form.showError(error.reason)
 					})
 				}

@@ -1,5 +1,5 @@
 import { BaseAPI } from './BaseAPI'
-import { DataProfileEditForm, DataProfilePasswordForm, User } from '../type'
+import { DataLogin, DataProfileEditForm, DataProfilePasswordForm, User } from '../type'
 
 class UserAPI extends BaseAPI {
 	constructor() {
@@ -30,7 +30,7 @@ class UserAPI extends BaseAPI {
 		return this.transport().get<User>(`/${id}`)
 	}
 
-	public search(data: { login: string }) {
+	public search(data: DataLogin) {
 		return this.transport().post<User[]>('/search', {
 			data
 		})

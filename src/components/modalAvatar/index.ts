@@ -3,7 +3,7 @@ import { ModalBlock, ModalProps } from '../modalBlock'
 import { FormAvatar } from '../formAvatar'
 import { DataAvatarForm } from '../../type'
 import UserController from '../../controllers/UserController'
-import { ErrorAPI } from '../../utils/HTTPTransport'
+import { ErrorAPIType } from '../../utils/HTTPTransport'
 
 interface ModalAvatarProps extends ModalProps {
 	onSave: (data: DataAvatarForm) => void
@@ -25,7 +25,7 @@ export class ModalAvatar extends ModalBlock<
 					this.setProps({
 						modalVisible: false
 					})
-				}).catch((error: ErrorAPI) => {
+				}).catch((error: ErrorAPIType) => {
 					this.refs.form.showError(error.reason)
 				})
 			}

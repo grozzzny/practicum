@@ -19,6 +19,10 @@ export class Input extends Block<InputProps, RefType, HTMLElement> {
 		}
 	}
 
+	public clear() {
+		return this.element.getElementsByTagName('input')[0].value = ''
+	}
+
 	public value(): string {
 		return this.element.getElementsByTagName('input')[0].value
 	}

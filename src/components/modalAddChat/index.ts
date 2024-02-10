@@ -4,7 +4,7 @@ import { DataFormOneField } from '../../type'
 import { FormOneField } from '../formOneField'
 import { emptyValidator, Validator } from '../../utils/validators'
 import { createChat } from '../../services/chatService'
-import { ErrorAPI } from '../../utils/HTTPTransport'
+import { ErrorAPIType } from '../../utils/HTTPTransport'
 
 interface ModalAddChatProps extends ModalProps {
 	onSend: (data: DataFormOneField) => void
@@ -30,7 +30,7 @@ export class ModalAddChat extends ModalBlock<
 							modalVisible: false
 						})
 					})
-					.catch((error: ErrorAPI) => {
+					.catch((error: ErrorAPIType) => {
 						this.refs.form.showError(error.reason)
 					})
 			}
