@@ -19,7 +19,8 @@ class ChatWS {
 			this.transport.on(WSEvents.Connected, async () => {
 				console.log('WSEvents.Connected')
 				this.transport?.on(WSEvents.Message, updateMessages)
-				await this.getMessages()
+				this.getMessages('0')
+				this.getMessages('20')
 			})
 
 			this.transport.on(WSEvents.Close, () => {
@@ -50,11 +51,11 @@ class ChatWS {
 		}
 	}
 
-	public getMessages() {
+	public getMessages(offset = '0') {
 		if (this.transport) {
 			this.transport.send({
 				type: 'get old',
-				content: 0
+				content: offset
 			})
 		}
 	}

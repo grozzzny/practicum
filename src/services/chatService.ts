@@ -12,8 +12,36 @@ import { search } from './userService'
 import { sanitizeInput } from '../utils/helper'
 import { ErrorAPI } from '../utils/HTTPTransport'
 
-export const getChats = (data: QyeryParamsGetChats) => {
-	return ChatAPI.getChats(data)
+const areChatsEqual = (a: ChatType, b: ChatType): boolean => {
+	return (
+		a.unread_count === b.unread_count &&
+		(a.last_message?.time || '') === (b.last_message?.time || '')
+	)
+}
+
+const areArraysEqual = (arr1: ChatType[], arr2: ChatType[]): boolean => {
+	if (arr1.length !== arr2.length) {
+		return false
+	}
+
+	for (let i = 0; i < arr1.length; i++) {
+		if (!areChatsEqual(arr1[i], arr2[i])) {
+			return false
+		}
+	}
+
+	return true
+}
+
+export const getChats = async (
+	data: QyeryParamsGetChats
+): Promise<ChatType[]> => {
+	const chats = await ChatAPI.getChats(data)
+	const { chats: chatsStore } = store.getState()
+	if (!areArraysEqual(chatsStore, chats)) {
+		store.set('chats', chats)
+	}
+	return chats
 }
 
 export const getUsers = (chatId: number) => {
@@ -53,9 +81,9 @@ export const setActiveChat = async (chat: ChatType) => {
 	const state = store.getState()
 	store.set('messages', [])
 
-	store.set('activeChat', chat)
 	const chatUsers = await getUsers(chat.id)
 	store.set('chatUsers', chatUsers)
+	store.set('activeChat', chat)
 
 	if (chatUsers.length > 1) {
 		const { token } = await getToken(chat.id)
@@ -72,7 +100,6 @@ export const setActiveChat = async (chat: ChatType) => {
 export const createChat = (data: DataCreateChat) => {
 	return ChatAPI.createChat(data).then(async ({ id }) => {
 		const chats = await getChats({})
-		store.set('chats', chats)
 		const activeChat = chats.find((chat) => chat.id === id)!
 		setActiveChat(activeChat)
 		return { id }
@@ -87,9 +114,9 @@ export const updateMessages = (data: MessageType | MessageType[]) => {
 	const oldMessages = store.getState().messages
 	let newMessages: MessageType[] = []
 	if (Array.isArray(data)) {
+		const sort = (a: MessageType, b: MessageType) =>
+			a.time.localeCompare(b.time)
 		newMessages = [...oldMessages, ...data]
-		const sort = (a: Record<string, any>, b: Record<string, any>) =>
-			b.time - a.time ? 1 : -1
 		newMessages.sort(sort)
 	} else {
 		newMessages = [...oldMessages, data]

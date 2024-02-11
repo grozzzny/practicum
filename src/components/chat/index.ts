@@ -4,16 +4,14 @@ import './chat.css'
 import { ChatType, DataFormSend, User } from '../../type'
 import { FormSend } from '../formSend'
 import { sendMessage } from '../../services/chatService'
-import { Messages } from '../messages'
+import { connect } from '../../utils/connect'
 
 interface ChatProps {
 	activeChat: ChatType | null
-	chatUsers: User[]
 	onSend: (data: DataFormSend) => void
 	onAdd: (event: Event) => void
 	onModal: (event: Event, modal: string | undefined) => void
 	user: User
-	messages: Messages[]
 }
 
 export class Chat extends Block<
@@ -47,3 +45,8 @@ export class Chat extends Block<
 		return template
 	}
 }
+
+export const ChatConnect = connect(Chat, (state) => ({
+	user: state.user,
+	activeChat: state.activeChat
+}))

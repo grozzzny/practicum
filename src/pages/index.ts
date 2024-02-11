@@ -1,6 +1,6 @@
 export { LoginPage } from './login'
 export { RegisterPage } from './register'
-export { ChatsPageConnect } from './chats'
+export { ChatsPage } from './chats'
 export { ProfilePageConnect } from './profile'
 export { ProfileEditPageConnect } from './profileEdit'
 export { ProfilePasswordPage } from './profilePassword'
