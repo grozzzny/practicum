@@ -10,7 +10,7 @@ export const isGuest = async (): Promise<boolean> => {
 		store.set('user', user)
 		return false
 	} catch (e) {
-		console.error(e)
+		console.info(e)
 		return true
 	}
 }
