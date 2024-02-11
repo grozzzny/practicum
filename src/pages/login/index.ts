@@ -1,53 +1,29 @@
 import Block from '../../core/Block'
 import template from './login.hbs?raw'
-import { Field } from '../../components'
-import { navigate } from '../../core/navigate'
-import {
-	NameValidator,
-	Validator,
-	loginValidator,
-	passwordValidator
-} from '../../utils/validators'
+import { SetTitle } from '../../utils/decorators'
+import { FormLogin } from '../../components'
+import AuthController from '../../controllers/AuthController'
+import { ErrorAPIType } from '../../utils/HTTPTransport'
+import { DataLoginForm } from '../../type'
 
 interface LoginPageProps {
-	onLogin: (event: PointerEvent) => void
-	validators: Record<NameValidator, Validator>
+	onLogin: (data: DataLoginForm) => void
 }
 
-type DataLoginForm = {
-	login: string
-	password: string
-}
-
+@SetTitle('Login')
 export class LoginPage extends Block<
 	LoginPageProps,
 	{
-		login: Field
-		password: Field
-	}
+		form: FormLogin
+	},
+	HTMLElement
 > {
 	constructor() {
 		super({
-			validators: {
-				login: loginValidator,
-				password: passwordValidator
-			},
-			onLogin: (event: PointerEvent) => {
-				event.preventDefault()
-				const login = this.refs.login.value()
-				const password = this.refs.password.value()
-
-				if (!login || !password) {
-					return
-				}
-
-				const data: DataLoginForm = {
-					login,
-					password
-				}
-
-				console.log(data)
-				navigate('chats')
+			onLogin: (data: DataLoginForm) => {
+				AuthController.signin(data).catch((error: ErrorAPIType) => {
+					this.refs.form.showError(error.reason)
+				})
 			}
 		})
 	}

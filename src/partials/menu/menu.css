@@ -27,3 +27,18 @@
   right: 13px;
   width: 170px;
 }
+
+.menu.menu--side{
+  display: block;
+  border-left: 0;
+  position: relative;
+  box-shadow: none;
+  width: 100%;
+  border-radius: 0;
+  border-right: 0;
+  background: linear-gradient(
+          270deg,
+          rgb(238 238 238 / 100%) 0%,
+          rgb(255 255 255 / 100%) 50%
+  );
+}

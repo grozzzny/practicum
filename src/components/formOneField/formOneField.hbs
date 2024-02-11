@@ -1,0 +1,7 @@
+{{#> Form formName="formOneField" }}
+  {{{ Field ref="field" type="text" name="value" label=label validate=validator }}}
+  <div class='container-modal__buttons'>
+    {{{ ErrorLine className="form-error" ref="errorLine" }}}
+    {{{ Button label=btnText type="primary" buttonType="submit" }}}
+  </div>
+{{/Form}}

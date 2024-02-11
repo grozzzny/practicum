@@ -1,0 +1,9 @@
+<div>
+  {{#if modalVisible}}
+    <div class='modal__background modal__changeAvatar'>
+      {{#> Modal type="default" title="Change avatar" }}
+        {{{ FormAvatar onSave=onSave ref="form" }}}
+      {{/Modal}}
+    </div>
+  {{/if}}
+</div>

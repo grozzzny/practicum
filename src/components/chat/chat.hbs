@@ -1,4 +1,4 @@
-{{#if selectedChat}}
+{{#if activeChat}}
   <div class='container-chats__content'>
     <div class='chat'>
       <div class='chat__header'>
@@ -7,7 +7,7 @@
             <img width='64px' height='64px' src={{#if avatar}}{{avatar}}{{else}}ellipse.svg{{/if}} alt='avatar'>
           </div>
           <div class='profile__name'>
-            {{selectedChat.name}}
+            {{activeChat.title}}
           </div>
         </div>
         <div class='menu-profile'>
@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class='chat__body'>
-        {{> Messages }}
+        {{{ Messages messages=messages activeChat=activeChat chatUsers=chatUsers user=user }}}
       </div>
       <div class='chat__footer'>
         <div class='message-control'>
@@ -30,18 +30,16 @@
               <img class='hover-disabled' width='44px' height='44px' src='attachments.svg' alt='btn'>
             </button>
             {{#> Menu type="bottom" }}
-              {{{ MenuElement icon="menuIcons/photo.png" label="Photo or Video" }}}
-              {{{ MenuElement icon="menuIcons/file.png" label="File" }}}
-              {{{ MenuElement icon="menuIcons/circle.png" label="Location" }}}
+              {{{ MenuElement onClick=onAdd icon="menuIcons/photo.png" label="Photo or Video" }}}
+              {{{ MenuElement onClick=onAdd icon="menuIcons/file.png" label="File" }}}
+              {{{ MenuElement onClick=onAdd icon="menuIcons/circle.png" label="Location" }}}
             {{/Menu}}
           </div>
           <div class='message-control__input'>
-            <form id='formMessage' name='formMessage' method='POST' onsubmit='document.getElementById("buttonSend").click(); return false;'>
-              {{{ Input ref="message" name='message' placeholder='Message..' }}}
-            </form>
+            {{{ FormSend ref="form" onSend=onSend }}}
           </div>
           <div class='message-control__send'>
-            {{{ ButtonSend formName='formMessage' onClick=onSend }}}
+            {{{ ButtonSend buttonType='submit' formName='formMessage' }}}
           </div>
         </div>
       </div>
@@ -52,4 +50,3 @@
     <span>Select a chat room to send a message</span>
   </div>
 {{/if}}
-

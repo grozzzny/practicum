@@ -3,78 +3,89 @@ import Handlebars from 'handlebars'
 import EventBus from './EventBus'
 
 export type RefType = {
-	[key: string]: Block<PropsType, RefType, HTMLElement | null> | undefined
+	[key: string]:
+		| Block<PropsType, RefType, HTMLElement | null>
+		| HTMLElement
+		| undefined
 }
 
 export type PropsType = Record<string | symbol, any>
 
+export type EventName = keyof HTMLElementEventMap
+
+export type EventListType = {
+	[key in EventName]: (e: Event) => void
+}
+
+export type Events = Partial<EventListType>
+
+enum BlockEvents {
+	INIT = 'init',
+	FLOW_CDM = 'flow:component-did-mount',
+	FLOW_CDU = 'flow:component-did-update',
+	FLOW_CWU = 'flow:component-will-unmount',
+	FLOW_RENDER = 'flow:render'
+}
+
 class Block<
-	Props extends PropsType = object,
+	Props extends PropsType = PropsType,
 	Refs extends RefType = RefType,
 	Element extends HTMLElement | null = null
-> {
-	static EVENTS = {
-		INIT: 'init',
-		FLOW_CDM: 'flow:component-did-mount',
-		FLOW_CDU: 'flow:component-did-update',
-		FLOW_CWU: 'flow:component-will-unmount',
-		FLOW_RENDER: 'flow:render'
-	}
-
+> extends EventBus {
 	public id = nanoid(6)
 
 	protected props: Props
 
 	protected refs: Refs = {} as Refs
 
-	protected eventsElement: Record<string, (event: Event) => void> = {}
+	protected eventsElement: Events = {}
 
 	private children: Block[] = []
-
-	private eventBus: EventBus
 
 	private _element: Element = null as Element
 
 	constructor(props: Props = {} as Props) {
+		super()
 		this.props = this._makePropsProxy(props)
-		this.eventBus = new EventBus()
 		this._registerEvents()
-		this.eventBus.emit(Block.EVENTS.INIT)
+		this.emit(BlockEvents.INIT)
 	}
 
 	_removeEventsElement() {
-		Object.keys(this.eventsElement).forEach((eventName) => {
+		;(Object.keys(this.eventsElement) as EventName[]).forEach((eventName) => {
 			this._element!.removeEventListener(
 				eventName,
-				this.eventsElement[eventName]
+				this.eventsElement[eventName]!
 			)
 		})
 	}
 
 	_addEventsElement() {
-		Object.keys(this.eventsElement).forEach((eventName) => {
+		;(Object.keys(this.eventsElement) as EventName[]).forEach((eventName) => {
 			this._element!.addEventListener(
 				eventName,
-				this.eventsElement[eventName],
+				this.eventsElement[eventName]!,
 				true
 			)
 		})
 	}
 
 	_registerEvents() {
-		this.eventBus.on(Block.EVENTS.INIT, this._init.bind(this))
-		this.eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this))
-		this.eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this))
-		this.eventBus.on(
-			Block.EVENTS.FLOW_CWU,
-			this._componentWillUnmount.bind(this)
+		this.on(BlockEvents.INIT, this._init.bind(this))
+		this.on(BlockEvents.FLOW_CDM, this._componentDidMount.bind(this))
+		this.on(
+			BlockEvents.FLOW_CDU,
+			this._componentDidUpdate.bind<(oldProps: any, newProps: any) => void>(
+				this
+			)
 		)
-		this.eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this))
+		this.on(BlockEvents.FLOW_CWU, this._componentWillUnmount.bind(this))
+		this.on(BlockEvents.FLOW_RENDER, this._render.bind(this))
 	}
 
 	private _init() {
 		this.init()
-		this.eventBus.emit(Block.EVENTS.FLOW_RENDER)
+		this.emit(BlockEvents.FLOW_RENDER)
 	}
 
 	protected init() {}
@@ -87,7 +98,7 @@ class Block<
 	componentDidMount() {}
 
 	public dispatchComponentDidMount() {
-		this.eventBus.emit(Block.EVENTS.FLOW_CDM)
+		this.emit(BlockEvents.FLOW_CDM)
 		Object.values(this.children).forEach((child) =>
 			child.dispatchComponentDidMount()
 		)
@@ -95,7 +106,7 @@ class Block<
 
 	private _componentDidUpdate(oldProps: Props, newProps: Props) {
 		if (this.componentDidUpdate(oldProps, newProps)) {
-			this.eventBus.emit(Block.EVENTS.FLOW_RENDER)
+			this.emit(BlockEvents.FLOW_RENDER)
 		}
 	}
 
@@ -112,7 +123,7 @@ class Block<
 			return
 		}
 
-		this.eventBus.emit(Block.EVENTS.FLOW_CWU, this.props)
+		this.emit(BlockEvents.FLOW_CWU, this.props)
 	}
 
 	_componentWillUnmount() {
@@ -139,6 +150,7 @@ class Block<
 
 		if (this._element) {
 			this._removeEventsElement()
+			newElement.style.display = this._element.style.display
 			this._element.replaceWith(newElement)
 		}
 
@@ -168,6 +180,16 @@ class Block<
 
 			stub?.replaceWith(child.getContent()!)
 		})
+
+		this.refs = Array.from(temp.content.querySelectorAll('[ref]')).reduce(
+			(list, element) => {
+				const key = element.getAttribute('ref')!
+				list[key] = element
+				element.removeAttribute('ref')
+				return list
+			},
+			contextAndStubs.__refs
+		)
 
 		return temp.content
 	}
@@ -203,22 +225,14 @@ class Block<
 				const oldTarget = { ...target }
 
 				target[prop] = value
-				self.eventBus.emit(Block.EVENTS.FLOW_CDU, oldTarget, target)
+				self.emit(BlockEvents.FLOW_CDU, oldTarget, target)
 
 				return true
 			},
 			deleteProperty() {
-				throw new Error('Нет доступа')
+				throw new Error('No access')
 			}
 		})
-	}
-
-	show() {
-		this.getContent()!.style.display = 'block'
-	}
-
-	hide() {
-		this.getContent()!.style.display = 'none'
 	}
 }
 

@@ -1,12 +1,16 @@
-export type Listener<Args extends unknown[] = any[]> = (...args: Args) => void
+type Arguments = unknown[]
+type EventList = Record<string, Arguments>
+type Listener<Arg extends Arguments> = (...args: Arg) => void
 
-export default class EventBus<
-	Event extends string = string,
-	Method extends { [Key in Event]: unknown[] } = Record<Event, any[]>
-> {
-	private listeners: { [key in Event]?: Listener<Method[Event]>[] } = {}
+export default class EventBus<Events extends EventList = EventList> {
+	private listeners: {
+		[EventName in keyof Events]?: ((...args: Events[EventName]) => void)[]
+	} = {}
 
-	on(event: Event, callback: Listener<Method[Event]>) {
+	on<EventName extends keyof Events>(
+		event: EventName,
+		callback: Listener<Events[EventName]>
+	): void {
 		if (!this.listeners[event]) {
 			this.listeners[event] = []
 		}
@@ -14,9 +18,12 @@ export default class EventBus<
 		this.listeners[event]!.push(callback)
 	}
 
-	off(event: Event, callback: Listener<Method[Event]>) {
+	off<EventName extends keyof Events>(
+		event: EventName,
+		callback: Listener<Events[EventName]>
+	): void {
 		if (!this.listeners[event]) {
-			throw new Error(`No event: ${event}`)
+			throw new Error(`No event: ${String(event)}`)
 		}
 
 		this.listeners[event] = this.listeners[event]!.filter(
@@ -24,9 +31,16 @@ export default class EventBus<
 		)
 	}
 
-	emit(event: Event, ...args: Method[Event]) {
-		if (!this.listeners[event]) {
-			throw new Error(`No event: ${event}`)
+	hasEvent(event: keyof Events): boolean {
+		return !!this.listeners[event]
+	}
+
+	emit<EventName extends keyof Events>(
+		event: EventName,
+		...args: Events[EventName]
+	): void {
+		if (!this.hasEvent(event)) {
+			throw new Error(`No event: ${String(event)}`)
 		}
 
 		this.listeners[event]!.forEach((listener) => {

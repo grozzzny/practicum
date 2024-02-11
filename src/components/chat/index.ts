@@ -1,61 +1,46 @@
 import Block from '../../core/Block'
 import template from './chat.hbs?raw'
 import './chat.css'
-import { ChatType } from '../../data/chats'
-import { Input } from '../input'
-import { messageValidator } from '../../utils/validators'
-
-const CLASS_NAME_INPUT_ERROR = 'input__error'
+import { ChatType, DataFormSend, User } from '../../type'
+import { FormSend } from '../formSend'
+import { sendMessage } from '../../services/chatService'
+import { Messages } from '../messages'
 
 interface ChatProps {
-	selectedChat: ChatType | null
-	onSend: (event: PointerEvent | SubmitEvent) => void
+	activeChat: ChatType | null
+	chatUsers: User[]
+	onSend: (data: DataFormSend) => void
+	onAdd: (event: Event) => void
 	onModal: (event: Event, modal: string | undefined) => void
+	user: User
+	messages: Messages[]
 }
 
 export class Chat extends Block<
 	ChatProps,
 	{
-		message: Input
+		form: FormSend
 	},
 	HTMLElement
 > {
 	constructor(props: ChatProps) {
 		super({
 			...props,
-			onSend: (event: PointerEvent | SubmitEvent) => {
+			onAdd: (event) => {
 				event.preventDefault()
-				const message = this.refs.message.value()
-				const error = messageValidator(message)
-
-				if (error) {
-					console.error(error)
-					this.refs.message.element.classList.add(CLASS_NAME_INPUT_ERROR)
-
-					return
-				}
-
-				this.refs.message.element.classList.remove(CLASS_NAME_INPUT_ERROR)
-
-				const data: { message: string } = {
-					message
-				}
-
-				console.log(data)
+				alert('not work')
+			},
+			onSend: ({ message }: DataFormSend) => {
+				sendMessage(message)
+					.then(() => {
+						this.refs.form.clear()
+						this.refs.form.focus()
+					})
+					.catch((error) => {
+						this.refs.form.showError(error)
+					})
 			}
 		})
-	}
-
-	protected init() {
-		this.eventsElement = {
-			load: () => {
-				const scrollableDiv = document.getElementsByClassName('chat__body')
-
-				if (scrollableDiv.length > 0) {
-					scrollableDiv[0].scrollTop = scrollableDiv[0].scrollHeight
-				}
-			}
-		}
 	}
 
 	protected render(): string {

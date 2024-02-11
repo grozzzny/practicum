@@ -25,6 +25,7 @@
 .error__link {
   border: none;
   background: none;
+  cursor: pointer;
   color: var(--main-color);
   font-size: 16px;
   font-style: normal;

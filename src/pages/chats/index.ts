@@ -1,32 +1,41 @@
 import template from './chats.hbs?raw'
 import Block from '../../core/Block'
-import { Chat, ModalAddUser, ModalRemoveUser, Side } from '../../components'
-import chats, { ChatType } from '../../data/chats'
+import {
+	Chat,
+	Messages,
+	ModalAddChat,
+	ModalAddUser,
+	ModalRemoveUser,
+	Side
+} from '../../components'
+import { SetTitle } from '../../utils/decorators'
+import { connect } from '../../utils/connect'
+import { ChatType, User } from '../../type'
 
 interface ChatPageProps {
-	onHandler: (event: Event, chat: ChatType) => void
 	chats: ChatType[]
+	activeChat: ChatType
 	onModal: (event: Event, modalName: string | undefined) => void
+	user: User
+	chatUsers: User[]
+	messages: Messages[]
 }
 
+@SetTitle('Messenger')
 export class ChatsPage extends Block<
 	ChatPageProps,
 	{
 		side: Side
 		chat: Chat
 		modalAddUser: ModalAddUser
+		modalAddChat: ModalAddChat
 		modalRemoveUser: ModalRemoveUser
-	}
+	},
+	HTMLElement
 > {
-	constructor() {
+	constructor(props: ChatPageProps) {
 		super({
-			onHandler: (event, chat) => {
-				event.preventDefault()
-				this.refs.chat.setProps({
-					selectedChat: chat
-				})
-			},
-			chats,
+			...props,
 			onModal: (event, modalName) => {
 				event.preventDefault()
 				Object.entries(this.refs).forEach(([_name, block]) => {
@@ -44,3 +53,11 @@ export class ChatsPage extends Block<
 		return template
 	}
 }
+
+export const ChatsPageConnect = connect(ChatsPage, (state) => ({
+	user: state.user,
+	chats: state.chats,
+	activeChat: state.activeChat,
+	chatUsers: state.chatUsers,
+	messages: state.messages
+}))

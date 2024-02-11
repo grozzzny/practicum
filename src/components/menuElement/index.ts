@@ -1,13 +1,11 @@
 import Block from '../../core/Block'
 import template from './menuElement.hbs?raw'
 import './menuElement.css'
-import { PagesName } from '../../core/navigate'
 
 interface MenuElementProps {
 	icon: string
 	label: string
 	modal: string | undefined
-	page: PagesName
 	onClick: (event: Event, modal: string | undefined) => void
 }
 
