@@ -1,5 +1,12 @@
 import { BaseAPI } from './BaseAPI'
-import { ChatType, DataUserChat, DataChatId, DataCreateChat, QyeryParamsGetChats, User } from '../type'
+import {
+	ChatType,
+	DataUserChat,
+	DataChatId,
+	DataCreateChat,
+	QyeryParamsGetChats,
+	User
+} from '../type'
 
 class ChatAPI extends BaseAPI {
 	constructor() {
@@ -13,13 +20,13 @@ class ChatAPI extends BaseAPI {
 	}
 
 	public createChat(data: DataCreateChat) {
-		return this.transport().post<{id: number}>('', {
+		return this.transport().post<{ id: number }>('', {
 			data
 		})
 	}
 
 	public getToken(chatId: number) {
-		return this.transport().post<{token: string}>(`/token/${chatId}`)
+		return this.transport().post<{ token: string }>(`/token/${chatId}`)
 	}
 
 	public deleteChat(data: DataChatId) {

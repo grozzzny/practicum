@@ -15,7 +15,6 @@ export class Form<
 	Refs extends FormRefs = FormRefs,
 	Element extends HTMLElement | null = null
 > extends Block<Props, Refs, Element> {
-
 	constructor(props: Props) {
 		super({
 			validators: {},

@@ -23,7 +23,7 @@ export class ModalRemoveUser extends ModalBlock<
 		super({
 			...props,
 			validator: loginValidator,
-			onSend: ({value: login}: DataFormOneField) => {
+			onSend: ({ value: login }: DataFormOneField) => {
 				removeUser({ login })
 					.then(() => {
 						this.setProps({

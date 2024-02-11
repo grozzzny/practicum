@@ -1,6 +1,13 @@
 import template from './chats.hbs?raw'
 import Block from '../../core/Block'
-import { Chat, Messages, ModalAddChat, ModalAddUser, ModalRemoveUser, Side } from '../../components'
+import {
+	Chat,
+	Messages,
+	ModalAddChat,
+	ModalAddUser,
+	ModalRemoveUser,
+	Side
+} from '../../components'
 import { SetTitle } from '../../utils/decorators'
 import { connect } from '../../utils/connect'
 import { ChatType, User } from '../../type'
@@ -27,21 +34,19 @@ export class ChatsPage extends Block<
 	HTMLElement
 > {
 	constructor(props: ChatPageProps) {
-		super(
-			{
-				...props,
-				onModal: (event, modalName) => {
-					event.preventDefault()
-					Object.entries(this.refs).forEach(([_name, block]) => {
-						if ('modalName' in block) {
-							block.setProps({
-								modalVisible: block.modalName === modalName
-							})
-						}
-					})
-				}
+		super({
+			...props,
+			onModal: (event, modalName) => {
+				event.preventDefault()
+				Object.entries(this.refs).forEach(([_name, block]) => {
+					if ('modalName' in block) {
+						block.setProps({
+							modalVisible: block.modalName === modalName
+						})
+					}
+				})
 			}
-		)
+		})
 	}
 
 	protected render(): string {
@@ -54,5 +59,5 @@ export const ChatsPageConnect = connect(ChatsPage, (state) => ({
 	chats: state.chats,
 	activeChat: state.activeChat,
 	chatUsers: state.chatUsers,
-	messages: state.messages,
+	messages: state.messages
 }))

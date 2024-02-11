@@ -1,7 +1,5 @@
 import template from './formOneField.hbs?raw'
-import {
-	Validator,
-} from '../../utils/validators'
+import { Validator } from '../../utils/validators'
 import { Form, FormProps, FormRefs } from '../form'
 import { DataFormOneField } from '../../type'
 import { Field } from '../field'
@@ -24,7 +22,7 @@ export class FormOneField extends Form<
 > {
 	constructor(props: FormOneFieldProps) {
 		super({
-			...props,
+			...props
 		})
 	}
 

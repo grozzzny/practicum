@@ -21,7 +21,7 @@ export default class Route {
 
 	leave() {
 		if (this.block) {
-			this.block = null;
+			this.block = null
 		}
 	}
 

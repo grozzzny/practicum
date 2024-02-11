@@ -7,7 +7,10 @@ export default class EventBus<Events extends EventList = EventList> {
 		[EventName in keyof Events]?: ((...args: Events[EventName]) => void)[]
 	} = {}
 
-	on<EventName extends keyof Events>(event: EventName, callback: Listener<Events[EventName]>): void {
+	on<EventName extends keyof Events>(
+		event: EventName,
+		callback: Listener<Events[EventName]>
+	): void {
 		if (!this.listeners[event]) {
 			this.listeners[event] = []
 		}
@@ -15,7 +18,10 @@ export default class EventBus<Events extends EventList = EventList> {
 		this.listeners[event]!.push(callback)
 	}
 
-	off<EventName extends keyof Events>(event: EventName, callback: Listener<Events[EventName]>): void {
+	off<EventName extends keyof Events>(
+		event: EventName,
+		callback: Listener<Events[EventName]>
+	): void {
 		if (!this.listeners[event]) {
 			throw new Error(`No event: ${String(event)}`)
 		}
@@ -29,7 +35,10 @@ export default class EventBus<Events extends EventList = EventList> {
 		return !!this.listeners[event]
 	}
 
-	emit<EventName extends keyof Events>(event: EventName, ...args: Events[EventName]): void {
+	emit<EventName extends keyof Events>(
+		event: EventName,
+		...args: Events[EventName]
+	): void {
 		if (!this.hasEvent(event)) {
 			throw new Error(`No event: ${String(event)}`)
 		}

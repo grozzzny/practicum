@@ -1,5 +1,11 @@
 import UserAPI from '../api/UserAPI'
-import { DataAvatarForm, DataLogin, DataProfileEditForm, DataProfilePasswordForm, User } from '../type'
+import {
+	DataAvatarForm,
+	DataLogin,
+	DataProfileEditForm,
+	DataProfilePasswordForm,
+	User
+} from '../type'
 import { ErrorAPI } from '../utils/HTTPTransport'
 
 export const changeProfile = (data: DataProfileEditForm) => {
@@ -20,7 +26,7 @@ export const getUrlAvatar = (path: string) => {
 
 export const search = async (data: DataLogin): Promise<User> | never => {
 	const users = await UserAPI.search(data)
-	const foundUser = users.find(user => user.login === data.login)
+	const foundUser = users.find((user) => user.login === data.login)
 	if (foundUser) {
 		return foundUser
 	} else {

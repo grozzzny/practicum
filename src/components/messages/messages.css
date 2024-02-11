@@ -21,6 +21,7 @@
   font-weight: 400;
   line-height: normal;
 }
+
 .messages--hidden .messages--container{
   visibility: hidden;
 }
@@ -41,10 +42,7 @@
 .messages-loader::after {
   content: "";
   position: absolute;
-  top: 6px;
-  left: 6px;
-  right: 6px;
-  bottom: 6px;
+  inset: 6px;
   border: 6px solid transparent;
   border-top: 6px solid var(--main-color);
   border-radius: 50%;

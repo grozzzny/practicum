@@ -33,4 +33,3 @@ export class ProfilePasswordPage extends Block<
 		return template
 	}
 }
-

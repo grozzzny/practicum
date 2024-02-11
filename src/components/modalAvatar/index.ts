@@ -21,13 +21,15 @@ export class ModalAvatar extends ModalBlock<
 		super({
 			...props,
 			onSave: (data: DataAvatarForm) => {
-				UserController.changeAvatar(data).then(() => {
-					this.setProps({
-						modalVisible: false
+				UserController.changeAvatar(data)
+					.then(() => {
+						this.setProps({
+							modalVisible: false
+						})
 					})
-				}).catch((error: ErrorAPIType) => {
-					this.refs.form.showError(error.reason)
-				})
+					.catch((error: ErrorAPIType) => {
+						this.refs.form.showError(error.reason)
+					})
 			}
 		})
 	}

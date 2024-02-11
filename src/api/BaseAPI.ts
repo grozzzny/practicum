@@ -5,6 +5,7 @@ export const URL_API = 'https://ya-praktikum.tech/api/v2'
 // @see https://ya-praktikum.tech/api/v2/swagger
 export abstract class BaseAPI {
 	private readonly urlApi: string
+
 	private httpTransport?: HTTPTransport
 
 	constructor(path: string) {

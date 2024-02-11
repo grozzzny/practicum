@@ -23,7 +23,9 @@ export class Dialog extends Block<
 		super({
 			...props,
 			active: props.activeChat?.id === props.chat.id,
-			time: props.chat.last_message ? formatDateTime(props.chat.last_message.time) : '',
+			time: props.chat.last_message
+				? formatDateTime(props.chat.last_message.time)
+				: '',
 			avatar: props.chat.avatar ? getUrlAvatar(props.chat.avatar) : undefined
 		})
 	}
@@ -31,7 +33,7 @@ export class Dialog extends Block<
 	protected init() {
 		this.eventsElement = {
 			click: () => {
-				if(!this.props.active) {
+				if (!this.props.active) {
 					setActiveChat(this.props.chat)
 				}
 			}

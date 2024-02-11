@@ -8,8 +8,8 @@ import { getUrlAvatar } from '../../services/userService'
 interface SideProps {
 	close?: boolean
 	chats: ChatType[]
-	user?: User,
-	activeChat?: ChatType,
+	user?: User
+	activeChat?: ChatType
 	avatar: string | undefined
 	onModal: (event: Event, modal: string | undefined) => void
 }

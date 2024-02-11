@@ -57,6 +57,7 @@
 .uploadFile.uploadFile--error .uploadFile__message{
   display: none;
 }
+
 .uploadFile.uploadFile--error .uploadFile__error{
   display: block;
 }

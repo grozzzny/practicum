@@ -10,6 +10,7 @@ import store from '../core/Store'
 import ChatWS from '../api/ChatWS'
 import { search } from './userService'
 import { sanitizeInput } from '../utils/helper'
+import { ErrorAPI } from '../utils/HTTPTransport'
 
 export const getChats = (data: QyeryParamsGetChats) => {
 	return ChatAPI.getChats(data)
@@ -22,9 +23,10 @@ export const getUsers = (chatId: number) => {
 export const addUser = async (data: DataLogin) => {
 	const { activeChat, chatUsers } = store.getState()
 	const user = await search(data)
+	if (!activeChat) throw new ErrorAPI('Chat is not selected')
 	await ChatAPI.addUser({
 		users: [user.id],
-		chatId: activeChat?.id!
+		chatId: activeChat.id
 	})
 	chatUsers.push(user)
 	store.set('chatUsers', chatUsers)
@@ -33,9 +35,10 @@ export const addUser = async (data: DataLogin) => {
 export const removeUser = async (data: DataLogin) => {
 	const { activeChat, chatUsers } = store.getState()
 	const user = await search(data)
+	if (!activeChat) throw new ErrorAPI('Chat is not selected')
 	await ChatAPI.removeUser({
 		users: [user.id],
-		chatId: activeChat?.id!
+		chatId: activeChat.id
 	})
 	const updatedChatUsers = chatUsers.filter((user) => user.id !== user.id)
 	store.set('chatUsers', updatedChatUsers)
@@ -43,6 +46,27 @@ export const removeUser = async (data: DataLogin) => {
 
 export const getToken = (chatId: number) => {
 	return ChatAPI.getToken(chatId)
+}
+
+export const setActiveChat = async (chat: ChatType) => {
+	ChatWS.dicsonnect()
+	const state = store.getState()
+	store.set('messages', [])
+
+	store.set('activeChat', chat)
+	const chatUsers = await getUsers(chat.id)
+	store.set('chatUsers', chatUsers)
+
+	if (chatUsers.length > 1) {
+		const { token } = await getToken(chat.id)
+		if (!state.user) throw new ErrorAPI('Not found current user')
+		if (!state.activeChat) throw new ErrorAPI('Not selected chat')
+		ChatWS.connect({
+			userId: state.user.id,
+			chatId: state.activeChat.id,
+			token: token
+		})
+	}
 }
 
 export const createChat = (data: DataCreateChat) => {
@@ -62,32 +86,14 @@ export const sendMessage = async (message: string) => {
 export const updateMessages = (data: MessageType | MessageType[]) => {
 	const oldMessages = store.getState().messages
 	let newMessages: MessageType[] = []
-	if(Array.isArray(data)){
+	if (Array.isArray(data)) {
 		newMessages = [...oldMessages, ...data]
-		const sort = (a:Record<string, any>, b: Record<string, any>) => (b.time - a.time ? 1 : -1);
-		newMessages.sort(sort);
+		const sort = (a: Record<string, any>, b: Record<string, any>) =>
+			b.time - a.time ? 1 : -1
+		newMessages.sort(sort)
 	} else {
-		newMessages =[...oldMessages, data]
+		newMessages = [...oldMessages, data]
 	}
 
 	store.set('messages', newMessages)
-}
-
-export const setActiveChat = async (chat: ChatType) => {
-	ChatWS.dicsonnect()
-	const state = store.getState()
-	store.set('messages', [])
-
-	store.set('activeChat', chat)
-	const chatUsers = await getUsers(chat.id)
-	store.set('chatUsers', chatUsers)
-
-	if (chatUsers.length > 1) {
-		const { token } = await getToken(chat.id)
-		ChatWS.connect({
-			userId: state.user?.id!,
-			chatId: state.activeChat?.id!,
-			token: token
-		})
-	}
 }

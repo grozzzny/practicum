@@ -8,17 +8,22 @@ export interface UploadFileProps {
 	name: string
 }
 
-export class UploadFile extends Block<UploadFileProps, {
-	label: HTMLElement,
-	error: HTMLElement,
-	message: HTMLElement
-}, HTMLElement> {
+export class UploadFile extends Block<
+	UploadFileProps,
+	{
+		label: HTMLElement
+		error: HTMLElement
+		message: HTMLElement
+	},
+	HTMLElement
+> {
 	private file: File | null = null
+
 	protected init(): void {
 		this.eventsElement = {
 			change: (event) => {
 				const input = event.target as HTMLInputElement
-				if(input.files){
+				if (input.files) {
 					this.file = input.files[0]
 					this.refs.label.textContent = this.file.name
 				}

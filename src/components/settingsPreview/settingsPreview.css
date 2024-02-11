@@ -6,10 +6,6 @@
   align-self: stretch;
 }
 
-.settingsPreview:hover .settingsPreview__name {
-  text-decoration: underline;
-}
-
 .settingsPreview__image {
   display: flex;
   border: none;
@@ -36,4 +32,8 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+}
+
+.settingsPreview:hover .settingsPreview__name:hover {
+  text-decoration: underline;
 }

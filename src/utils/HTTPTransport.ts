@@ -17,6 +17,7 @@ type RequestOptions = {
 
 export class ErrorAPI extends Error {
 	reason: string
+
 	constructor(reason: string) {
 		super('API error')
 		this.name = 'ErrorAPI'

@@ -10,13 +10,18 @@ export interface SettingsPreviewProps {
 	modal: string
 }
 
-export class SettingsPreview extends Block<SettingsPreviewProps, RefType, HTMLElement> {
+export class SettingsPreview extends Block<
+	SettingsPreviewProps,
+	RefType,
+	HTMLElement
+> {
 	constructor(props: SettingsPreviewProps) {
 		super({
 			...props,
-			image: props.image? getUrlAvatar(props.image) : undefined
+			image: props.image ? getUrlAvatar(props.image) : undefined
 		})
 	}
+
 	protected init(): void {
 		this.eventsElement = {
 			click: (event) => this.props.onClick(event, this.props.modal)

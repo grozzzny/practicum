@@ -1,17 +1,14 @@
 import template from './formLogin.hbs?raw'
 import { Field } from '../field'
-import {
-	loginValidator,
-	passwordValidator,
-} from '../../utils/validators'
+import { loginValidator, passwordValidator } from '../../utils/validators'
 import { Form, FormProps, FormRefs } from '../form'
 import { DataLoginForm } from '../../type'
 
-interface FormLoginProps extends FormProps{
+interface FormLoginProps extends FormProps {
 	onLogin: (data: DataLoginForm) => void
 }
 
-interface FormLoginRefs extends FormRefs{
+interface FormLoginRefs extends FormRefs {
 	login: Field
 	password: Field
 }
@@ -32,19 +29,19 @@ export class FormLogin extends Form<
 	}
 
 	protected onSubmit(event: Event) {
-			event.preventDefault()
+		event.preventDefault()
 
-			const login = this.refs.login.value()
-			const password = this.refs.password.value()
+		const login = this.refs.login.value()
+		const password = this.refs.password.value()
 
-			if (!login || !password) {
-				return
-			}
+		if (!login || !password) {
+			return
+		}
 
-			this.props.onLogin({
-				login,
-				password
-			})
+		this.props.onLogin({
+			login,
+			password
+		})
 	}
 
 	protected render(): string {

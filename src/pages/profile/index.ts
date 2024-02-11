@@ -13,27 +13,29 @@ interface ProfilePageProps {
 }
 
 @SetTitle('Settings')
-export class ProfilePage extends Block<ProfilePageProps, {
-	modalAvatar: ModalAvatar
-}, HTMLElement> {
+export class ProfilePage extends Block<
+	ProfilePageProps,
+	{
+		modalAvatar: ModalAvatar
+	},
+	HTMLElement
+> {
 	constructor(props: ProfilePageProps) {
-		super(
-			{
-				...props,
-				onExit: () =>
-					AuthController.logout().catch((error) => console.error(error)),
-				onModal: (event, modalName) => {
-					event.preventDefault()
-					Object.entries(this.refs).forEach(([_name, block]) => {
-						if ('modalName' in block) {
-							block.setProps({
-								modalVisible: block.modalName === modalName
-							})
-						}
-					})
-				}
+		super({
+			...props,
+			onExit: () =>
+				AuthController.logout().catch((error) => console.error(error)),
+			onModal: (event, modalName) => {
+				event.preventDefault()
+				Object.entries(this.refs).forEach(([_name, block]) => {
+					if ('modalName' in block) {
+						block.setProps({
+							modalVisible: block.modalName === modalName
+						})
+					}
+				})
 			}
-		)
+		})
 	}
 
 	protected render(): string {

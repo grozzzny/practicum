@@ -20,7 +20,7 @@ export class Input extends Block<InputProps, RefType, HTMLElement> {
 	}
 
 	public clear() {
-		return this.element.getElementsByTagName('input')[0].value = ''
+		return (this.element.getElementsByTagName('input')[0].value = '')
 	}
 
 	public focus() {

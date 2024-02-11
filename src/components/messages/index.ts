@@ -23,7 +23,8 @@ export class Messages extends Block<MessagesProps, RefType, HTMLElement> {
 	}
 
 	public visible() {
-		this.element.parentElement!.scrollTop = this.element.parentElement!.scrollHeight
+		this.element.parentElement!.scrollTop =
+			this.element.parentElement!.scrollHeight
 		this.element.classList.remove('messages--hidden')
 	}
 
@@ -35,4 +36,3 @@ export class Messages extends Block<MessagesProps, RefType, HTMLElement> {
 		this.visible()
 	}
 }
-

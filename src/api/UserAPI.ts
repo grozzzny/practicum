@@ -1,5 +1,10 @@
 import { BaseAPI } from './BaseAPI'
-import { DataLogin, DataProfileEditForm, DataProfilePasswordForm, User } from '../type'
+import {
+	DataLogin,
+	DataProfileEditForm,
+	DataProfilePasswordForm,
+	User
+} from '../type'
 
 class UserAPI extends BaseAPI {
 	constructor() {

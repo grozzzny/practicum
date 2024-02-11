@@ -1,6 +1,14 @@
 import router from '../core/Router'
-import { DataAvatarForm, DataProfileEditForm, DataProfilePasswordForm } from '../type'
-import { changePassword, changeProfile, changeAvatar } from '../services/userService'
+import {
+	DataAvatarForm,
+	DataProfileEditForm,
+	DataProfilePasswordForm
+} from '../type'
+import {
+	changePassword,
+	changeProfile,
+	changeAvatar
+} from '../services/userService'
 import store from '../core/Store'
 
 class UserController {

@@ -7,16 +7,16 @@ import {
 	loginValidator,
 	passwordValidator,
 	phoneValidator,
-	secondNameValidator,
+	secondNameValidator
 } from '../../utils/validators'
 import { Form, FormProps, FormRefs } from '../form'
 import { DataRegistrationForm } from '../../type'
 
-interface FormRegistrationProps extends FormProps{
+interface FormRegistrationProps extends FormProps {
 	onRegister: (data: DataRegistrationForm) => void
 }
 
-interface FormRegistrationRefs extends FormRefs{
+interface FormRegistrationRefs extends FormRefs {
 	email: Field
 	login: Field
 	first_name: Field

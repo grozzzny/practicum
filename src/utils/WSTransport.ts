@@ -19,7 +19,9 @@ type SendData = string | object
 
 export class WSTransport extends EventBus<WSEventMethods> {
 	private socket?: WebSocket
+
 	private pingInterval?: number
+
 	private readonly pingIntervalTime = 30000
 
 	constructor(private readonly url: string) {

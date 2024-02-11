@@ -1,8 +1,5 @@
 import template from './formPassword.hbs?raw'
-import {
-	emptyValidator,
-	passwordValidator,
-} from '../../utils/validators'
+import { emptyValidator, passwordValidator } from '../../utils/validators'
 import { Form, FormProps, FormRefs } from '../form'
 import { SettingsEditElement } from '../settingsEditElement'
 import { DataProfilePasswordForm } from '../../type'

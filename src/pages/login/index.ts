@@ -19,15 +19,13 @@ export class LoginPage extends Block<
 	HTMLElement
 > {
 	constructor() {
-		super(
-			{
-				onLogin: (data: DataLoginForm) => {
-					AuthController.signin(data).catch((error: ErrorAPIType) => {
-						this.refs.form.showError(error.reason)
-					})
-				}
+		super({
+			onLogin: (data: DataLoginForm) => {
+				AuthController.signin(data).catch((error: ErrorAPIType) => {
+					this.refs.form.showError(error.reason)
+				})
 			}
-		)
+		})
 	}
 
 	protected render(): string {

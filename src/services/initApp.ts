@@ -8,7 +8,11 @@ import {
 	ProfilePasswordPage,
 	RegisterPage
 } from '../pages'
-import { loadChats, redirectToHome, redirectToMessenger } from '../utils/middlewares'
+import {
+	loadChats,
+	redirectToHome,
+	redirectToMessenger
+} from '../utils/middlewares'
 
 export const initApp = async () => {
 	router

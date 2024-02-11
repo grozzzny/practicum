@@ -17,10 +17,10 @@ export class SettingsButtonElement extends Block<PropsType> {
 	protected init(): void {
 		this.eventsElement = {
 			click: () => {
-				if(this.props.onClick) {
+				if (this.props.onClick) {
 					this.props.onClick()
 				}
-				if(this.props.page){
+				if (this.props.page) {
 					router.go(this.props.page)
 				}
 			}

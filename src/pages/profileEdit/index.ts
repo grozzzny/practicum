@@ -36,4 +36,6 @@ export class ProfileEditPage extends Block<
 	}
 }
 
-export const ProfileEditPageConnect = connect(ProfileEditPage, (state => ({user: state.user})))
+export const ProfileEditPageConnect = connect(ProfileEditPage, (state) => ({
+	user: state.user
+}))

@@ -21,24 +21,6 @@ export function formatDateTime(inputDate: string): string {
 	return `${hours}:${minutes}`
 }
 
-export function set(
-	object: Indexed | unknown,
-	path: string,
-	value: unknown
-): Indexed | unknown {
-	if (typeof object !== 'object' || object === null) {
-		return object
-	}
-
-	const result = path.split('.').reduceRight<Indexed>(
-		(acc, key) => ({
-			[key]: acc
-		}),
-		value as any
-	)
-	return merge(object as Indexed, result)
-}
-
 export function merge(lhs: Indexed, rhs: Indexed): Indexed {
 	for (const p in rhs) {
 		if (!rhs.hasOwnProperty(p)) {
@@ -59,6 +41,24 @@ export function merge(lhs: Indexed, rhs: Indexed): Indexed {
 	return lhs
 }
 
+export function set(
+	object: Indexed | unknown,
+	path: string,
+	value: unknown
+): Indexed | unknown {
+	if (typeof object !== 'object' || object === null) {
+		return object
+	}
+
+	const result = path.split('.').reduceRight<Indexed>(
+		(acc, key) => ({
+			[key]: acc
+		}),
+		value as any
+	)
+	return merge(object as Indexed, result)
+}
+
 export function cloneDeep<T extends object>(obj: T): T {
 	const _cloneDeep = (item: any): any => {
 		if (item === null || typeof item !== 'object') {
@@ -70,7 +70,7 @@ export function cloneDeep<T extends object>(obj: T): T {
 		}
 
 		if (item instanceof Array) {
-			let copy: any[] = []
+			const copy: any[] = []
 
 			item.forEach((_, i) => (copy[i] = _cloneDeep(item[i])))
 
@@ -78,7 +78,7 @@ export function cloneDeep<T extends object>(obj: T): T {
 		}
 
 		if (item instanceof Set) {
-			let copy = new Set()
+			const copy = new Set()
 
 			item.forEach((v: any) => copy.add(_cloneDeep(v)))
 
@@ -86,7 +86,7 @@ export function cloneDeep<T extends object>(obj: T): T {
 		}
 
 		if (item instanceof Map) {
-			let copy = new Map()
+			const copy = new Map()
 
 			item.forEach((v, k) => copy.set(k, _cloneDeep(v)))
 
@@ -94,7 +94,7 @@ export function cloneDeep<T extends object>(obj: T): T {
 		}
 
 		if (item instanceof Object) {
-			let copy: { [key: string]: any } = {}
+			const copy: { [key: string]: any } = {}
 
 			Object.getOwnPropertySymbols(item).forEach(
 				(s) => (copy[s.toString()] = _cloneDeep(item[s]))

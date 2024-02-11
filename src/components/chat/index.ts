@@ -30,13 +30,15 @@ export class Chat extends Block<
 				event.preventDefault()
 				alert('not work')
 			},
-			onSend: ({message}: DataFormSend) => {
-				sendMessage(message).then(() => {
-					this.refs.form.clear()
-					this.refs.form.focus()
-				}).catch((error) => {
-					this.refs.form.showError(error)
-				})
+			onSend: ({ message }: DataFormSend) => {
+				sendMessage(message)
+					.then(() => {
+						this.refs.form.clear()
+						this.refs.form.focus()
+					})
+					.catch((error) => {
+						this.refs.form.showError(error)
+					})
 			}
 		})
 	}

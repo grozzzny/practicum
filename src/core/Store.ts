@@ -26,7 +26,7 @@ class Store extends EventBus<StoreEventMethods> {
 
 	public set<K extends keyof AppState>(path: K, value: AppState[K]): void {
 		set(this.state, path, value)
-		if(this.hasEvent(StoreEvents.Updated)) {
+		if (this.hasEvent(StoreEvents.Updated)) {
 			this.emit(StoreEvents.Updated)
 		}
 	}
