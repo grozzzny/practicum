@@ -27,7 +27,7 @@ export class Message extends Block<MessageProps, RefType, HTMLElement> {
 
 	componentDidMount() {
 		const parent = this.element.parentElement!.parentElement!.parentElement
-		if(parent) {
+		if (parent) {
 			parent.scrollTop = parent.scrollHeight
 		}
 	}
