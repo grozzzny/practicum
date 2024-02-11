@@ -23,8 +23,9 @@ export class ProfilePage extends Block<
 	constructor(props: ProfilePageProps) {
 		super({
 			...props,
-			onExit: () =>
-				AuthController.logout().catch((error) => console.error(error)),
+			onExit: () => {
+				AuthController.logout().catch((error) => console.error(error))
+			},
 			onModal: (event, modalName) => {
 				event.preventDefault()
 				Object.entries(this.refs).forEach(([_name, block]) => {
