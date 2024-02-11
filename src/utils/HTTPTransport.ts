@@ -40,32 +40,37 @@ function queryStringify(data?: Record<string, any>): string {
 	)
 }
 
+type HTTPMethod = <Response = unknown>(
+	url: string,
+	options?: RequestOptions
+) => Promise<Response>
+
 export class HTTPTransport {
 	constructor(private readonly urlApi = '') {}
 
-	public get<Response = unknown>(url: string, options: RequestOptions = {}) {
+	get: HTTPMethod = (url, options = {}) => {
 		const { data, ...restOptions } = options
-		return this.request<Response>(
+		return this.request(
 			`${url}${queryStringify(data)}`,
 			Methods.GET,
 			restOptions
 		)
 	}
 
-	public put<Response = unknown>(url: string, options: RequestOptions = {}) {
-		return this.request<Response>(url, Methods.PUT, options)
+	put: HTTPMethod = (url, options = {}) => {
+		return this.request(url, Methods.PUT, options)
 	}
 
-	public post<Response = unknown>(url: string, options: RequestOptions = {}) {
-		return this.request<Response>(url, Methods.POST, options)
+	post: HTTPMethod = (url, options = {}) => {
+		return this.request(url, Methods.POST, options)
 	}
 
-	public path<Response = unknown>(url: string, options: RequestOptions = {}) {
-		return this.request<Response>(url, Methods.PATH, options)
+	path: HTTPMethod = (url, options = {}) => {
+		return this.request(url, Methods.PATH, options)
 	}
 
-	public delete<Response = unknown>(url: string, options: RequestOptions = {}) {
-		return this.request<Response>(url, Methods.DELETE, options)
+	delete: HTTPMethod = (url, options = {}) => {
+		return this.request(url, Methods.DELETE, options)
 	}
 
 	private request<Response extends XMLHttpRequest | unknown>(
