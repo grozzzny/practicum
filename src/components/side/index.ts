@@ -4,6 +4,7 @@ import './side.css'
 import { Input } from '../input'
 import { ChatType, User } from '../../type'
 import { getUrlAvatar } from '../../services/userService'
+import { connect } from '../../utils/connect'
 
 interface SideProps {
 	close?: boolean
@@ -33,3 +34,9 @@ export class Side extends Block<
 		return template
 	}
 }
+
+export const SideConnect = connect(Side, (state) => ({
+	user: state.user,
+	chats: state.chats,
+	activeChat: state.activeChat
+}))

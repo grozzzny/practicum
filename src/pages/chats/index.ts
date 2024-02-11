@@ -2,23 +2,15 @@ import template from './chats.hbs?raw'
 import Block from '../../core/Block'
 import {
 	Chat,
-	Messages,
+	Side,
 	ModalAddChat,
 	ModalAddUser,
-	ModalRemoveUser,
-	Side
+	ModalRemoveUser
 } from '../../components'
 import { SetTitle } from '../../utils/decorators'
-import { connect } from '../../utils/connect'
-import { ChatType, User } from '../../type'
 
 interface ChatPageProps {
-	chats: ChatType[]
-	activeChat: ChatType
 	onModal: (event: Event, modalName: string | undefined) => void
-	user: User
-	chatUsers: User[]
-	messages: Messages[]
 }
 
 @SetTitle('Messenger')
@@ -53,11 +45,3 @@ export class ChatsPage extends Block<
 		return template
 	}
 }
-
-export const ChatsPageConnect = connect(ChatsPage, (state) => ({
-	user: state.user,
-	chats: state.chats,
-	activeChat: state.activeChat,
-	chatUsers: state.chatUsers,
-	messages: state.messages
-}))
