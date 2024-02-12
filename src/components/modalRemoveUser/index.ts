@@ -1,21 +1,20 @@
 import template from './modalRemoveUser.hbs?raw'
 import { ModalBlock, ModalProps } from '../modalBlock'
-import { Field } from '../field'
-import {
-	NameValidator,
-	Validator,
-	loginValidator
-} from '../../utils/validators'
+import { DataFormOneField } from '../../type'
+import { loginValidator, Validator } from '../../utils/validators'
+import { FormOneField } from '../formOneField'
+import { ErrorAPIType } from '../../utils/HTTPTransport'
+import { removeUser } from '../../services/chatService'
 
 interface ModalRemoveUserProps extends ModalProps {
-	onSend: (event: PointerEvent) => void
-	validators: Record<NameValidator, Validator>
+	onSend: (data: DataFormOneField) => void
+	validator: Validator
 }
 
 export class ModalRemoveUser extends ModalBlock<
 	ModalRemoveUserProps,
 	{
-		login: Field
+		form: FormOneField
 	}
 > {
 	public modalName = 'removeUser'
@@ -23,26 +22,17 @@ export class ModalRemoveUser extends ModalBlock<
 	constructor(props: ModalRemoveUserProps) {
 		super({
 			...props,
-			validators: {
-				login: loginValidator
-			},
-			onSend: (event: PointerEvent) => {
-				event.preventDefault()
-				const login = this.refs.login.value()
-
-				if (!login) {
-					return
-				}
-
-				const data: { login: string } = {
-					login
-				}
-
-				console.log(data)
-
-				this.setProps({
-					modalVisible: false
-				})
+			validator: loginValidator,
+			onSend: ({ value: login }: DataFormOneField) => {
+				removeUser({ login })
+					.then(() => {
+						this.setProps({
+							modalVisible: false
+						})
+					})
+					.catch((error: ErrorAPIType) => {
+						this.refs.form.showError(error.reason)
+					})
 			}
 		})
 	}

@@ -1,0 +1,39 @@
+.settingsPreview {
+  display: flex;
+  padding: 20px 0;
+  align-items: center;
+  gap: 20px;
+  align-self: stretch;
+}
+
+.settingsPreview__image {
+  display: flex;
+  border: none;
+  background: none;
+  cursor: pointer;
+  user-select: none;
+  padding: 0;
+  border-radius: 50px;
+  overflow: hidden;
+  transition: 0.2s all ease;
+}
+
+.settingsPreview__image img{
+  object-fit: cover;
+  object-position: center;
+}
+
+.settingsPreview__image:hover {
+  opacity: 0.8;
+}
+
+.settingsPreview__name {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.settingsPreview:hover .settingsPreview__name:hover {
+  text-decoration: underline;
+}

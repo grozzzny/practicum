@@ -1,6 +1,7 @@
 export type ResultValidate = string | false
 export type NameValidator = string
 export type Validator = (value: string) => ResultValidate
+export type Validators = Record<NameValidator, Validator>
 
 export const loginValidator: Validator = (value) => {
 	if (value.length === 0) {

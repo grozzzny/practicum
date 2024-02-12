@@ -1,21 +1,20 @@
 import template from './modalAddUser.hbs?raw'
 import { ModalBlock, ModalProps } from '../modalBlock'
-import { Field } from '../field'
-import {
-	NameValidator,
-	Validator,
-	loginValidator
-} from '../../utils/validators'
+import { DataFormOneField } from '../../type'
+import { FormOneField } from '../formOneField'
+import { loginValidator, Validator } from '../../utils/validators'
+import { addUser } from '../../services/chatService'
+import { ErrorAPIType } from '../../utils/HTTPTransport'
 
 interface ModalAddUserProps extends ModalProps {
-	onSend: (event: PointerEvent) => void
-	validators: Record<NameValidator, Validator>
+	onSend: (data: DataFormOneField) => void
+	validator: Validator
 }
 
 export class ModalAddUser extends ModalBlock<
 	ModalAddUserProps,
 	{
-		login: Field
+		form: FormOneField
 	}
 > {
 	public modalName = 'addUser'
@@ -23,26 +22,17 @@ export class ModalAddUser extends ModalBlock<
 	constructor(props: ModalAddUserProps) {
 		super({
 			...props,
-			validators: {
-				login: loginValidator
-			},
-			onSend: (event: PointerEvent) => {
-				event.preventDefault()
-				const login = this.refs.login.value()
-
-				if (!login) {
-					return
-				}
-
-				const data: { login: string } = {
-					login
-				}
-
-				console.log(data)
-
-				this.setProps({
-					modalVisible: false
-				})
+			validator: loginValidator,
+			onSend: ({ value: login }: DataFormOneField) => {
+				addUser({ login })
+					.then(() => {
+						this.setProps({
+							modalVisible: false
+						})
+					})
+					.catch((error: ErrorAPIType) => {
+						this.refs.form.showError(error.reason)
+					})
 			}
 		})
 	}

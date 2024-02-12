@@ -1,0 +1,13 @@
+{{#> Form formName="formProfile" }}
+  {{{ SettingsEditElement type="text" name="email" label="Email" value=user.email ref="email" validate=validators.email }}}
+  {{{ SettingsEditElement type="text" name="login" label="Login" value=user.login ref="login" validate=validators.login }}}
+  {{{ SettingsEditElement type="text" name="first_name" label="Name" value=user.first_name ref="first_name" validate=validators.first_name }}}
+  {{{ SettingsEditElement type="text" name="second_name" label="Surname" value=user.second_name ref="second_name" validate=validators.second_name }}}
+  {{{ SettingsEditElement type="text" name="display_name" label="Name in chat" value=user.display_name ref="display_name" validate=validators.display_name }}}
+  {{{ SettingsEditElement type="text" name="phone" label="Phone" value=user.phone ref="phone" validate=validators.phone }}}
+  <div class='settings__buttons'>
+    {{{ ErrorLine className="form-error" ref="errorLine" }}}
+    {{{ Button label="Save" type="primary" buttonType="submit" }}}
+    {{{ Button label="Cancel" type="link" page="/settings" }}}
+  </div>
+{{/Form}}

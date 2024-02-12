@@ -18,6 +18,7 @@
       "rules": {
         "@typescript-eslint/no-unused-vars": "off",
         "@typescript-eslint/naming-convention": "off",
+        "@typescript-eslint/no-shadow": "off",
         "import/no-extraneous-dependencies": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-this-alias": "off",
@@ -26,7 +27,8 @@
           {
             "singleQuote": true,
             "trailingComma": "none",
-            "semi": false
+            "semi": false,
+            "insert_final_newline": true
           }
         ]
       }
