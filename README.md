@@ -62,6 +62,12 @@ Now you can locally execute the Bats tests for your project. Ensure that you hav
 - /password - Password change page
 - /error.*? - Error page
 
+**Added Tests**
+- HTTPTransport: Added a test to ensure the correct formation of query strings when making a GET request.
+- Block: Introduced tests to verify the creation of components with state from the constructor, reactive behavior, setting events on elements, and calling the dispatch ComponentDidMount method.
+- Router: Included tests for adding routes to the routes list, navigating to specified routes, calling middleware when changing routes, and returning the correct route for the specified path.
+- LoginPage: Implemented a test to validate the correct display of login form errors.
+
 **Note:**
 The project runs on port 3000, and you can access it at [http://localhost:3000/](http://localhost:3000/).
 

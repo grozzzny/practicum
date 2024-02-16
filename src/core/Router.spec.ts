@@ -7,10 +7,10 @@ describe('Router', () => {
 	const sandbox = createSandbox()
 
 	beforeEach(function () {
-		router['routes'] = []
-		router['history'] = window.history
-		router['currentRoute'] = null
-		router['rootQuery'] = '#app'
+		router.routes = []
+		router.history = window.history
+		router.currentRoute = null
+		router.rootQuery = '#app'
 	})
 
 	afterEach(function () {
@@ -18,20 +18,20 @@ describe('Router', () => {
 	})
 
 	it('should add a route to the routes list', () => {
-		const initialRoutesCount = router['routes'].length
+		const initialRoutesCount = router.routes.length
 		router.use('/messenger', ChatsPage)
-		const updatedRoutesCount = router['routes'].length
+		const updatedRoutesCount = router.routes.length
 
 		expect(updatedRoutesCount).to.equal(initialRoutesCount + 1)
 	})
 
 	it('should navigate to the specified route', () => {
 		router.use('/messenger', ChatsPage)
-		const initialCurrentRoute = router['currentRoute']
+		const initialCurrentRoute = router.currentRoute
 
 		router.go('/messenger')
 
-		const updatedCurrentRoute = router['currentRoute']
+		const updatedCurrentRoute = router.currentRoute
 
 		expect(updatedCurrentRoute).to.not.equal(initialCurrentRoute)
 	})
@@ -48,8 +48,8 @@ describe('Router', () => {
 	it('should return the correct route for the specified path', () => {
 		router.use('/messenger', ChatsPage)
 
-		const foundRoute = router['getRoute']('/messenger')
-		const notFoundRoute = router['getRoute']('/profile')
+		const foundRoute = router.getRoute('/messenger')
+		const notFoundRoute = router.getRoute('/profile')
 
 		expect(foundRoute).to.exist
 		expect(notFoundRoute).to.not.exist
