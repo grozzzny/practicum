@@ -1,4 +1,4 @@
-import { JSDOM } from 'JSDOM'
+import { JSDOM } from 'jsdom'
 
 const jsdom = new JSDOM(`<main id="app"></main>`, {
   url: 'http://localhost:3000'
