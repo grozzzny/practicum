@@ -20,8 +20,7 @@
     "lint": "eslint --fix src/",
     "lint:styles": "stylelint --fix \"src/**/*.css\"",
     "format": "prettier --write .",
-    "test": "mocha",
-    "prepare": "husky install"
+    "test": "mocha"
   },
   "devDependencies": {
     "@types/chai": "4.3.11",
@@ -59,11 +58,5 @@
   },
   "dependencies": {
     "nanoid": "5.0.4"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm-run-all lint lint:styles",
-      "pre-push": "npm-run-all test"
-    }
   }
 }
