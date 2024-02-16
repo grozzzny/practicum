@@ -58,5 +58,10 @@
   },
   "dependencies": {
     "nanoid": "5.0.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm-run-all lint lint:styles test"
+    }
   }
 }
