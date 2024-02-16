@@ -1,5 +1,23 @@
 import Handlebars, { HelperOptions } from 'handlebars'
 import Block, { PropsType, RefType } from './Block'
+import * as Partials from '../partials'
+import * as Components from '../components'
+
+export function registerPartials() {
+	Object.entries(Partials as Record<string, string>).forEach(
+		([name, component]) => {
+			Handlebars.registerPartial(name, component)
+		}
+	)
+}
+
+export function registerComponents() {
+	Object.entries(Components as Record<string, typeof Block>).forEach(
+		([name, component]) => {
+			registerComponent(name, component)
+		}
+	)
+}
 
 export function registerComponent(
 	name: string,
