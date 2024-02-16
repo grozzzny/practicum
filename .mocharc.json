@@ -3,5 +3,6 @@
   "extension": ["ts"],
   "spec": "src/**/*.spec.ts",
   "require": "./mochaSetup.mjs",
-  "loader": ["ts-node/esm", "./loader-hbs.js", "./loader-css.js"]
+  "loader": ["ts-node/esm", "./loader-hbs.js", "./loader-css.js"],
+  "file": "./tsconfig.test.json"
 }
