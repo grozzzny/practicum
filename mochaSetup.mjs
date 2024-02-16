@@ -1,7 +1,7 @@
 import { JSDOM } from 'JSDOM'
 
 const jsdom = new JSDOM(`<main id="app"></main>`, {
-  url: 'http://localhost:3000',
+  url: 'http://localhost:3000'
 })
 
 global.window = jsdom.window
