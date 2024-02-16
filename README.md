@@ -68,6 +68,18 @@ Now you can locally execute the Bats tests for your project. Ensure that you hav
 - Router: Included tests for adding routes to the routes list, navigating to specified routes, calling middleware when changing routes, and returning the correct route for the specified path.
 - LoginPage: Implemented a test to validate the correct display of login form errors.
 
+Execute unit tests for specific components (replace `ComponentName` with the desired component):
+
+    ```bash
+    npm test ComponentName
+    ```
+
+  For example:
+
+    ```bash
+    npm test HTTPTransport
+    ```
+
 **Note:**
 The project runs on port 3000, and you can access it at [http://localhost:3000/](http://localhost:3000/).
 
