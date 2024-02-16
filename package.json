@@ -20,7 +20,9 @@
     "lint": "eslint --fix src/",
     "lint:styles": "stylelint --fix \"src/**/*.css\"",
     "format": "prettier --write .",
-    "test": "mocha"
+    "test": "mocha",
+    "precommit": "npm test",
+    "prepush": "npm test"
   },
   "devDependencies": {
     "@types/chai": "4.3.11",
