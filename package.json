@@ -59,10 +59,5 @@
   },
   "dependencies": {
     "nanoid": "5.0.4"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn test && yarn lint && yarn lint:styles && yarn format"
-    }
   }
 }
