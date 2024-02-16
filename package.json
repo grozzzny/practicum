@@ -20,7 +20,8 @@
     "lint": "eslint --fix src/",
     "lint:styles": "stylelint --fix \"src/**/*.css\"",
     "format": "prettier --write .",
-    "test": "mocha"
+    "test": "mocha",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@types/chai": "4.3.11",
@@ -61,7 +62,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn test && yarn lint && yarn lint:styles && yarn format"
+      "pre-commit": "yarn test && yarn lint && yarn lint:styles"
     }
   }
 }
