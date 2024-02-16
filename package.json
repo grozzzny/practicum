@@ -21,7 +21,7 @@
     "lint:styles": "stylelint --fix \"src/**/*.css\"",
     "format": "prettier --write .",
     "test": "mocha",
-    "prepare": "husky install && git config --global core.hookspath .git-hooks && echo 'to take tests'"
+    "prepare": "git config --global core.hookspath .git-hooks && echo 'to take tests'"
   },
   "devDependencies": {
     "@types/chai": "4.3.11",
