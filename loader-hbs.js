@@ -16,11 +16,13 @@ export async function resolve(specifier, context, next) {
 export async function load(url, context, next) {
     if (context.format !== 'hbs') return next(url, context)
 
-    const rawSource = await fs.readFile(fileURLToPath(url), 'utf8');
+    const rawSource = await fs.readFile(fileURLToPath(url), 'utf8')
 
     return {
         format: 'module',
         shortCircuit: true,
-        source: `const template = ${JSON.stringify(rawSource)};\nexport default template;`
-    };
+        source: `const template = ${JSON.stringify(
+            rawSource
+        )};\nexport default template;`
+    }
 }
