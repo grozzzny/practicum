@@ -18,13 +18,13 @@ describe('Login Page', () => {
 		const input = component.querySelector<HTMLInputElement>('[name="login"]')!
 		input.value = '22'
 
-		const formLogin = component.querySelector<HTMLFormElement>('#formLogin')!
-		formLogin.dispatchEvent(new window.Event('submit'))
+		const form = component.querySelector<HTMLFormElement>('#formLogin')!
+		form.dispatchEvent(new window.Event('submit'))
 
-		const parent = input.parentElement!.parentElement!
-		const errorElement = parent.querySelector<HTMLElement>('.field__error')!
+		const field = input.parentElement!.parentElement!
+		const error = field.querySelector<HTMLElement>('.field__error')!
 
-		expect(errorElement.innerHTML).to.eql(
+		expect(error.innerHTML).to.eql(
 			'Length of login should be between 3 and 20 characters'
 		)
 	})
