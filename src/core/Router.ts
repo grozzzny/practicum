@@ -4,13 +4,13 @@ import Route from './Route'
 export type Middleware = (router: Router, next: () => void) => void
 
 class Router {
-	private routes: Route[] = []
+	public routes: Route[] = []
 
-	private history: History
+	public history: History
 
-	private currentRoute: null | Route = null
+	public currentRoute: null | Route = null
 
-	constructor(private rootQuery: string | null = null) {
+	constructor(public rootQuery: string | null = null) {
 		this.history = window.history
 	}
 

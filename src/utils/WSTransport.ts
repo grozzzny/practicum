@@ -20,7 +20,7 @@ type SendData = string | object
 export class WSTransport extends EventBus<WSEventMethods> {
 	private socket?: WebSocket
 
-	private pingInterval?: number
+	private pingInterval?: NodeJS.Timeout
 
 	private readonly pingIntervalTime = 30000
 

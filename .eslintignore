@@ -1,2 +1,4 @@
 vite.config.ts
+loader-css.js
+loader-hbs.js
 /src/vite-env.d.ts

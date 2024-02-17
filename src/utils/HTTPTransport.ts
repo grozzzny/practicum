@@ -1,4 +1,4 @@
-enum Methods {
+export enum Methods {
 	GET = 'GET',
 	POST = 'POST',
 	PUT = 'PUT',
@@ -51,7 +51,7 @@ export class HTTPTransport {
 	get: HTTPMethod = (url, options = {}) => {
 		const { data, ...restOptions } = options
 		return this.request(
-			`${url}${queryStringify(data)}`,
+			`${url}${encodeURI(queryStringify(data))}`,
 			Methods.GET,
 			restOptions
 		)
@@ -73,7 +73,7 @@ export class HTTPTransport {
 		return this.request(url, Methods.DELETE, options)
 	}
 
-	private request<Response extends XMLHttpRequest | unknown>(
+	public request<Response extends XMLHttpRequest | unknown>(
 		url: string,
 		method: Methods,
 		options: RequestOptions = {}
